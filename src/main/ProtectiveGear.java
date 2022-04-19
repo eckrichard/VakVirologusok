@@ -2,7 +2,6 @@ package main;
 
 public abstract class ProtectiveGear extends Item {
 	protected Shelter shelter;
-	protected Virologist virologist;
 
 	public ProtectiveGear(String name) {
 		super(name);
@@ -15,15 +14,9 @@ public abstract class ProtectiveGear extends Item {
 	 * A függvény hívása után nem csak a táskában lesz benne a
 	 * védőfelszerelés, hanem viselni is fogja a virológus
 	 */
-	public void Wear() {
-		setAttribute(virologist);
-	}
+	public abstract void Wear();
 
-	/**
-	 * Beállítja, hogy melyik virológus birtokában van a tárgy
-	 * @param v A virológus, akinél van
-	 */
-	public void setVirologist(Virologist v) {
-		this.virologist = v;
-	}
+	public void Use(Virologist v, Agent a) {}
+
+	public abstract void Destroy();
 }

@@ -2,9 +2,11 @@ package main;
 
 public abstract class Item {
 	protected String name;
+	protected Virologist virologist;
 
 	public Item(String name) {
 		this.name = name;
+		virologist = null;
 	}
 
 	/**
@@ -20,5 +22,13 @@ public abstract class Item {
 
 	public String getName() {
 		return name;
+	}
+
+	/**
+	 * Beállítja, hogy melyik virológus birtokában van a tárgy
+	 * @param v A virológus, akinél van
+	 */
+	public void setVirologist(Virologist v) {
+		this.virologist = v;
 	}
 }

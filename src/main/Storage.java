@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Storage extends Tile {
-	private List<Material> materials = new ArrayList<Material>();
+	private ArrayList<Material> materials = new ArrayList<Material>();
 
 	/**
 	 * A raktár konstruktora
 	 * @param materials a raktárban található anyagok
 	 */
-	public Storage(List<Material> materials){
+	public Storage(ArrayList<Material> materials){
 		this.materials = materials;
 	}
 
@@ -19,7 +19,6 @@ public class Storage extends Tile {
 	 * @return az anyag, amit a mrzőn fel lehet venni
 	 */
 	public Material Collect() {
-		System.out.println("Collect(): Material");
 		return materials.get(materials.size() - 1);
 	}
 
@@ -29,7 +28,10 @@ public class Storage extends Tile {
 	 */
 	@Override
 	public Material GetCollectable() {
-		System.out.println("GetCollectable(): Material");
 		return Collect();
+	}
+
+	public void DestroyMaterial(){
+		materials.clear();
 	}
 }

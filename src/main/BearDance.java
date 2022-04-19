@@ -5,6 +5,7 @@ public class BearDance extends Effects {
     private long effected;
 
     public BearDance(){
+        effected = 0;
     }
 
     @Override

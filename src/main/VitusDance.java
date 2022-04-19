@@ -1,13 +1,27 @@
 package main;
 
-public class VitusDance extends Effects implements Steppable {
+public class VitusDance extends Effects {
 	private long timeDancing;
+
+	public VitusDance(){
+		timeDancing = 0;
+	}
+	@Override
+	public void Step() {
+		if(timeDancing > 0) {
+			timeDancing--;
+		}
+	}
 
 	/**
 	 * Beállítja a hatásnak az idejét
 	 * @param n Az idő mértéke
 	 */
 	public void setTimeEffected(long n) {
-		System.out.println("setTimeEffetcted: VitusDance");
+		timeDancing = n;
+	}
+
+	public long getTime() {
+		return timeDancing;
 	}
 }

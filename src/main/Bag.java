@@ -21,16 +21,28 @@ public class Bag {
 		materials = new ArrayList<Material>();
 	}
 
-	void setVirologist(Virologist v){
+	public void setVirologist(Virologist v){
 		virologist = v;
 	}
 
-	void setSize(long n){
+	public void setSize(long n){
 		size += n;
 	}
 
-	long getSize(){
+	public long getSize(){
 		return size;
+	}
+
+	public ArrayList<Agent> getAgents() {
+		return agents;
+	}
+
+	public ArrayList<Material> getMaterials() {
+		return materials;
+	}
+
+	public ArrayList<ProtectiveGear> getProtectiveGears() {
+		return protectiveGears;
 	}
 
 	/**

@@ -10,4 +10,6 @@ public abstract class Effects implements Steppable{
 	public abstract void Step();
 	
 	public abstract void setTimeEffected(long n);
+
+	public abstract long getTime();
 }

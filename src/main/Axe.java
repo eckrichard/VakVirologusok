@@ -26,15 +26,19 @@ public class Axe extends ProtectiveGear{
         virologist = v;
     }
 
+    @Override
+    public void Wear() { }
+
     private void Attack(Virologist v){
         v.Die();
+        usable = false;
     }
 
     public void Destroy(){
         this.takeAway(this.virologist);
     }
 
-    public void Use(Virologist v){
+    public void Use(Virologist v, Agent a){
         this.Attack(v);
     }
 

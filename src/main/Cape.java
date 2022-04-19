@@ -31,4 +31,9 @@ public class Cape extends ProtectiveGear {
 	public void Wear(){
 		setAttribute(virologist);
 	}
+
+	@Override
+	public void Destroy() {
+		takeAway(virologist);
+	}
 }
