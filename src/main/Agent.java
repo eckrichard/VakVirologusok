@@ -3,17 +3,26 @@ package main;
 import java.util.ArrayList;
 
 public abstract class Agent extends Item implements Steppable {
-	private long useable;
-	private Bag bag;
+	protected long usable;
+	protected ArrayList<Material> materials;
+	protected Bag bag;
+
+	public Agent(ArrayList<Material> m, String name){
+		super(name);
+		materials = m;
+		usable = 5;
+		bag = null;
+	}
+
 	public abstract void setStatus(long n, Virologist v);
 
 	/**
 	 * Lépteti az időt amíg még felhasználható a vírus
 	 */
 	public void Step() {
-		System.out.println("Step(): void");
-		bag.Discard(this);
-		bag = null;
+		if(usable > 0){
+			usable--;
+		}
 	}
 
 	/**
@@ -24,7 +33,19 @@ public abstract class Agent extends Item implements Steppable {
 		this.bag = bag;
 	}
 
+	Bag getBag(){
+		return bag;
+	}
+
+	long getUsable(){
+		return usable;
+	}
+
+	void setUsable(long n){
+		usable = n;
+	}
+
 	public ArrayList<Material> getNeededMaterials() {
-		return null;
+		return materials;
 	}
 }

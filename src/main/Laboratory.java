@@ -1,7 +1,10 @@
 package main;
 
+import java.util.Random;
+
 public class Laboratory extends Tile {
 	private GeneticCode geneticCode;
+	private BearDanceAgent bearDance;
 
 	/**
 	 * A labor konstruktora
@@ -9,6 +12,12 @@ public class Laboratory extends Tile {
 	 */
 	public Laboratory(GeneticCode code) {
 		geneticCode = code;
+		bearDance = null;
+	}
+
+	public Laboratory(GeneticCode code, BearDanceAgent bearDanceAgent) {
+		geneticCode = code;
+		bearDance = bearDanceAgent;
 	}
 
 	/**
@@ -16,7 +25,6 @@ public class Laboratory extends Tile {
 	 * @return A mezőn található genetikai kód
 	 */
 	public GeneticCode Palpate() {
-		System.out.println("Palpate(): GeneticCode");
 		return geneticCode;
 	}
 
@@ -26,7 +34,19 @@ public class Laboratory extends Tile {
 	 */
 	@Override
 	public GeneticCode GetCollectable() {
-		System.out.println("GetCollectable(): GeneticCode");
 		return this.Palpate();
+	}
+
+	public void LaboratoryInfect(Virologist v){
+		Random rand = new Random();
+		double random = (double)rand.nextInt(1000) / 10.0;
+		if(v.getUntouchable() == false && random > v.getAgentResistance()){
+			v.HitByAgent(bearDance);
+		}
+	}
+
+	public boolean isInfects(){
+		if(bearDance != null){return true;}
+		return false;
 	}
 }

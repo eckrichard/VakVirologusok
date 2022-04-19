@@ -6,24 +6,31 @@ import java.util.List;
 public class Bag {
 	private long size;
 	private Virologist virologist;
-	private List<Agent> agents = new ArrayList<Agent>();
-	private List<ProtectiveGear> protectiveGears = new ArrayList<ProtectiveGear>();
-	private List<Material> materials = new ArrayList<Material>();
+	private ArrayList<Agent> agents;
+	private ArrayList<ProtectiveGear> protectiveGears;
+	private ArrayList<Material> materials;
 
 	/**
 	 * A táska default konstruktora
 	 */
 	public Bag(){
 		size = 30;
+		virologist = null;
+		agents = new ArrayList<Agent>();
+		protectiveGears = new ArrayList<ProtectiveGear>();
+		materials = new ArrayList<Material>();
 	}
 
-	/**
-	 * A táska ágenst hozzáadó konstruktora
-	 * @param agent az ágens amit hozzáadunk
-	 */
-	public Bag(Agent agent){
-		size = 30;
-		agents.add(agent);
+	void setVirologist(Virologist v){
+		virologist = v;
+	}
+
+	void setSize(long n){
+		size += n;
+	}
+
+	long getSize(){
+		return size;
 	}
 
 	/**
@@ -31,7 +38,6 @@ public class Bag {
 	 * @param a A kivenni kívánt ágens
 	 */
 	public void Discard(Agent a) {
-		System.out.println("Discard(a: Agent): void");
 		agents.remove(a);
 	}
 	/**
@@ -39,14 +45,14 @@ public class Bag {
 	 * @param g A kivenni kívánt ágens
 	 */
 	public void Discard(ProtectiveGear g) {
-		System.out.println("Discard(g: ProtectiveGear): void");
+		protectiveGears.remove(g);
 	}
 	/**
 	 * Kiveszi a listából az anyagot. Ezt nem helyezi sehova, a tárgy megsemmisül.
 	 * @param m A kivenni kívánt ágens
 	 */
 	public void Discard(Material m) {
-		System.out.println("Discard(m: Material): void");
+		materials.remove(m);
 	}
 
 	/**
@@ -54,7 +60,6 @@ public class Bag {
 	 * @param a A hozzáadott ágens
 	 */
 	public void Add(Agent a) {
-		System.out.println("Add(a: Agent)");
 		agents.add(a);
 	}
 
@@ -63,7 +68,6 @@ public class Bag {
 	 * @param g A hozzáadott védőfelszerelést
 	 */
 	public void Add(ProtectiveGear g) {
-		System.out.println("Add(g: ProtectiveGear): void");
 		protectiveGears.add(g);
 	}
 
@@ -72,7 +76,6 @@ public class Bag {
 	 * @param m A hozzáadott anyagot
 	 */
 	public void Add(Material m) {
-		System.out.println("Add(m: Material): void");
 		materials.add(m);
 	}
 }

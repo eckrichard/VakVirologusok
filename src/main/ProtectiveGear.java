@@ -1,8 +1,13 @@
 package main;
 
 public abstract class ProtectiveGear extends Item {
-	private Shelter shelter;
-	private Virologist virologist;
+	protected Shelter shelter;
+	protected Virologist virologist;
+
+	public ProtectiveGear(String name) {
+		super(name);
+	}
+
 	public abstract void takeAway(Virologist v);
 	public abstract void setAttribute(Virologist v);
 
@@ -11,7 +16,6 @@ public abstract class ProtectiveGear extends Item {
 	 * védőfelszerelés, hanem viselni is fogja a virológus
 	 */
 	public void Wear() {
-		System.out.println("Wear(): void");
 		setAttribute(virologist);
 	}
 

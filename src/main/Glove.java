@@ -1,12 +1,19 @@
 package main;
 
 public class Glove extends ProtectiveGear {
+	int remainingUses;
+	public Glove(String name) {
+		super(name);
+		remainingUses = 3;
+	}
+
 	/**
 	 * Elveszi a Glove-ot a virológustól
 	 * @param v A virológus akitől elveszi a Glove-ot
 	 */
 	public void takeAway(Virologist v) {
-		System.out.println("takeAway: Glove");
+		v.setThrowBackAvailable(false);
+		v.Unwear(this);
 	}
 	/**
 	 * Visszadobja az ágenst
@@ -14,13 +21,33 @@ public class Glove extends ProtectiveGear {
 	 * @param a Az ágens amit visszadob
 	 */
 	public void throwBack(Virologist v, Agent a) {
-		System.out.println("throwBack");
+		if(v.getUntouchable() == false){
+			remainingUses--;
+			v.HitByAgent(a);
+		}
 	}
 	/**
 	 * Hozzáadja a Glove-ot a virológushoz
 	 * @param v A virológus akinek hozzáadja a Glove-ot
 	 */
 	public void setAttribute(Virologist v) {
-		System.out.println("setAttribute: Glove");
+		v.setThrowBackAvailable(true);
+	}
+
+	@Override
+	public void Wear() {
+		setAttribute(virologist);
+	}
+
+	public int getRemainingUses() {
+		return remainingUses;
+	}
+
+	public void Use(Virologist v, Agent a) {
+		throwBack(v, a);
+	}
+
+	public void Destroy(){
+		takeAway(virologist);
 	}
 }

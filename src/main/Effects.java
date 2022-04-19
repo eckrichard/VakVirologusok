@@ -1,13 +1,13 @@
 package main;
 
-public abstract class Effects implements Steppable {
+public abstract class Effects implements Steppable{
+
+	Virologist virologist;
+
 	/**
 	 * Lépteti az időt.
 	 */
-	public void Step() {
-		System.out.println("Step(): void");
-		setTimeEffected(0);
-	}
+	public abstract void Step();
 	
 	public abstract void setTimeEffected(long n);
 }

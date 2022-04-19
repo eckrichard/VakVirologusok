@@ -3,21 +3,32 @@ package main;
 public class BonusBag extends ProtectiveGear {
 	private long bonusAttribute;
 
+	public BonusBag(String name) {
+		super(name);
+		bonusAttribute = 20;
+	}
+
 	/**
 	 * Hozzáadja a BonusBag-et a virológushoz
 	 * @param v A virológus akinek hozzáadja a BonusBag-et
 	 */
 	public void setAttribute(Virologist v) {
-		System.out.println("setAttribute: BonusBag");
-
-		v.addGear(this);
+		v.getBag().setSize(bonusAttribute);
 	}
 	/**
 	 * Elveszi a BonusBag-et a virológustól
 	 * @param v A virológus akitől elveszi a BonusBag-et
 	 */
 	public void takeAway(Virologist v) {
-		System.out.println("takeAway: BonusBag");
-		v.TakeGear(v,this);
+		v.getBag().setSize(-bonusAttribute);
+		v.Unwear(this);
+	}
+
+	public long getBonus(){
+		return bonusAttribute;
+	}
+
+	public void Wear(){
+		setAttribute(virologist);
 	}
 }

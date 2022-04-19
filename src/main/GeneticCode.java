@@ -2,8 +2,6 @@ package main;
 
 public class GeneticCode {
 	private Agent agent;
-	public void addCode(Virologist v) {
-	}
 
 	/**
 	 * A genetikai kód kontruktora
@@ -17,15 +15,19 @@ public class GeneticCode {
 	 * Létrehozza az ágenst és visszatér az eredményével,
 	 * ami lehet sikeres létrehozatal vagy sikertelen.
 	 * @param v A virológus, aki végzi a tevékenységet
-	 * @param b Arra a kérdésre a válasz, hogy van-e elegendő anyga
 	 * @return sikeres vagy sikretelen volt az ágens létrehozása
 	 */
-	public boolean CreateAgent(Virologist v, boolean b) {
-		System.out.println("CreateAgent(v: Virologist): bool");
-		v.useMaterials(null, null, b);
-		if(b == true){
+	public boolean CreateAgent(Virologist v) {
+		if(v.useMaterials(agent.getNeededMaterials())){
 			v.addAgent(agent);
+			return true;
 		}
-		return b;
+		else {
+			return false;
+		}
+	}
+
+	public Agent getAgent() {
+		return agent;
 	}
 }

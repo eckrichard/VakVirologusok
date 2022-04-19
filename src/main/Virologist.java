@@ -7,9 +7,9 @@ public class Virologist {
 	private long codeCount = 0;
 	private double agentResistance;
 	private boolean throwBackAvailable;
-	private List<Effects> effects = new ArrayList<Effects>();
-	private List<GeneticCode> geneticCodes = new ArrayList<GeneticCode>();
-	private List<ProtectiveGear> wear = new ArrayList<ProtectiveGear>();
+	private ArrayList<Effects> effects = new ArrayList<Effects>();
+	private ArrayList<GeneticCode> geneticCodes = new ArrayList<GeneticCode>();
+	private ArrayList<ProtectiveGear> wear = new ArrayList<ProtectiveGear>();
 	private Bag bag;
 	private Tile tile;
 
@@ -168,5 +168,52 @@ public class Virologist {
 	public void addAgent(Agent a) {
 		System.out.println("AddAgent(a: Agent): void");
 		bag.Add(a);
+	}
+
+	public Bag getBag() {
+		return bag;
+	}
+
+	public ArrayList<ProtectiveGear> getWear(){
+		return wear;
+	}
+	
+	public void Unwear(ProtectiveGear g){
+		wear.remove(this);
+	}
+
+	public void Die() {
+	}
+
+	public Tile getTile() {
+		return tile;
+	}
+
+	public void addEffect(Effects e){
+		effects.add(e);
+	}
+
+	public ArrayList<GeneticCode> getGeneticCodes(){
+		return geneticCodes;
+	}
+
+	public void setCodeCount(int n){
+		codeCount = n;
+	}
+
+	public boolean useMaterials(ArrayList<Material> neededMaterials) {
+		return true;
+	}
+
+	public void setAgentResistance(double agentResistance) {
+		this.agentResistance = agentResistance;
+	}
+
+	public void setThrowBackAvailable(boolean throwBackAvailable) {
+		this.throwBackAvailable = throwBackAvailable;
+	}
+
+	public double getAgentResistance() {
+		return agentResistance;
 	}
 }
