@@ -159,6 +159,7 @@ public class Virologist {
 
 	public boolean useMaterials(ArrayList<Material> neededMaterials) {
 		if(bag.getMaterials().containsAll(neededMaterials)){
+			bag.getMaterials().removeAll(neededMaterials);
 			return true;
 		}
 		return false;
