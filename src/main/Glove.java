@@ -1,7 +1,16 @@
 package main;
 
+/**
+ * Ha a virológus viseli, akkor a feladata az, hogy az ágens, amit a virológusra akarnak kenni azt az
+ * ágenst használó virológusra fog hatni
+ */
 public class Glove extends ProtectiveGear {
 	int remainingUses;
+
+	/**
+	 * A kesztyű konstruktora. Superrel beállítja a kapott nevet
+	 * @param name a neve
+	 */
 	public Glove(String name) {
 		super(name);
 		remainingUses = 3;
@@ -34,19 +43,35 @@ public class Glove extends ProtectiveGear {
 		v.setThrowBackAvailable(true);
 	}
 
+	/**
+	 * A függvény hívása után nem csak a táskában lesz benne a védőfelszerelés,
+	 * hanem viselni is fogja a virológus és meghívja a setAttribute-ot
+	 */
 	@Override
 	public void Wear() {
 		setAttribute(virologist);
 	}
 
+	/**
+	 * Visszaadja, hogy mennyi használata maradt a kesztyűnek
+	 * @return a még meglévő haszálatok száma
+	 */
 	public int getRemainingUses() {
 		return remainingUses;
 	}
 
+	/**
+	 * A kesztyű használata, meghivja a throwBack függvényt
+	 * @param v virológus, akin használják
+	 * @param a az ágens amit, a kesztyű esetében hasnál
+	 */
 	public void Use(Virologist v, Agent a) {
 		throwBack(v, a);
 	}
 
+	/**
+	 * Elpusztítja a kesztyűt, ami meghívja a takeAway metódust
+	 */
 	public void Destroy(){
 		takeAway(virologist);
 	}

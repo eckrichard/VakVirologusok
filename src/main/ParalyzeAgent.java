@@ -2,9 +2,17 @@ package main;
 
 import java.util.ArrayList;
 
+/**
+ * Az ágens virológusra gyakorolt hatás idejét tárolja, valmaint kifejti a hatását a virológusra.
+ */
 public class ParalyzeAgent extends Agent {
 	private long duration;
 
+	/**
+	 * A bénító ágens konstruktora. Superrel beállítja a kapott nevet
+	 * @param m a szükséges anyagok
+	 * @param name a neve
+	 */
 	public ParalyzeAgent(ArrayList<Material> m, String name) {
 		super(m, name);
 		duration = 1;
@@ -21,10 +29,18 @@ public class ParalyzeAgent extends Agent {
 		v.addEffect(paralyzed);
 	}
 
+	/**
+	 * Visszaadja, hogy meddig lehet felhasználni
+	 * @return a hátralévő idő, amig felhasználható
+	 */
 	public long getDuration() {
 		return duration;
 	}
 
+	/**
+	 * Beállítja, hogy meddig lehet felhasználni
+	 * @param duration a hatás hossza
+	 */
 	public void setDuration(long duration) {
 		this.duration = duration;
 	}

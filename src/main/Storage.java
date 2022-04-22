@@ -3,14 +3,19 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Egy mező, amin a virológus anyagot tud majd szerezni. A feladata az, hogy ha a virológus
+ * megkísérli felvenni az anyagot, akkor megmondja, hogy ott melyik anyag található.
+ */
 public class Storage extends Tile {
-	private ArrayList<Material> materials = new ArrayList<Material>();
+	private ArrayList<Material> materials;
 
 	/**
 	 * A raktár konstruktora
 	 * @param materials a raktárban található anyagok
 	 */
 	public Storage(ArrayList<Material> materials){
+		materials = new ArrayList<Material>();
 		this.materials = materials;
 	}
 
@@ -31,6 +36,10 @@ public class Storage extends Tile {
 		return Collect();
 	}
 
+	/**
+	 * Elpusztulnak a raktárban található anyagok (kiürül a lista, amibe
+	 * tároljuk őket)
+	 */
 	public void DestroyMaterial(){
 		materials.clear();
 	}

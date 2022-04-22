@@ -1,8 +1,16 @@
 package main;
 
+/**
+ * 82,3%-kal valószínűséggel távol tartja az ágens hatását, amennyiben a virológus viseli.
+ * Feladata a virológus ágens ellenállásának beállítása
+ */
 public class Cape extends ProtectiveGear {
 	private double bonusAttribute;
 
+	/**
+	 * A köpeny konstruktora. Superrel beállítja a kapott nevet
+	 * @param name a neve
+	 */
 	public Cape(String name) {
 		super(name);
 		bonusAttribute = 82.3;
@@ -24,14 +32,27 @@ public class Cape extends ProtectiveGear {
 		v.Unwear(this);
 	}
 
+	/**
+	 * Visszaadja azt, hogy mennyivel képes növelni a virológus ágens
+	 * ellenállását
+	 * @return az ágens ellehárítási képessége
+	 */
 	public double getBonus() {
 		return bonusAttribute;
 	}
 
+	/**
+	 * A függvény hívása után nem csak a táskában lesz benne a védőfelszerelés,
+	 * hanem viselni is fogja a virológus és meghívja a setAttribute-ot
+	 */
 	public void Wear(){
 		setAttribute(virologist);
 	}
 
+	/**
+	 * Egy védőfelszerelés elpusztításához használható függvény, meghívja a
+	 * takeAway-t
+	 */
 	@Override
 	public void Destroy() {
 		takeAway(virologist);

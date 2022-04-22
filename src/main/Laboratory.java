@@ -2,19 +2,31 @@ package main;
 
 import java.util.Random;
 
+/**
+ * Egy mező, amin a virológus genetikai kódot tud majd szerezni. A feladata az, hogy ha a
+ * virológus megkísérli letapogatni a falát a laboratóriumnak, akkor megmondja, hogy ott melyik
+ * genetikai kód található.
+ */
 public class Laboratory extends Tile {
 	private GeneticCode geneticCode;
 	private BearDanceAgent bearDance;
 
 	/**
-	 * A labor konstruktora
-	 * @param code
+	 * A laboratórium konstruktora. Beállítja, hogy melyik
+	 * genetikai kód található itt, beardance-t nullra állítja
+	 * @param code a rajta található kód
 	 */
 	public Laboratory(GeneticCode code) {
 		geneticCode = code;
 		bearDance = null;
 	}
 
+	/**
+	 * Beállítja az attributum értékeket
+	 * a paraméterben kapott értékekre
+	 * @param code a genetikai kód
+	 * @param bearDanceAgent a medvetánc ágens
+	 */
 	public Laboratory(GeneticCode code, BearDanceAgent bearDanceAgent) {
 		geneticCode = code;
 		bearDance = bearDanceAgent;
@@ -37,6 +49,10 @@ public class Laboratory extends Tile {
 		return this.Palpate();
 	}
 
+	/**
+	 * A laboratórium használja a beardance-t egy virológuson
+	 * @param v a virológus, akin használja
+	 */
 	public void LaboratoryInfect(Virologist v){
 		Random rand = new Random();
 		double random = (double)rand.nextInt(1000) / 10.0;
@@ -45,6 +61,11 @@ public class Laboratory extends Tile {
 		}
 	}
 
+	/**
+	 * Megmondja, hogy fertőz-e a mező. Akkor fertőz, ha nem null a
+	 * beardance attribútum
+	 * @return ferőz-e a mező
+	 */
 	public boolean isInfects(){
 		if(bearDance != null){return true;}
 		return false;

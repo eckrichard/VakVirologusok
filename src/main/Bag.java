@@ -11,7 +11,8 @@ public class Bag {
 	private ArrayList<Material> materials;
 
 	/**
-	 * A táska default konstruktora
+	 * A táska konstruktora. Beállítja a size-ot 30-ra, a virológust null-ra, a litákat pedig
+	 * példányosítja
 	 */
 	public Bag(){
 		size = 30;
@@ -21,26 +22,50 @@ public class Bag {
 		materials = new ArrayList<Material>();
 	}
 
+	/**
+	 * A virologist-et a paraméterként kapott értékre állítja
+	 * @param v a virológus, amit beállít
+	 */
 	public void setVirologist(Virologist v){
 		virologist = v;
 	}
 
+	/**
+	 * A táska méretének a setterje
+	 * @param n az amennyivel növeli a méretet
+	 */
 	public void setSize(long n){
 		size += n;
 	}
 
+	/**
+	 * Megmondja, hogy mennyi a táska mérete
+	 * @return táska mérete
+	 */
 	public long getSize(){
 		return size;
 	}
 
+	/**
+	 * Megmondja, hogy milyen ágensei vannak
+	 * @return az ágensek
+	 */
 	public ArrayList<Agent> getAgents() {
 		return agents;
 	}
 
+	/**
+	 * Megmondja, hogy milyen anyagai vannak
+	 * @return az anyagok
+	 */
 	public ArrayList<Material> getMaterials() {
 		return materials;
 	}
 
+	/**
+	 * Megmondja, hogy milyen védőfelszerelései vannak
+	 * @return az védőfelszerelések
+	 */
 	public ArrayList<ProtectiveGear> getProtectiveGears() {
 		return protectiveGears;
 	}

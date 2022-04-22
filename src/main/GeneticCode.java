@@ -1,5 +1,8 @@
 package main;
 
+/**
+ * Tárol egy ágenst. Feladata a genetikai kód virológushoz adása és egy ágens létrehozása.
+ */
 public class GeneticCode {
 	private Agent agent;
 
@@ -27,6 +30,10 @@ public class GeneticCode {
 		}
 	}
 
+	/**
+	 * Visszaadja azt, hogy melyik ágenst tartalmazza a genetikai kódot
+	 * @return az ágens, amit tartalmaz
+	 */
 	public Agent getAgent() {
 		return agent;
 	}

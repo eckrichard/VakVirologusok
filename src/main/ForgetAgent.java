@@ -2,8 +2,17 @@ package main;
 
 import java.util.ArrayList;
 
+/**
+ * Az ágens virológusra gyakorolt hatás idejét tárolja, valmaint kifejti a hatását a virológusra.
+ */
 public class ForgetAgent extends Agent {
 
+	/**
+	 * A genetikai kódokat elfelejtő ágens konstruktora. Superrel
+	 * beállítja a kapott nevet
+	 * @param m szükséges anyagok
+	 * @param name a neve
+	 */
 	public ForgetAgent(ArrayList<Material> m, String name) {
 		super(m, name);
 	}

@@ -1,8 +1,17 @@
 package main;
 
+/**
+ * Megnöveli a virológus raktárának a méretét +20 hellyel, ha a virológus viseli. Feladata a
+ * raktár növelése, illetve csökkentése.
+ */
 public class BonusBag extends ProtectiveGear {
 	private long bonusAttribute;
 
+	/**
+	 * A zsák konstruktora. Superrel beállítja a kapott nevet, a
+	 * bonusAttribute-ot 20-ra állítja
+	 * @param name a neve
+	 */
 	public BonusBag(String name) {
 		super(name);
 		bonusAttribute = 20;
@@ -24,14 +33,26 @@ public class BonusBag extends ProtectiveGear {
 		v.Unwear(this);
 	}
 
+	/**
+	 * Visszaadja azt, hogy mennyivel képes növelni a Bag méretét
+	 * @return a növelés mértéke
+	 */
 	public long getBonus(){
 		return bonusAttribute;
 	}
 
+	/**
+	 * A függvény hívása után nem csak a táskában lesz benne a védőfelszerelés,
+	 * hanem viselni is fogja a virológus és meghívja a setAttribute-ot
+	 */
 	public void Wear(){
 		setAttribute(virologist);
 	}
 
+	/**
+	 * Egy védőfelszerelés elpusztításához használható függvény, meghívja a
+	 * takeAway-t
+	 */
 	@Override
 	public void Destroy() {
 		takeAway(virologist);

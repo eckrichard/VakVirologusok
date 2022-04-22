@@ -2,7 +2,14 @@ package main;
 
 import java.util.ArrayList;
 
+/**
+ * Az ágens elkészítéséhez szükséges anyagok ősosztálya
+ */
 public class Material extends Item {
+	/**
+	 * Az anyagok konstruktora. Superrel beállítja a kapott nevet
+	 * @param name a neve
+	 */
 	public Material(String name) {
 		super(name);
 	}
