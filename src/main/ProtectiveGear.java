@@ -1,25 +1,49 @@
 package main;
 
+/**
+ * A védőfelszerelések ősosztálya, ami azért felel, hogy az óvóhelyen tárolt védőfelszereléseket tudjuk
+ * tárolni.
+ */
 public abstract class ProtectiveGear extends Item {
-	private Shelter shelter;
-	private Virologist virologist;
+	protected Shelter shelter;
+
+	/**
+	 * Superrel beállítja a kapott nevet
+	 * @param name a név
+	 */
+	public ProtectiveGear(String name) {
+		super(name);
+	}
+
+	/**
+	 * Kiveszi a viselt tárgyak közül a védőfelszerelést, ha benne
+	 * van, valamint a virológus táskájából is kiveszi
+	 * @param v akitől elveszi
+	 */
 	public abstract void takeAway(Virologist v);
+
+	/**
+	 * Az adott virológusra beállítja a védőfelszerelés hatását
+	 * @param v akié a tárgy
+	 */
 	public abstract void setAttribute(Virologist v);
 
 	/**
 	 * A függvény hívása után nem csak a táskában lesz benne a
 	 * védőfelszerelés, hanem viselni is fogja a virológus
 	 */
-	public void Wear() {
-		System.out.println("Wear(): void");
-		setAttribute(virologist);
-	}
+	public abstract void Wear();
 
 	/**
-	 * Beállítja, hogy melyik virológus birtokában van a tárgy
-	 * @param v A virológus, akinél van
+	 * Egy védőfelszerelés használatához használható függvény
+	 * @param v virológus, akin használják
+	 * @param a az ágens amit, a kesztyű esetében hasnál
 	 */
-	public void setVirologist(Virologist v) {
-		this.virologist = v;
-	}
+	public void Use(Virologist v, Agent a) {}
+
+	/**
+	 * Egy védőfelszerelés elpusztításához használható függvény, meghívja a
+	 * takeAway-t
+	 */
+	public abstract void Destroy();
 }

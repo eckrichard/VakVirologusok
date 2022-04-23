@@ -1,8 +1,11 @@
 package main;
 
-import java.util.Timer;
-
+/**
+ * A léptethető osztályok interface-e.
+ */
 public interface Steppable {
-	public Timer timer = new Timer();
+	/**
+	 * Az adott lépésben végrehajtandó művelet
+	 */
 	public void Step();
 }
