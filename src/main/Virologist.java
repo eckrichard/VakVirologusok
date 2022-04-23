@@ -8,6 +8,7 @@ import java.util.Random;
  * A játékosok által irányított karakter. A feladata a virológus tevékenységeinek elvégzése
  */
 public class Virologist {
+	private int id = 1;
 	private long codeCount = 0;
 	private double agentResistance;
 	private boolean throwBackAvailable;
@@ -273,5 +274,13 @@ public class Virologist {
 	 */
 	public void setUntouchbale(boolean untouchbale) {
 		this.untouchbale = untouchbale;
+	}
+
+	/**
+	 * Visszaadja a az osztály azonosítóját
+	 * @return id: azonosító szám
+	 */
+	public int getId(){
+		return id;
 	}
 }

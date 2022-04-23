@@ -9,9 +9,10 @@ import java.util.List;
  * való tartózkodásának kezelése.
  */
 public class Tile {
+	protected int id;
 	protected long capacity;
 	protected ArrayList<Tile> adjacentTiles;
-	protected ArrayList<Virologist> virologits;
+	protected ArrayList<Virologist> virologists;
 
 	/**
 	 * Egy mező konstruktora
@@ -19,14 +20,14 @@ public class Tile {
 	public Tile(){
 		capacity = 2;
 		adjacentTiles = new ArrayList<Tile>();
-		virologits = new ArrayList<Virologist>();
+		virologists = new ArrayList<Virologist>();
 	}
 	/**
 	 * Eltávolítja az adott mezőről a virológust.
 	 * @param v Az a virológus, aki ellép
 	 */
 	public void Remove(Virologist v) {
-		virologits.remove(v);
+		virologists.remove(v);
 	}
 
 	/**
@@ -34,8 +35,8 @@ public class Tile {
 	 * @param v Az a virológus, aki odalép
 	 */
 	public void Accept(Virologist v) {
-		if(virologits.size() < capacity){
-			virologits.add(v);
+		if(virologists.size() < capacity){
+			virologists.add(v);
 		}
 	}
 
@@ -63,8 +64,8 @@ public class Tile {
 	 * @return a másik virológus
 	 */
 	public Virologist GetOtherVirologist(Virologist v) {
-		if(virologits.size() > 1){
-			for( Virologist virologist : virologits){
+		if(virologists.size() > 1){
+			for( Virologist virologist : virologists){
 				if(virologist != v){
 					return virologist;
 				}
@@ -85,5 +86,8 @@ public class Tile {
 	 */
 	public Object GetCollectable(){
 		return null;
+	}
+	public int getId(){
+		return id;
 	}
 }
