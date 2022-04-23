@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bag {
+	private int id;
 	private long size;
 	private Virologist virologist;
 	private ArrayList<Agent> agents;
@@ -114,5 +115,60 @@ public class Bag {
 	 */
 	public void Add(Material m) {
 		materials.add(m);
+	}
+
+	/**
+	 * Visszaadja a az osztály azonosítóját
+	 * @return id: azonosító szám
+	 */
+	public int getId(){
+		return id;
+	}
+
+	/**
+	 * Kiírja az osztály attribútumainak értékeit
+	 */
+	public void Print(char c){
+		System.out.println("Bag:");
+		if(c == 'a') {
+			System.out.println("\tsize: " + size);
+			System.out.println("\tvirologist: " + virologist.getId() + ". virologist");
+			System.out.print("\tagents:");
+			if(agents.size() != 0){
+				for(int i = 0; i < agents.size(); i++)
+					System.out.print(agents.get(i).getId() + ". Agent ");
+				System.out.println("");
+			}
+			if(agents.size() == 0)
+				System.out.println("null");
+			System.out.print("\tprotectiveGears:");
+			if(protectiveGears.size() != 0){
+				for(int i = 0; i < protectiveGears.size(); i++)
+					System.out.print(protectiveGears.get(i).getId() + ". protectiveGear ");
+				System.out.println("");
+			}
+			if(protectiveGears.size() == 0)
+				System.out.println("null");
+			System.out.print("\tmaterials:");
+			if(materials.size() != 0){
+				for(int i = 0; i < materials.size(); i++)
+					System.out.print(materials.get(i).getId() + ". material ");
+				System.out.println("");
+			}
+			if(materials.size() == 0)
+				System.out.println("null");
+			System.out.println("");
+		}
+		if(c == 'b'){
+			System.out.print("\tmaterials:");
+			if(materials.size() != 0){
+				for(int i = 0; i < materials.size(); i++)
+					System.out.print(materials.get(i).getId() + ". material ");
+				System.out.println("");
+			}
+			if(materials.size() == 0)
+				System.out.println("null");
+			System.out.println("");
+		}
 	}
 }

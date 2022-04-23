@@ -87,7 +87,28 @@ public class Tile {
 	public Object GetCollectable(){
 		return null;
 	}
+
+	/**
+	 * Visszaadja a az osztály azonosítóját
+	 * @return id: azonosító szám
+	 */
 	public int getId(){
 		return id;
+	}
+
+	/**
+	 * Kiírja az osztály attribútumainak értékeit
+	 */
+	public void Print(){
+		System.out.println("Tile:");
+		System.out.print("\tadjacentTiles: ");
+		if(virologists.size() != 0){
+			for(int i = 0; i < virologists.size(); i++)
+				System.out.print(virologists.get(i).getId() + ". virologist ");
+			System.out.println("");
+		}
+		if(virologists.size() == 0)
+			System.out.println("null");
+		System.out.println("");
 	}
 }

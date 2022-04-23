@@ -39,4 +39,33 @@ public class Shelter extends Tile {
 	public void setCollectable(Object o){
 		pG = (ProtectiveGear) o;
 	}
+
+	/**
+	 * Kiírja az osztály attribútumainak értékeit
+	 */
+	public void Print(){
+		System.out.println("Shelter:");
+		System.out.println("\tcapacity: " + capacity);
+		System.out.print("\tadjacentTiles: ");
+		if(adjacentTiles.size() != 0){
+			for(int i = 0; i < adjacentTiles.size(); i++)
+				System.out.print(adjacentTiles.get(i).getId() + ". tile ");
+			System.out.println("");
+		}
+		if(adjacentTiles.size() == 0)
+			System.out.println("null");
+		System.out.print("\tvirologist: ");
+		if(virologists.size() != 0){
+			for(int i = 0; i < virologists.size(); i++)
+				System.out.print(virologists.get(i).getId() + ". virologist ");
+			System.out.println("");
+		}
+		if(virologists.size() == 0)
+			System.out.println("null");
+		if(pG == null)
+			System.out.println("p_g: null");
+		if(pG != null)
+			System.out.println("p_g: " + pG.getId() + ". protective gear");
+		System.out.println("");
+	}
 }

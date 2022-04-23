@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * beállítása.
  */
 public abstract class Agent extends Item implements Steppable {
+	protected int id;
 	protected long usable;
 	protected ArrayList<Material> materials;
 	protected Bag bag;
@@ -82,5 +83,13 @@ public abstract class Agent extends Item implements Steppable {
 	 */
 	public ArrayList<Material> getNeededMaterials() {
 		return materials;
+	}
+
+	/**
+	 * Visszaadja a az osztály azonosítóját
+	 * @return id: azonosító szám
+	 */
+	public int getId(){
+		return id;
 	}
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Az ágens elkészítéséhez szükséges anyagok ősosztálya
  */
 public class Material extends Item {
+	private int id;
 	/**
 	 * Az anyagok konstruktora. Superrel beállítja a kapott nevet
 	 * @param name a neve
@@ -36,5 +37,13 @@ public class Material extends Item {
 			Material mater = (Material) this.clone();
 			virologist.getBag().Add(mater);
 		}
+	}
+
+	/**
+	 * Visszaadja a az osztály azonosítóját
+	 * @return id: azonosító szám
+	 */
+	public int getId(){
+		return id;
 	}
 }

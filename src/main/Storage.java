@@ -43,4 +43,37 @@ public class Storage extends Tile {
 	public void DestroyMaterial(){
 		materials.clear();
 	}
+
+	/**
+	 * Kiírja az osztály attribútumainak értékeit
+	 */
+	public void Print(){
+		System.out.println("Storage:");
+		System.out.println("\tcapacity: " + capacity);
+		System.out.print("\tadjacentTiles: ");
+		if(adjacentTiles.size() != 0){
+			for(int i = 0; i < adjacentTiles.size(); i++)
+				System.out.print(adjacentTiles.get(i).getId() + ". tile ");
+			System.out.println("");
+		}
+		if(adjacentTiles.size() == 0)
+			System.out.println("null");
+		System.out.print("\tvirologist: ");
+		if(virologists.size() != 0){
+			for(int i = 0; i < virologists.size(); i++)
+				System.out.print(virologists.get(i).getId() + ". virologist ");
+			System.out.println("");
+		}
+		if(virologists.size() == 0)
+			System.out.println("null");
+		System.out.print("\tmaterials: ");
+		if(materials.size() != 0){
+			for(int i = 0; i < materials.size(); i++)
+				System.out.print(materials.get(i).getId() + ". material ");
+			System.out.println("");
+		}
+		if(materials.size() == 0)
+			System.out.println("null");
+		System.out.println("");
+	}
 }

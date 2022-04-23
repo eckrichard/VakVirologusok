@@ -283,4 +283,47 @@ public class Virologist {
 	public int getId(){
 		return id;
 	}
+
+	/**
+	 * Kiírja az osztály attribútumainak értékeit
+	 */
+	public void Print(){
+		System.out.println("Virologist:");
+		System.out.print("\tgeneticCodes: ");
+		if(geneticCodes.size() != 0){
+			for(int i = 0; i < geneticCodes.size(); i++)
+				System.out.print(1 + ". geneticCodes ");
+			System.out.println("");
+		}
+		if(geneticCodes.size() == 0)
+			System.out.println("null");
+		System.out.println("\tcodeCount: " + codeCount);
+		System.out.println("\tagentResistance: " + agentResistance);
+		if(throwBackAvailable)
+			System.out.print("\tthrowBackAvailable: true");
+		if(!throwBackAvailable)
+			System.out.print("\tthrowBackAvailable: false");
+		System.out.print("\ttile: " + tile.getId() + ". tile");
+		if(bag == null)
+			System.out.print("\tbag: null");
+		if(bag != null)
+			System.out.print("\tbag: " + bag.getId() + ". bag");
+		System.out.print("\twear: ");
+		if(wear.size() != 0){
+			for(int i = 0; i < wear.size(); i++)
+				System.out.print(1 + ". ProtectiveGear ");
+			System.out.println("");
+		}
+		if(wear.size() == 0)
+			System.out.println("null");
+		System.out.print("\teffects: ");
+		if(effects.size() != 0){
+			for(int i = 0; i < effects.size(); i++)
+				System.out.print(1 + ". Effects ");
+			System.out.println("");
+		}
+		if(effects.size() == 0)
+			System.out.println("null");
+		System.out.println("");
+	}
 }

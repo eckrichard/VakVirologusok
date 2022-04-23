@@ -76,30 +76,31 @@ public class Laboratory extends Tile {
 	 */
 	public void Print(){
 		System.out.println("Laboratory:");
-			System.out.printf("capacity: %d%n", capacity);
-			System.out.print("adjecentTiles: ");
-			if(adjacentTiles.size() != 0){
-				for(int i = 0; i < adjacentTiles.size(); i++)
-					System.out.printf("%d. tile ", adjacentTiles.get(i).getId());
-				System.out.println("");
-			}
-			if(adjacentTiles.size() == 0)
-				System.out.println("null");
-			System.out.print("virologist: ");
-			if(virologists.size() != 0){
-				for(int i = 0; i < virologists.size(); i++)
-					System.out.printf("%d. Virologist ", virologists.get(i).getId());
-				System.out.println("");
-			}
-			if(virologists.size() == 0)
-				System.out.println("null");
-			if(geneticCode == null)
-				System.out.println("geneticCode: null");
-			if(geneticCode != null)
-				System.out.println("geneticCode: Code 1");
-			if(bearDance == null)
-				System.out.println("bearDance: null");
-			if(bearDance != null)
-				System.out.println("bearDance: true");
+		System.out.println("\tcapacity: " + capacity);
+		System.out.print("\tadjacentTiles: ");
+		if(adjacentTiles.size() != 0){
+			for(int i = 0; i < adjacentTiles.size(); i++)
+				System.out.print(adjacentTiles.get(i).getId() + ". tile ");
+			System.out.println("");
+		}
+		if(adjacentTiles.size() == 0)
+			System.out.println("null");
+		System.out.print("\tvirologist: ");
+		if(virologists.size() != 0){
+			for(int i = 0; i < virologists.size(); i++)
+				System.out.print(virologists.get(i).getId() + ". virologist ");
+			System.out.println("");
+		}
+		if(virologists.size() == 0)
+			System.out.println("null");
+		if(geneticCode == null)
+			System.out.println("\tgeneticCode: null");
+		if(geneticCode != null)
+			System.out.println("\tgeneticCode: Code 1");
+		if(bearDance == null)
+			System.out.println("\tbearDance: null");
+		if(bearDance != null)
+			System.out.println("\tbearDance: true");
+		System.out.println("");
 	}
 }
