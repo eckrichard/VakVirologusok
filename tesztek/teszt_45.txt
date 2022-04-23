@@ -1,0 +1,11 @@
+create virologist
+create bag
+set virologist 1 bag bag 1
+add bag 1 agents agent 1
+info bag 1 agents	
+agent 1
+agent 1
+agent 1
+agent 1
+agent 1
+info bag 1 agents

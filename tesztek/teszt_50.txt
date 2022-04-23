@@ -1,0 +1,11 @@
+create virologist
+create bearDanceAgent
+create storage
+create material
+set tile 1 virologists virologist 1
+add virologist 1 effects effect 1
+shelter destoryMaterial
+material lessMaterial n
+info tile 1 virologists
+info shelter all
+info virologist all
