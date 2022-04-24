@@ -239,8 +239,8 @@ import java.util.List;
             List<GeneticCode> geneticCodes = new ArrayList<>();
             if(geneticCodeCount != 0) {
                 for (int i = 0; i < geneticCodeCount; i++) {
-                    GeneticCode tmp = new GeneticCode();
-                    virologists.add(tmp);
+                    GeneticCode tmp = new GeneticCode(null);
+                    geneticCodes.add(tmp);
                     geneticCodeCount--;
                 }
             }
@@ -254,17 +254,17 @@ import java.util.List;
                         tileCount--;
                     }
                     if (storageCount > 0) {
-                        Storage tmp = new Storage();
+                        Storage tmp = new Storage(null);
                         tiles.add(tmp);
                         storageCount--;
                     }
                     if (shelterCount > 0) {
-                        Shelter tmp = new Shelter();
+                        Shelter tmp = new Shelter(null);
                         tiles.add(tmp);
                         shelterCount--;
                     }
                     if (laboratoryCount > 0) {
-                        Laboratory tmp = new Laboratory();
+                        Laboratory tmp = new Laboratory(null);
                         tiles.add(tmp);
                         laboratoryCount--;
                     }
@@ -275,27 +275,27 @@ import java.util.List;
             if(bearDanceAgentCount != 0 || forgetAgentCount != 0 || vitusDanceAgentCount != 0 || untouchableAgentCount != 0 || paralyzeAgentCount != 0){
                 for(int i = 0; i < bearDanceAgentCount+forgetAgentCount+vitusDanceAgentCount+untouchableAgentCount+paralyzeAgentCount; i++) {
                     if (bearDanceAgentCount > 0) {
-                        BearDanceAgent tmp = new BearDanceAgent();
+                        BearDanceAgent tmp = new BearDanceAgent(null, "bear dance");
                         agents.add(tmp);
                         bearDanceAgentCount--;
                     }
                     if (forgetAgentCount > 0) {
-                        ForgetAgent tmp = new ForgetAgent();
+                        ForgetAgent tmp = new ForgetAgent(null,"forget" );
                         agents.add(tmp);
                         forgetAgentCount--;
                     }
                     if (vitusDanceAgentCount > 0) {
-                        VitusDanceAgent tmp = new VitusDanceAgent();
+                        VitusDanceAgent tmp = new VitusDanceAgent(null, "vitus dance");
                         agents.add(tmp);
                         vitusDanceEffectCount--;
                     }
                     if (untouchableAgentCount > 0) {
-                        UntouchableAgent tmp = new UntouchableAgent();
+                        UntouchableAgent tmp = new UntouchableAgent(null, "untouchable");
                         agents.add(tmp);
                         untouchableAgentCount--;
                     }
                     if (paralyzeAgentCount > 0) {
-                        ParalyzeAgent tmp = new ParalyzeAgent();
+                        ParalyzeAgent tmp = new ParalyzeAgent(null, "paralyze");
                         agents.add(tmp);
                         paralyzeAgentCount--;
                     }

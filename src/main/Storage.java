@@ -14,10 +14,13 @@ public class Storage extends Tile {
 	 * A raktár konstruktora
 	 * @param materials a raktárban található anyagok
 	 */
-	public Storage(ArrayList<Material> materials){
+	public Storage(ArrayList<Material> m){
+		super();
 		materials = new ArrayList<Material>();
-		this.materials = materials;
+		this.materials = m;
 	}
+
+	public void setMaterials(ArrayList<Material> m) {this.materials = m;}
 
 	/**
 	 * Megmondja, hogy melyik anyag található a mezőn.

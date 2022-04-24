@@ -6,6 +6,7 @@ package main;
 public class GeneticCode {
 	private Agent agent;
 
+
 	/**
 	 * A genetikai kód kontruktora
 	 * @param a Az ágens, amit tartalmaz a genetikai kód
@@ -37,4 +38,5 @@ public class GeneticCode {
 	public Agent getAgent() {
 		return agent;
 	}
+	public void setAgent(Agent a) { agent = a;	}
 }

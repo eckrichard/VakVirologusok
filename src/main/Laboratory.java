@@ -17,9 +17,11 @@ public class Laboratory extends Tile {
 	 * @param code a rajta található kód
 	 */
 	public Laboratory(GeneticCode code) {
+		super();
 		geneticCode = code;
 		bearDance = null;
 	}
+	public void setGeneticCode(GeneticCode g) { geneticCode = g;}
 
 	/**
 	 * Beállítja az attributum értékeket

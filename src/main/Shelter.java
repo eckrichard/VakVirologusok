@@ -13,8 +13,10 @@ public class Shelter extends Tile {
 	 * @param pG a mezőn található védőfelszerelés
 	 */
 	public Shelter(ProtectiveGear pG){
+		super();
 		this.pG = pG;
 	}
+	public void setpG (ProtectiveGear pG) {this.pG = pG;}
 
 	/**
 	 * Megmondja, hogy melyik védőfelszerelés található a
