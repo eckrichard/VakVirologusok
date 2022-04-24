@@ -12,7 +12,7 @@ public class Storage extends Tile {
 
 	/**
 	 * A raktár konstruktora
-	 * @param materials a raktárban található anyagok
+	 * @param m a raktárban található anyagok
 	 */
 	public Storage(ArrayList<Material> m){
 		super();
@@ -20,7 +20,7 @@ public class Storage extends Tile {
 		this.materials = m;
 	}
 
-	public void setMaterials(ArrayList<Material> m) {this.materials = m;}
+	public void setCollectable(ArrayList<Material> m) {this.materials = m;}
 
 	/**
 	 * Megmondja, hogy melyik anyag található a mezőn.

@@ -36,8 +36,10 @@ public class Bag {
 	 * @param n az amennyivel növeli a méretet
 	 */
 	public void setSize(long n){
-		size += n;
+		size = n;
 	}
+
+	public void setBonusSize(long n) {size += n;}
 
 	/**
 	 * Megmondja, hogy mennyi a táska mérete

@@ -16,7 +16,7 @@ public class Shelter extends Tile {
 		super();
 		this.pG = pG;
 	}
-	public void setpG (ProtectiveGear pG) {this.pG = pG;}
+	public void setCollectable(ProtectiveGear pG) {this.pG = pG;}
 
 	/**
 	 * Megmondja, hogy melyik védőfelszerelés található a

@@ -21,8 +21,6 @@ public class Virologist {
 
 	/**
 	 * A virológus egyik konstruktora
-	 * @param tile a mező amin tartózkodik
-	 * @param bag a táska, amitben tárolja a védőfelszerelését, anyagait és az ágenseket
 	 */
 	public Virologist(){
 		codeCount = 0;
@@ -34,6 +32,11 @@ public class Virologist {
 		effects = new ArrayList<Effects>();
 	}
 
+	/**
+	 * A virológus egyik konstruktora
+	 * @param tile mező amin tartózkodik
+	 * @param bag a táska, amitben tárolja a védőfelszerelését, anyagait és az ágenseket
+	 */
 	public Virologist(Tile tile, Bag bag){
 		codeCount = 0;
 		throwBackAvailable = false;
@@ -48,6 +51,14 @@ public class Virologist {
 
 	public void setBag(Bag b) { this.bag = b;	}
 	public void setTile(Tile t) { this.tile = t;	}
+
+	public void setGeneticCodes(ArrayList<GeneticCode> geneticCodes) {
+		this.geneticCodes = geneticCodes;
+	}
+
+	public void setGeneticCodes(GeneticCode geneticCodes) {
+		this.geneticCodes.add(geneticCodes);
+	}
 
 	/**
 	 * A virológus az egyik mezőről a másikra lép

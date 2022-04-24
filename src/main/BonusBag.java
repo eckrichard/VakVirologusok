@@ -22,7 +22,7 @@ public class BonusBag extends ProtectiveGear {
 	 * @param v A virológus akinek hozzáadja a BonusBag-et
 	 */
 	public void setAttribute(Virologist v) {
-		v.getBag().setSize(bonusAttribute);
+		v.getBag().setBonusSize(bonusAttribute);
 	}
 	/**
 	 * Elveszi a BonusBag-et a virológustól

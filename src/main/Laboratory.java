@@ -21,7 +21,6 @@ public class Laboratory extends Tile {
 		geneticCode = code;
 		bearDance = null;
 	}
-	public void setGeneticCode(GeneticCode g) { geneticCode = g;}
 
 	/**
 	 * Beállítja az attributum értékeket
@@ -30,9 +29,12 @@ public class Laboratory extends Tile {
 	 * @param bearDanceAgent a medvetánc ágens
 	 */
 	public Laboratory(GeneticCode code, BearDanceAgent bearDanceAgent) {
+		super();
 		geneticCode = code;
 		bearDance = bearDanceAgent;
 	}
+
+	public void setCollectable(GeneticCode g) { geneticCode = g;}
 
 	/**
 	 * Megmondja, hogy a mezőn melyik genetikai kód található
