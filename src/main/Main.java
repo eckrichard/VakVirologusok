@@ -12,6 +12,7 @@ import java.util.List;
 //    public static void main(String[] args) {
 //
 //    }
+//}
 
     // Main class
     public class Main {
@@ -121,31 +122,31 @@ import java.util.List;
                                 bagCount++;
                                 break;
                             case "paralyzeAgent":
-                                geneticCodeCount++;
+                                paralyzeAgentCount++;
                                 break;
                             case "untouchableAgent":
-                                geneticCodeCount++;
+                                untouchableAgentCount++;
                                 break;
                             case "vitusDanceAgent":
-                                geneticCodeCount++;
+                                vitusDanceAgentCount++;
                                 break;
                             case "bearDanceAgent":
-                                geneticCodeCount++;
+                                bearDanceAgentCount++;
                                 break;
                             case "forgetAgent":
-                                geneticCodeCount++;
+                                forgetAgentCount++;
                                 break;
                             case "paralyzed":
-                                geneticCodeCount++;
+                                paralyzedEffectCount++;
                                 break;
                             case "untouchable":
-                                geneticCodeCount++;
+                                untouchableEffectCount++;
                                 break;
                             case "vitusDance":
-                                geneticCodeCount++;
+                                vitusDanceEffectCount++;
                                 break;
                             case "bearDance":
-                                geneticCodeCount++;
+                                bearDanceEffectCount++;
                                 break;
                         }
                         break;
@@ -154,18 +155,19 @@ import java.util.List;
             List<Material> materials = new ArrayList<>();
             //Anyagok letrehozasa
             if(TDPCount != 0 || CDPCount != 0 || valinCount != 0) {
-                for(int i = 0; i < TDPCount+CDPCount+valinCount; i++) {
+                int j = TDPCount+CDPCount+valinCount;
+                for(int i = 0; i < j; i++) {
                     if(TDPCount > 0) {
                         Material tmp = new Material("TDP");
                         materials.add(tmp);
                         TDPCount--;
                     }
-                    if(CDPCount > 0) {
+                    else if(CDPCount > 0) {
                         Material tmp = new Material("CDP");
                         materials.add(tmp);
                         CDPCount--;
                     }
-                    if(valinCount > 0) {
+                    else if(valinCount > 0) {
                         Material tmp = new Material("valin");
                         materials.add(tmp);
                         valinCount--;
@@ -176,23 +178,24 @@ import java.util.List;
             List<ProtectiveGear> protectiveGears = new ArrayList<>();
             //ProtectiveGear-ek letrehozasa
             if(axeCount != 0 || capeCount != 0 || bonusBagCount != 0 || gloveCount != 0) {
-                for(int i = 0; i < axeCount+capeCount+bonusBagCount+gloveCount; i++) {
+                int j = axeCount+capeCount+bonusBagCount+gloveCount;
+                for(int i = 0; i < j; i++) {
                     if(axeCount > 0) {
                         Axe tmp = new Axe("axe");
                         protectiveGears.add(tmp);
                         axeCount--;
                     }
-                    if(capeCount > 0) {
+                    else if(capeCount > 0) {
                         Cape tmp = new Cape("cape");
                         protectiveGears.add(tmp);
                         capeCount--;
                     }
-                    if(bonusBagCount > 0) {
+                    else if(bonusBagCount > 0) {
                         BonusBag tmp = new BonusBag("bonusBag");
                         protectiveGears.add(tmp);
                         bonusBagCount--;
                     }
-                    if(gloveCount > 0) {
+                    else if(gloveCount > 0) {
                         Glove tmp = new Glove("glove");
                         protectiveGears.add(tmp);
                         gloveCount--;
@@ -203,23 +206,24 @@ import java.util.List;
             List<Effects> effects = new ArrayList<>();
             //Effektek letrehozasa
             if(vitusDanceEffectCount != 0 || untouchableEffectCount != 0 || paralyzedEffectCount != 0 || bearDanceEffectCount != 0) {
-                for(int i = 0; i < vitusDanceEffectCount+untouchableEffectCount+paralyzedEffectCount+bearDanceEffectCount; i++) {
+                int j = vitusDanceEffectCount+untouchableEffectCount+paralyzedEffectCount+bearDanceEffectCount;
+                for(int i = 0; i < j; i++) {
                     if(vitusDanceEffectCount > 0) {
                         VitusDance tmp = new VitusDance();
                         effects.add(tmp);
                         vitusDanceEffectCount--;
                     }
-                    if(untouchableEffectCount > 0) {
+                    else if(untouchableEffectCount > 0) {
                         Untouchable tmp = new Untouchable();
                         effects.add(tmp);
                         untouchableEffectCount--;
                     }
-                    if(paralyzedEffectCount > 0) {
+                    else if(paralyzedEffectCount > 0) {
                         Paralyzed tmp = new Paralyzed();
                         effects.add(tmp);
                         paralyzedEffectCount--;
                     }
-                    if(bearDanceEffectCount > 0) {
+                    else if(bearDanceEffectCount > 0) {
                         BearDance tmp = new BearDance();
                         effects.add(tmp);
                         bearDanceEffectCount--;
@@ -229,41 +233,42 @@ import java.util.List;
 
             List<Virologist> virologists = new ArrayList<>();
             if(virologistCount != 0) {
-                for (int i = 0; i < virologistCount; i++) {
+                int  j = virologistCount;
+                for (int i = 0; i < j; i++) {
                     Virologist tmp = new Virologist();
                     virologists.add(tmp);
-                    virologistCount--;
                 }
             }
 
             List<GeneticCode> geneticCodes = new ArrayList<>();
             if(geneticCodeCount != 0) {
-                for (int i = 0; i < geneticCodeCount; i++) {
+                int j = geneticCodeCount;
+                for (int i = 0; i < j; i++) {
                     GeneticCode tmp = new GeneticCode(null);
                     geneticCodes.add(tmp);
-                    geneticCodeCount--;
                 }
             }
 
             List<Tile> tiles = new ArrayList<>();
             if(tileCount != 0 || storageCount != 0 || shelterCount != 0 || laboratoryCount != 0){
-                for(int i = 0; i < tileCount+storageCount+shelterCount+laboratoryCount; i++) {
+                int j = tileCount+storageCount+shelterCount+laboratoryCount;
+                for(int i = 0; i < j; i++) {
                     if (tileCount > 0) {
                         Tile tmp = new Tile();
                         tiles.add(tmp);
                         tileCount--;
                     }
-                    if (storageCount > 0) {
+                    else if (storageCount > 0) {
                         Storage tmp = new Storage(null);
                         tiles.add(tmp);
                         storageCount--;
                     }
-                    if (shelterCount > 0) {
+                    else if (shelterCount > 0) {
                         Shelter tmp = new Shelter(null);
                         tiles.add(tmp);
                         shelterCount--;
                     }
-                    if (laboratoryCount > 0) {
+                    else if (laboratoryCount > 0) {
                         Laboratory tmp = new Laboratory(null);
                         tiles.add(tmp);
                         laboratoryCount--;
@@ -272,40 +277,93 @@ import java.util.List;
             }
 
             List<Agent> agents = new ArrayList<>();
-            if(bearDanceAgentCount != 0 || forgetAgentCount != 0 || vitusDanceAgentCount != 0 || untouchableAgentCount != 0 || paralyzeAgentCount != 0){
-                for(int i = 0; i < bearDanceAgentCount+forgetAgentCount+vitusDanceAgentCount+untouchableAgentCount+paralyzeAgentCount; i++) {
+            if(bearDanceAgentCount != 0 || forgetAgentCount != 0 || vitusDanceAgentCount != 0 || untouchableAgentCount != 0 || paralyzeAgentCount != 0) {
+                int j = bearDanceAgentCount + forgetAgentCount + vitusDanceAgentCount + untouchableAgentCount + paralyzeAgentCount;
+                for (int i = 0; i < j; i++) {
                     if (bearDanceAgentCount > 0) {
                         BearDanceAgent tmp = new BearDanceAgent(null, "bear dance");
                         agents.add(tmp);
                         bearDanceAgentCount--;
                     }
-                    if (forgetAgentCount > 0) {
-                        ForgetAgent tmp = new ForgetAgent(null,"forget" );
+                    else if (forgetAgentCount > 0) {
+                        ForgetAgent tmp = new ForgetAgent(null, "forget");
                         agents.add(tmp);
                         forgetAgentCount--;
                     }
-                    if (vitusDanceAgentCount > 0) {
+                    else if (vitusDanceAgentCount > 0) {
                         VitusDanceAgent tmp = new VitusDanceAgent(null, "vitus dance");
                         agents.add(tmp);
                         vitusDanceEffectCount--;
                     }
-                    if (untouchableAgentCount > 0) {
+                    else if (untouchableAgentCount > 0) {
                         UntouchableAgent tmp = new UntouchableAgent(null, "untouchable");
                         agents.add(tmp);
                         untouchableAgentCount--;
                     }
-                    if (paralyzeAgentCount > 0) {
+                    else if (paralyzeAgentCount > 0) {
                         ParalyzeAgent tmp = new ParalyzeAgent(null, "paralyze");
                         agents.add(tmp);
                         paralyzeAgentCount--;
                     }
                 }
+            }
 
 
+            br = new BufferedReader(new FileReader(file));  //visszaall a szoveg tetejere
+            while ((st = br.readLine()) != null) {
+                int i = st.indexOf(" ");            //ez itt megmondja hol az elso szokoz (elso szo vege)
+                String tmp = st.substring(0, i);    //ez itt kikapja a sorbol az elso szot, ez alapjan lehet switchelni
+                switch (tmp) {
+                    case "set":
+                        st = st.substring(i+1, st.length());        //leszedjuk az elso szot
+                        i = st.indexOf(" ");                        //megmondja hol a masodik szo vege
+                        tmp = st.substring(0, i);                   //kikapja a masodik szot
 
-            System.out.println(materials.get(0).name);
+                        switch (tmp) {
+                            case "tile":
+                                //Meghatarozzuk az id-t, kinek allitunk be
+                                st = st.substring(i+1, st.length());
+                                i = st.indexOf(" ");
+                                tmp = st.substring(0, i);
+                                int id_a = Integer.parseInt(tmp) - 1;
+                                //Meghatarozzuk melyik attributumot allitjuk be
+                                st = st.substring(i+1, st.length());
+                                i = st.indexOf(" ");
+                                tmp = st.substring(0, i);
 
-
+                                switch (tmp) {
+                                    case "adjacentTiles":
+                                        st = st.substring(i+1, st.length());
+                                        int id_n = Integer.parseInt(st) - 1;
+                                        //System.out.println(tiles.size());
+                                        tiles.get(id_a).setNeighbor(tiles.get(id_n));
+                                        break;
+                                    case "p_g":
+                                        st = st.substring(i+1, st.length());
+                                        int id_pG = Integer.parseInt(st) - 1;
+                                        tiles.get(id_a).setCollectable(protectiveGears.get(id_pG));
+                                        break;
+                                    case "geneticCode":
+                                        st = st.substring(i+1, st.length());
+                                        int id_gC = Integer.parseInt(st) - 1;
+                                        tiles.get(id_a).setCollectable(geneticCodes.get(id_gC));
+                                        break;
+                                    case "materials":
+                                        st = st.substring(i+1, st.length());
+                                        int id_m = Integer.parseInt(st) - 1;
+                                        tiles.get(id_a).setCollectable(materials.get(id_m));
+                                        break;
+                                }
+                                break;
+                            case "virologist":
+                                ;
+                                break;
+                            case "bag":
+                                 ;
+                                 break;
+                        }
+                        break;
+                }
+            }
         }
     }
-}

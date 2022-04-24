@@ -5,6 +5,6 @@ set bag 1 size 0
 set virologist 1 bag bag 1
 set tile 1 virologists virologist 1
 create axe
-set tile 1 p_g protectiveGear 1
+set tile 1 p_g 1
 virologist 1 collectProtectiveGear
 info bag 1 all

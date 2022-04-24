@@ -5,8 +5,8 @@ set virologist 1 bag bag 1
 set tile 1 virologists virologist 1
 create cape
 create cape
-set tile 1 p_g protectiveGear 1
-set tile 1 p_g protectiveGear 2
+set tile 1 p_g 1
+set tile 1 p_g 2
 virologist 1 collectProtectiveGear
 info bag 1 all
 virologist 1 collectProtectiveGear

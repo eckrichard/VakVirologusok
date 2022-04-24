@@ -7,7 +7,7 @@ create CDP
 create CDP
 create CDP
 set virologist 1 bag bag 1
-set virologist 1 geneticCodes geneticCode 1
+set virologist 1 geneticCodes 1
 set virologist 1 codeCount 1
 add bag 1 materials material 1
 add bag 1 materials material 2

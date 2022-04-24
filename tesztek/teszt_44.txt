@@ -7,7 +7,7 @@ set tile 1 virologists virologist 2
 set bag 1 size 30
 set virologist 1 bag bag 1
 create axe
-set tile 1 p_g protectiveGear 1
+set tile 1 p_g 1
 virologist 1 collectProtectiveGear
 attack virologist 2
 die virologist 2

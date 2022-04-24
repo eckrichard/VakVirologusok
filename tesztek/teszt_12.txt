@@ -11,7 +11,7 @@ set virologist 1 bag bag 1
 set virologist 2 bag bag 2
 add bag 1 agents agent 1
 create cape
-set tile 1 p_g protectiveGear 1
+set tile 1 p_g 1
 virologist 2 collectProtectiveGear
 info virologist 1 all
 info virologist 2 all

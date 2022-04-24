@@ -22,6 +22,7 @@ public class Tile {
 		adjacentTiles = new ArrayList<Tile>();
 		virologists = new ArrayList<Virologist>();
 	}
+
 	/**
 	 * Eltávolítja az adott mezőről a virológust.
 	 * @param v Az a virológus, aki ellép
@@ -54,7 +55,7 @@ public class Tile {
 	 * Beállítja a szomszédos mezőt
 	 * @param tile a szomszédos mező
 	 */
-	public void SetNeighbor(Tile tile){
+	public void setNeighbor(Tile tile){
 		adjacentTiles.add(tile);
 	}
 
