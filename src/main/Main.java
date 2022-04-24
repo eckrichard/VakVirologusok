@@ -365,5 +365,138 @@ import java.util.List;
                         break;
                 }
             }
+
+            br = new BufferedReader(new FileReader(file));  //visszaall a szoveg tetejere
+            while ((st = br.readLine()) != null) {
+                int i = st.indexOf(" ");            //ez itt megmondja hol az elso szokoz (elso szo vege)
+                String tmp = st.substring(0, i);    //ez itt kikapja a sorbol az elso szot, ez alapjan lehet switchelni
+                switch (tmp) {
+                    case "set":
+                        st = st.substring(i+1, st.length());        //leszedjuk az elso szot
+                        i = st.indexOf(" ");                        //megmondja hol a masodik szo vege
+                        tmp = st.substring(0, i);                   //kikapja a masodik szot
+
+                        switch (tmp) {
+                            case "tile":
+                                //Meghatarozzuk az id-t, kinek allitunk be
+                                st = st.substring(i+1, st.length());
+                                i = st.indexOf(" ");
+                                tmp = st.substring(0, i);
+                                int id_a = Integer.parseInt(tmp) - 1;
+                                //Meghatarozzuk melyik attributumot allitjuk be
+                                st = st.substring(i+1, st.length());
+                                i = st.indexOf(" ");
+                                tmp = st.substring(0, i);
+
+                                switch (tmp) {
+                                    case "adjacentTiles":
+                                        st = st.substring(i+1, st.length());
+                                        int id_n = Integer.parseInt(st) - 1;
+                                        //System.out.println(tiles.size());
+                                        tiles.get(id_a).setNeighbor(tiles.get(id_n));
+                                        break;
+                                    case "p_g":
+                                        st = st.substring(i+1, st.length());
+                                        int id_pG = Integer.parseInt(st) - 1;
+                                        tiles.get(id_a).setCollectable(protectiveGears.get(id_pG));
+                                        break;
+                                    case "geneticCode":
+                                        st = st.substring(i+1, st.length());
+                                        int id_gC = Integer.parseInt(st) - 1;
+                                        tiles.get(id_a).setCollectable(geneticCodes.get(id_gC));
+                                        break;
+                                    case "materials":
+                                        st = st.substring(i+1, st.length());
+                                        int id_m = Integer.parseInt(st) - 1;
+                                        tiles.get(id_a).setCollectable(materials.get(id_m));
+                                        break;
+                                }
+                                break;
+                            case "virologist":
+                                ;
+                                break;
+                            case "bag":
+                                ;
+                                break;
+                        }
+                        break;
+
+                    // Módosítás eleje
+                    case "virologist":
+                        //Meghatarozzuk az id-t, kinek allitunk be
+                        st = st.substring(i+1, st.length());
+                        i = st.indexOf(" ");
+                        tmp = st.substring(0, i);
+                        int id_v = Integer.parseInt(tmp) - 1;
+
+                        st = st.substring(i+1, st.length());
+                        i = st.indexOf(" ");
+                        tmp = st.substring(0, i);
+
+
+                        switch(tmp){
+                            case "createagent":
+                                //Meghatarozzuk az id-t, a genetikai kódnak
+                                st = st.substring(i+1, st.length());
+                                int id_gc = Integer.parseInt(st) - 1;
+
+                                geneticCodes.get(id_gc).CreateAgent(virologists.get(id_v));
+                                break;
+                            case "move":
+                                st = st.substring(i+1, st.length());
+                                i = st.indexOf(" ");
+                                tmp = st.substring(0, i);
+                                if(tmp.equals("tile")){
+                                    //Meghatarozzuk az id-t, a mezőnek
+                                    st = st.substring(i+1, st.length());
+                                    int id_t = Integer.parseInt(st) - 1;
+
+                                    virologists.get(id_v).Move(id_t);
+                                }
+                                break;
+                            case "palpatewall":
+                                virologists.get(id_v).PalpateWall();
+                                break;
+                            case "collectProtectiveGear":
+                                virologists.get(id_v).CollectProtectiveGear();
+                                break;
+                            case "useAgent":
+                                //Meghatarozzuk az id-t, kinek allitunk be
+                                st = st.substring(i+1, st.length());
+
+                                if(st.length() > 0){
+                                    i = st.indexOf(" ");
+                                    tmp = st.substring(0, i);
+                                    int id_v2 = Integer.parseInt(tmp) - 1;
+
+                                    //Meghatarozzuk az id-t, melyik ágens
+                                    st = st.substring(i+1, st.length());
+                                    int id_a = Integer.parseInt(st) - 1;
+
+                                    virologists.get(id_v).UseAgent(virologists.get(id_v2), agents.get(id_a));
+                                    break;
+                                }
+                                else {
+                                    int id_a = Integer.parseInt(st) - 1;
+                                    virologists.get(id_v).UseAgent(virologists.get(id_v), agents.get(id_a));
+                                }
+
+                                break;
+                            case "takeGear":
+                                //Meghatarozzuk az id-t, kinek allitunk be
+                                st = st.substring(i+1, st.length());
+                                i = st.indexOf(" ");
+                                tmp = st.substring(0, i);
+                                int id_v2 = Integer.parseInt(tmp) - 1;
+
+                                //Meghatarozzuk az id-t, melyik védőfelszerelést
+                                st = st.substring(i+1, st.length());
+                                int id_pg = Integer.parseInt(st) - 1;
+
+                                virologists.get(id_v).TakeGear(virologists.get(id_v2), protectiveGears.get(id_pg));
+                                break;
+                        } // Módosítás vége
+                }
+            }
         }
     }

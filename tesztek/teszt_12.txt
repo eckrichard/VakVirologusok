@@ -17,7 +17,7 @@ info virologist 1 all
 info virologist 2 all
 info bag 1 all
 info bag 2 all
-virologist 1 useAgent 2
+virologist 1 useAgent 2 1
 virologist 1 takeGear 2 1
 info virologist 1 all
 info virologist 2 all

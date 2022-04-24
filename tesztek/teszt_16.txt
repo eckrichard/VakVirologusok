@@ -10,7 +10,7 @@ set virologist 1 bag bag 1
 set virologist 2 codeCount 3
 add bag 1 agents agent 1
 add virologist 2 wear protectiveGear 1
-virologist 1 useAgent 2
+virologist 1 useAgent 2 1
 info tile 1 virologists
 info virologist 1 all
 info virologist 2 all
