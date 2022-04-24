@@ -1,7 +1,7 @@
 create virologist
 create bearDanceAgent
 create storage
-create material
+create TDP
 set tile 1 virologists virologist 1
 add virologist 1 effects effect 1
 shelter destoryMaterial
