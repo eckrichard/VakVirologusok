@@ -20,7 +20,11 @@ import java.util.List;
         // main driver method
         public static void main(String[] args) throws Exception
         {
-            File file = new File( "tesztek\\teszt_1.txt");
+            System.out.println("Teszt sorszama:");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            String tesztSorszam = reader.readLine();
+            String path = "tesztek\\teszt_" + tesztSorszam + ".txt";
+            File file = new File(path);
 
             BufferedReader br = new BufferedReader(new FileReader(file));
 

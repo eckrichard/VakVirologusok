@@ -47,7 +47,6 @@ public class Tile {
 	 * @return A szomszédos mező
 	 */
 	public Tile GetNeighbor(long n) {
-		System.out.println("GetNeighbor(n: long): Tile");
 		return adjacentTiles.get((int)n);
 	}
 
