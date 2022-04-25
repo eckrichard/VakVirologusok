@@ -1,6 +1,5 @@
 create tile
 create tile
-2022-04-11
 set tile 1 adjacentTiles 2
 create virologist
 set tile 1 virologists virologist 1

@@ -313,133 +313,6 @@ import java.util.List;
             }
 
             List<Bag> bags = new ArrayList<>();
-            br = new BufferedReader(new FileReader(file));  //visszaall a szoveg tetejere
-            while ((st = br.readLine()) != null) {
-                int i = st.indexOf(" ");            //ez itt megmondja hol az elso szokoz (elso szo vege)
-                String tmp = st.substring(0, i);    //ez itt kikapja a sorbol az elso szot, ez alapjan lehet switchelni
-                switch (tmp) {
-                    case "set":
-                        st = st.substring(i+1, st.length());        //leszedjuk az elso szot
-                        i = st.indexOf(" ");                        //megmondja hol a masodik szo vege
-                        tmp = st.substring(0, i);                   //kikapja a masodik szot
-
-                        switch (tmp) {
-                            case "tile":
-                                //Meghatarozzuk az id-t, kinek allitunk be
-                                st = st.substring(i+1, st.length());
-                                i = st.indexOf(" ");
-                                tmp = st.substring(0, i);
-                                int id_a = Integer.parseInt(tmp) - 1;
-                                //Meghatarozzuk melyik attributumot allitjuk be
-                                st = st.substring(i+1, st.length());
-                                i = st.indexOf(" ");
-                                tmp = st.substring(0, i);
-
-                                switch (tmp) {
-                                    case "adjacentTiles":
-                                        st = st.substring(i+1, st.length());
-                                        int id_n = Integer.parseInt(st) - 1;
-                                        //System.out.println(tiles.size());
-                                        tiles.get(id_a).setNeighbor(tiles.get(id_n));
-                                        break;
-                                    case "p_g":
-                                        st = st.substring(i+1, st.length());
-                                        int id_pG = Integer.parseInt(st) - 1;
-                                        tiles.get(id_a).setCollectable(protectiveGears.get(id_pG));
-                                        break;
-                                    case "geneticCode":
-                                        st = st.substring(i+1, st.length());
-                                        int id_gC = Integer.parseInt(st) - 1;
-                                        tiles.get(id_a).setCollectable(geneticCodes.get(id_gC));
-                                        break;
-                                    case "materials":
-                                        st = st.substring(i+1, st.length());
-                                        int id_m = Integer.parseInt(st) - 1;
-                                        tiles.get(id_a).setCollectable(materials.get(id_m));
-                                        break;
-                                }
-                                break;
-                            case "virologist":
-                                ;
-                                break;
-                            case "bag":
-                                 ;
-                                 break;
-                        }
-                        break;
-                    case "add":
-                        st = st.substring(i+1, st.length());        //leszedjuk az elso szot
-                        i = st.indexOf(" ");                        //megmondja hol a masodik szo vege
-                        tmp = st.substring(0, i);                   //kikapja a masodik szot
-                        switch (tmp)
-                    {
-                        case "virologist":
-                            st = st.substring(i+1, st.length());        //leszedjuk a virologistot
-                            i = st.indexOf(" ");                        //megmondja hol a virologist
-                            tmp = st.substring(0, i);                   //kikapja a számot
-                            int idVirologistA=Integer.parseInt(tmp)-1;
-                            st = st.substring(i+1, st.length());        //leszedjuk a szamot
-                            i = st.indexOf(" ");                        //megmondja hol a szam
-                            tmp = st.substring(0, i);                   //kikapja a virologus cselekveset
-                            switch (tmp)
-                            {
-                                case "effects":
-                                    st = st.substring(i+1, st.length());        //leszedjuk a effectset
-                                    i = st.indexOf(" ");                        //megmondja hol az effectset
-                                    tmp = st.substring(0, i);                   //kikapja az effectet
-                                    st = st.substring(i+1, st.length());        //leszedjuk a effectet
-                                    i = st.indexOf(" ");                        //megmondja hol az effectet
-                                    tmp = st.substring(0, i);                   //kikapja a számát
-                                    int effectID=Integer.parseInt(tmp);
-                                    virologists.get(idVirologistA).addEffect(effects.get(effectID));
-                                    break;
-                                case "wear":
-                                    st = st.substring(i+1, st.length());        //leszedjuk a weart
-                                    i = st.indexOf(" ");                        //megmondja hol az wear
-                                    tmp = st.substring(0, i);                   //kikapja az ProtectiveGeart
-                                    st = st.substring(i+1, st.length());        //leszedjuk a ProtectiveGeart
-                                    i = st.indexOf(" ");                        //megmondja hol a ProtectiveGear
-                                    tmp = st.substring(0, i);                   //kikapja a számot
-                                    int protectiveGearID=Integer.parseInt(tmp)-1;
-                                    virologists.get(idVirologistA).giveGear(protectiveGears.get(protectiveGearID));
-                                    break;
-                            }
-                            break;
-                        case "bag":
-                            st = st.substring(i+1, st.length());        //leszedjuk a baget
-                            i = st.indexOf(" ");                        //megmondja hol a bag
-                            tmp = st.substring(0, i);                   //kikapja a számot
-                            int bagID=Integer.parseInt(tmp)-1;
-                            st = st.substring(i+1, st.length());        //leszedjuk a számot
-                            i = st.indexOf(" ");                        //megmondja hol a szám
-                            tmp = st.substring(0, i);                   //kikapja a szót
-                            switch (tmp)
-                            {
-                                case "materials":
-                                    st = st.substring(i+1, st.length());        //leszedjuk a materialst
-                                    i = st.indexOf(" ");                        //megmondja hol a materials
-                                    tmp = st.substring(0, i);                   //kikapja a szót
-                                    st = st.substring(i+1, st.length());        //leszedjuk a materialt
-                                    i = st.indexOf(" ");                        //megmondja hol a material
-                                    tmp = st.substring(0, i);                   //kikapja a számot
-                                    int materialID=Integer.parseInt(tmp)-1;
-                                    bags.get(bagID).Add(materials.get(materialID));
-                                    break;
-                                case "agents":
-                                    st = st.substring(i+1, st.length());        //leszedjuk az agentst
-                                    i = st.indexOf(" ");                        //megmondja hol a agents
-                                    tmp = st.substring(0, i);                   //kikapja a szót
-                                    st = st.substring(i+1, st.length());        //leszedjuk az agentet
-                                    i = st.indexOf(" ");                        //megmondja hol a agent
-                                    tmp = st.substring(0, i);                   //kikapja a számot
-                                    int agentID=Integer.parseInt(tmp)-1;
-                                    bags.get(bagID).Add(agents.get(agentID));
-                                    break;
-                            }
-                            break;
-                    }
-                }
-            }
 
             br = new BufferedReader(new FileReader(file));  //visszaall a szoveg tetejere
             while ((st = br.readLine()) != null) {
@@ -563,8 +436,7 @@ import java.util.List;
                         int id_v = Integer.parseInt(tmp) - 1;
 
                         st = st.substring(i+1, st.length());
-                        i = st.indexOf(" ");
-                        tmp = st.substring(0, i);
+                        tmp = st;
 
 
                         switch(tmp)
