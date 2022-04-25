@@ -172,5 +172,15 @@ public class Bag {
 				System.out.println("null");
 			System.out.println("");
 		}
+		if(c == 'c') {
+			System.out.print("\tagents:");
+			if (agents.size() != 0) {
+				for (int i = 0; i < agents.size(); i++)
+					System.out.print(agents.get(i).getId() + ". Agent ");
+				System.out.println("");
+			}
+			if (agents.size() == 0)
+				System.out.println("null");
+		}
 	}
 }

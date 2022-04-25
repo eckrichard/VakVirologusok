@@ -75,4 +75,10 @@ public class Glove extends ProtectiveGear {
 	public void Destroy(){
 		takeAway(virologist);
 	}
+
+	public void Print()
+	{
+		System.out.println("Glove:");
+		System.out.print("\tremainingUses: " + remainingUses);
+	}
 }
