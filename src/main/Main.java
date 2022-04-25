@@ -366,7 +366,49 @@ import java.util.List;
                                 break;
                         }
                         break;
+                    case "add":
+                        st = st.substring(i+1, st.length());        //leszedjuk az elso szot
+                        i = st.indexOf(" ");                        //megmondja hol a masodik szo vege
+                        tmp = st.substring(0, i);                   //kikapja a masodik szot
+                        switch (tmp)
+                        {
+                            case "virologist":
+                                st = st.substring(i+1, st.length());        //leszedjuk a virologistot
+                                i = st.indexOf(" ");                        //megmondja hol a virologist
+                                tmp = st.substring(0, i);                   //kikapja a számot
+                                int idVirologistA=Integer.parseInt(tmp)-1;
+                                st = st.substring(i+1, st.length());        //leszedjuk a szamot
+                                i = st.indexOf(" ");                        //megmondja hol a szam
+                                tmp = st.substring(0, i);                   //kikapja a virologus cselekveset
+                                switch (tmp)
+                                {
+                                    case"effects":
+                                        st = st.substring(i+1, st.length());        //leszedjuk a effectset
+                                        i = st.indexOf(" ");                        //megmondja hol az effectset
+                                        tmp = st.substring(0, i);                   //kikapja az effectet
+                                        st = st.substring(i+1, st.length());        //leszedjuk a effectet
+                                        i = st.indexOf(" ");                        //megmondja hol az effectet
+                                        tmp = st.substring(0, i);                   //kikapja a számát
+                                        int effectID=Integer.parseInt(tmp);
+                                        virologists.get(idVirologistA).addEffect(effects.get(effectID));
+                                        break;
+                                    case "wear":
+                                        st = st.substring(i+1, st.length());        //leszedjuk a weart
+                                        i = st.indexOf(" ");                        //megmondja hol az wear
+                                        tmp = st.substring(0, i);                   //kikapja az ProtectiveGeart
+                                        st = st.substring(i+1, st.length());        //leszedjuk a ProtectiveGeart
+                                        i = st.indexOf(" ");                        //megmondja hol a ProtectiveGear
+                                        tmp = st.substring(0, i);                   //kikapja a számot
+                                        int protectiveGearID=Integer.parseInt(tmp)-1;
+                                        virologists.get(idVirologistA).giveGear(protectiveGears.get(protectiveGearID));
+                                        break;
+                                }
+                                break;
+                            case "bag":
 
+                                break;
+                        }
+                        break;
                     // Módosítás eleje
                     case "virologist":
                         //Meghatarozzuk az id-t, kinek allitunk be
