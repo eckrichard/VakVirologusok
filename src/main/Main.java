@@ -312,64 +312,6 @@ import java.util.List;
                 }
             }
 
-
-            br = new BufferedReader(new FileReader(file));  //visszaall a szoveg tetejere
-            while ((st = br.readLine()) != null) {
-                int i = st.indexOf(" ");            //ez itt megmondja hol az elso szokoz (elso szo vege)
-                String tmp = st.substring(0, i);    //ez itt kikapja a sorbol az elso szot, ez alapjan lehet switchelni
-                switch (tmp) {
-                    case "set":
-                        st = st.substring(i+1, st.length());        //leszedjuk az elso szot
-                        i = st.indexOf(" ");                        //megmondja hol a masodik szo vege
-                        tmp = st.substring(0, i);                   //kikapja a masodik szot
-
-                        switch (tmp) {
-                            case "tile":
-                                //Meghatarozzuk az id-t, kinek allitunk be
-                                st = st.substring(i+1, st.length());
-                                i = st.indexOf(" ");
-                                tmp = st.substring(0, i);
-                                int id_a = Integer.parseInt(tmp) - 1;
-                                //Meghatarozzuk melyik attributumot allitjuk be
-                                st = st.substring(i+1, st.length());
-                                i = st.indexOf(" ");
-                                tmp = st.substring(0, i);
-
-                                switch (tmp) {
-                                    case "adjacentTiles":
-                                        st = st.substring(i+1, st.length());
-                                        int id_n = Integer.parseInt(st) - 1;
-                                        //System.out.println(tiles.size());
-                                        tiles.get(id_a).setNeighbor(tiles.get(id_n));
-                                        break;
-                                    case "p_g":
-                                        st = st.substring(i+1, st.length());
-                                        int id_pG = Integer.parseInt(st) - 1;
-                                        tiles.get(id_a).setCollectable(protectiveGears.get(id_pG));
-                                        break;
-                                    case "geneticCode":
-                                        st = st.substring(i+1, st.length());
-                                        int id_gC = Integer.parseInt(st) - 1;
-                                        tiles.get(id_a).setCollectable(geneticCodes.get(id_gC));
-                                        break;
-                                    case "materials":
-                                        st = st.substring(i+1, st.length());
-                                        int id_m = Integer.parseInt(st) - 1;
-                                        tiles.get(id_a).setCollectable(materials.get(id_m));
-                                        break;
-                                }
-                                break;
-                            case "virologist":
-                                ;
-                                break;
-                            case "bag":
-                                 ;
-                                 break;
-                        }
-                        break;
-                }
-            }
-
             br = new BufferedReader(new FileReader(file));  //visszaall a szoveg tetejere
             while ((st = br.readLine()) != null) {
                 int i = st.indexOf(" ");            //ez itt megmondja hol az elso szokoz (elso szo vege)
