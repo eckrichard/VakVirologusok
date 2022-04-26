@@ -583,8 +583,7 @@ import java.util.List;
                                             i = st.indexOf(" ");                        //megmondja hol a agents
                                             tmp = st.substring(0, i);                   //kikapja a szót
                                             st = st.substring(i+1, st.length());        //leszedjuk az agentet
-                                            i = st.indexOf(" ");                        //megmondja hol a agent
-                                            tmp = st.substring(0, i);                   //kikapja a számot
+                                            tmp = st.substring(0, st.length());                   //kikapja a számot
                                             int agentID=Integer.parseInt(tmp)-1;
                                             bags.get(bagID).Add(agents.get(agentID));
                                             break;
