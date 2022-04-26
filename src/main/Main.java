@@ -627,6 +627,14 @@ import java.util.List;
                             Axe axe=new Axe("axe");
                             axe.Attack(virologists.get(virologistID));
                             break;
+                        case "agent":
+                            for( Agent agent : agents) {
+                                agent.Step();
+                            }
+                            for( Effects effect : effects) {
+                                effect.Step();
+                            }
+                            break;
                     }
                 }
 
