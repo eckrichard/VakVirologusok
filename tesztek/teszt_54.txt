@@ -10,7 +10,6 @@ set virologist 1 bag bag 1
 add bag 1 agents agent 1
 add virologist 1 effects effect 1
 virologist 1 useAgent 2 1
-add virologist 1 effects effect 2
 info tile 1 virologists
 info virologist 1 all
 info virologist 2 all
