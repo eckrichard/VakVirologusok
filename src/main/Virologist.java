@@ -352,8 +352,7 @@ public class Virologist {
 			System.out.println("null");
 		System.out.print("\teffects: ");
 		if(effects.size() != 0){
-			for(int i = 0; i < effects.size(); i++)
-				System.out.print((effects.get(i).getId() + 1) + ". Effects ");
+				System.out.print((effects.get(0).getId() + 1) + ". Effects ");
 			System.out.println("");
 		}
 		if(effects.size() == 0)

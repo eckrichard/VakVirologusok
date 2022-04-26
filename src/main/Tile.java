@@ -17,7 +17,7 @@ public class Tile {
 	/**
 	 * Egy mező konstruktora
 	 */
-	public Tile(){
+	public Tile() {
 		capacity = 2;
 		adjacentTiles = new ArrayList<Tile>();
 		virologists = new ArrayList<Virologist>();
@@ -25,6 +25,7 @@ public class Tile {
 
 	/**
 	 * Eltávolítja az adott mezőről a virológust.
+	 *
 	 * @param v Az a virológus, aki ellép
 	 */
 	public void Remove(Virologist v) {
@@ -33,22 +34,24 @@ public class Tile {
 
 	/**
 	 * Beteszi az adott mezőre a virológust.
+	 *
 	 * @param v Az a virológus, aki odalép
 	 */
 	public void Accept(Virologist v) {
-		if(virologists.size() < capacity){
+		if (virologists.size() < capacity) {
 			virologists.add(v);
 		}
 	}
 
 	/**
 	 * Megadja az n-edik szomszédos mezőt.
+	 *
 	 * @param n a mező száma
 	 * @return A szomszédos mező
 	 */
 	public Tile GetNeighbor(long n) {
-		for(int i = 0; i < adjacentTiles.size(); i++){
-			if(adjacentTiles.get(i).getId() == (int)n){
+		for (int i = 0; i < adjacentTiles.size(); i++) {
+			if (adjacentTiles.get(i).getId() == (int) n) {
 				return adjacentTiles.get(i);
 			}
 		}
@@ -57,21 +60,23 @@ public class Tile {
 
 	/**
 	 * Beállítja a szomszédos mezőt
+	 *
 	 * @param tile a szomszédos mező
 	 */
-	public void setNeighbor(Tile tile){
+	public void setNeighbor(Tile tile) {
 		adjacentTiles.add(tile);
 	}
 
 	/**
 	 * Visszaadja a másik virológust a mezőről
+	 *
 	 * @param v a mi virológusunk
 	 * @return a másik virológus
 	 */
 	public Virologist GetOtherVirologist(Virologist v) {
-		if(virologists.size() > 1){
-			for( Virologist virologist : virologists){
-				if(virologist != v){
+		if (virologists.size() > 1) {
+			for (Virologist virologist : virologists) {
+				if (virologist != v) {
 					return virologist;
 				}
 			}
@@ -81,28 +86,33 @@ public class Tile {
 
 	/**
 	 * Beállítja a felvehető tárgyat/kódot
+	 *
 	 * @param o
 	 */
-	public void setCollectable(Object o){ }
+	public void setCollectable(Object o) {
+	}
 
 	/**
 	 * Megmondja, hogy milyen gyűjthető objektum van a mezőn
+	 *
 	 * @return a felvehető tárgy/kód
 	 */
-	public Object GetCollectable(){
+	public Object GetCollectable() {
 		return null;
 	}
 
 	/**
 	 * Visszaadja a az osztály azonosítóját
+	 *
 	 * @return id: azonosító szám
 	 */
-	public int getId(){
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * Beállítja, hogy mennyi az id-je
+	 *
 	 * @param id a a kapott id
 	 */
 	public void setId(int id) {
@@ -112,16 +122,27 @@ public class Tile {
 	/**
 	 * Kiírja az osztály attribútumainak értékeit
 	 */
-	public void Print(){
-		System.out.println("Tile:");
-		System.out.print("\tadjacentTiles: ");
-		if(virologists.size() != 0){
-			for(int i = 0; i < virologists.size(); i++)
-				System.out.print(virologists.get(i).getId() + ". virologist ");
+	public void Print(char c) {
+		if (c == 'a') {
+			System.out.println("Tile:");
+			System.out.print("\tadjacentTiles: ");
+			if (virologists.size() != 0) {
+				for (int i = 0; i < virologists.size(); i++)
+					System.out.print(virologists.get(i).getId() + ". virologist ");
+				System.out.println("");
+			}
+			if (virologists.size() == 0)
+				System.out.println("null");
 			System.out.println("");
 		}
-		if(virologists.size() == 0)
-			System.out.println("null");
-		System.out.println("");
+		if (c == 't') {
+			System.out.println("Tile:");
+			System.out.print("\tvirologist: ");
+			if (virologists.size() != 0) {
+				for (int i = 0; i < virologists.size(); i++)
+					System.out.print((virologists.get(i).getId() + 1) + ". virologist ");
+				System.out.println("");
+			}
+		}
 	}
 }
