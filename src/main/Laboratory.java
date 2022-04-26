@@ -84,7 +84,7 @@ public class Laboratory extends Tile {
 		System.out.print("\tadjacentTiles: ");
 		if(adjacentTiles.size() != 0){
 			for(int i = 0; i < adjacentTiles.size(); i++)
-				System.out.print(adjacentTiles.get(i).getId() + ". tile ");
+				System.out.print((adjacentTiles.get(i).getId() + 1) + ". tile ");
 			System.out.println("");
 		}
 		if(adjacentTiles.size() == 0)
@@ -92,19 +92,24 @@ public class Laboratory extends Tile {
 		System.out.print("\tvirologist: ");
 		if(virologists.size() != 0){
 			for(int i = 0; i < virologists.size(); i++)
-				System.out.print(virologists.get(i).getId() + ". virologist ");
+				System.out.print((virologists.get(i).getId() + 1) + ". virologist ");
 			System.out.println("");
 		}
 		if(virologists.size() == 0)
 			System.out.println("null");
+		System.out.print("\tgeneticCode: ");
 		if(geneticCode == null)
-			System.out.println("\tgeneticCode: null");
-		if(geneticCode != null)
-			System.out.println("\tgeneticCode: Code 1");
+			System.out.println("null");
+		if(geneticCode != null) {
+			System.out.println((geneticCode.getId() + 1) + ". geneticCode");
+			System.out.println("");
+		}
+		System.out.print("\tbearDance: ");
 		if(bearDance == null)
-			System.out.println("\tbearDance: null");
-		if(bearDance != null)
-			System.out.println("\tbearDance: true");
-		System.out.println("");
+			System.out.println("null");
+		if(bearDance != null){
+			System.out.println((bearDance.getId() + 1) + ". agent");
+			System.out.println("");
+		}
 	}
 }

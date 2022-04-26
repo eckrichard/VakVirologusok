@@ -97,6 +97,14 @@ public class Tile {
 	}
 
 	/**
+	 * Beállítja, hogy mennyi az id-je
+	 * @param id a a kapott id
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
 	 * Kiírja az osztály attribútumainak értékeit
 	 */
 	public void Print(){

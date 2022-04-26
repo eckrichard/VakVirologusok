@@ -5,7 +5,6 @@ package main;
  * tárolni.
  */
 public abstract class ProtectiveGear extends Item {
-	protected int id;
 	protected Shelter shelter;
 
 	/**
@@ -48,11 +47,4 @@ public abstract class ProtectiveGear extends Item {
 	 */
 	public abstract void Destroy();
 
-	/**
-	 * Visszaadja a az osztály azonosítóját
-	 * @return id: azonosító szám
-	 */
-	public int getId(){
-		return id;
-	}
 }

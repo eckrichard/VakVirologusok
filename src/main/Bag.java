@@ -128,13 +128,21 @@ public class Bag {
 	}
 
 	/**
+	 * Beállítja, hogy mennyi az id-je
+	 * @param id a a kapott id
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
 	 * Kiírja az osztály attribútumainak értékeit
 	 */
 	public void Print(char c){
 		System.out.println("Bag:");
 		if(c == 'a') {
 			System.out.println("\tsize: " + size);
-			System.out.println("\tvirologist: " + virologist.getId() + ". virologist");
+			System.out.println("\tvirologist: " + (virologist.getId() + 1) + ". virologist");
 			System.out.print("\tagents:");
 			if(agents.size() != 0){
 				for(int i = 0; i < agents.size(); i++)

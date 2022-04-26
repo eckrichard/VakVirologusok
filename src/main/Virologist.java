@@ -8,7 +8,7 @@ import java.util.Random;
  * A játékosok által irányított karakter. A feladata a virológus tevékenységeinek elvégzése
  */
 public class Virologist {
-	private int id = 1;
+	private int id;
 	private long codeCount = 0;
 	private double agentResistance;
 	private boolean throwBackAvailable;
@@ -309,6 +309,14 @@ public class Virologist {
 	}
 
 	/**
+	 * Beállítja, hogy mennyi az id-je
+	 * @param id a a kapott id
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
 	 * Kiírja az osztály attribútumainak értékeit
 	 */
 	public void Print(){
@@ -316,7 +324,7 @@ public class Virologist {
 		System.out.print("\tgeneticCodes: ");
 		if(geneticCodes.size() != 0){
 			for(int i = 0; i < geneticCodes.size(); i++)
-				System.out.print(1 + ". geneticCodes ");
+				System.out.print((geneticCodes.get(i).getId() + 1) + ". geneticCodes ");
 			System.out.println("");
 		}
 		if(geneticCodes.size() == 0)
@@ -324,18 +332,18 @@ public class Virologist {
 		System.out.println("\tcodeCount: " + codeCount);
 		System.out.println("\tagentResistance: " + agentResistance);
 		if(throwBackAvailable)
-			System.out.print("\tthrowBackAvailable: true");
+			System.out.println("\tthrowBackAvailable: true");
 		if(!throwBackAvailable)
-			System.out.print("\tthrowBackAvailable: false");
-		System.out.print("\ttile: " + tile.getId() + ". tile");
+			System.out.println("\tthrowBackAvailable: false");
+		System.out.println("\ttile: " + (tile.getId() + 1) + ". tile");
 		if(bag == null)
-			System.out.print("\tbag: null");
+			System.out.println("\tbag: null");
 		if(bag != null)
-			System.out.print("\tbag: " + bag.getId() + ". bag");
+			System.out.println("\tbag: " + (bag.getId() + 1) + ". bag");
 		System.out.print("\twear: ");
 		if(wear.size() != 0){
 			for(int i = 0; i < wear.size(); i++)
-				System.out.print(1 + ". ProtectiveGear ");
+				System.out.print((wear.get(i).getId() + 1) + ". ProtectiveGear ");
 			System.out.println("");
 		}
 		if(wear.size() == 0)
@@ -343,7 +351,7 @@ public class Virologist {
 		System.out.print("\teffects: ");
 		if(effects.size() != 0){
 			for(int i = 0; i < effects.size(); i++)
-				System.out.print(1 + ". Effects ");
+				System.out.print((effects.get(i).getId() + 1) + ". Effects ");
 			System.out.println("");
 		}
 		if(effects.size() == 0)

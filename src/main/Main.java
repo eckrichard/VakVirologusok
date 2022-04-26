@@ -54,53 +54,65 @@ import java.util.List;
                                 case "virologist":
                                     Virologist v = new Virologist();
                                     virologists.add(v);
+                                    v.setId(virologists.size() - 1);
                                     break;
                                 //TILES INICILIZATION
                                 case "tile":
                                     Tile tile = new Tile();
                                     tiles.add(tile);
+                                    tile.setId(tiles.size() - 1);
                                     break;
 
                                 case "shelter":
                                     Shelter shelter = new Shelter(null);
                                     tiles.add(shelter);
+                                    shelter.setId(tiles.size() - 1);
                                     break;
                                 case "storage":
                                     Storage storage = new Storage(null);
                                     tiles.add(storage);
+                                    storage.setId(tiles.size() - 1);
                                     break;
                                 case "laboratory":
                                     Laboratory laboratory = new Laboratory(null);
                                     tiles.add(laboratory);
+                                    laboratory.setId(tiles.size() - 1);
                                     break;
                                 //PROTECTIVE GEAR INICIALIZATION
                                 case "axe":
                                     Axe axe = new Axe("axe");
                                     protectiveGears.add(axe);
+                                    axe.setId(protectiveGears.size() - 1);
                                     break;
                                 case "cape":
                                     Cape cape = new Cape("cape");
                                     protectiveGears.add(cape);
+                                    cape.setId(protectiveGears.size() - 1);
                                     break;
                                 case "bonusBag":
                                     BonusBag bonusBag = new BonusBag("bonusBag");
                                     protectiveGears.add(bonusBag);
+                                    bonusBag.setId(protectiveGears.size() - 1);
                                     break;
                                 case "glove":
                                     Glove glove = new Glove("glove");
                                     protectiveGears.add(glove);
+                                    glove.setId(protectiveGears.size() - 1);
                                     break;
                                 case "geneticCode":
                                     GeneticCode geneticCode = new GeneticCode(null);
                                     geneticCodes.add(geneticCode);
+                                    geneticCode.setId(geneticCodes.size() - 1);
                                     break;
                                 case "TDP":
                                     Material tdp = new Material("TDP");
                                     materials.add(tdp);
+                                    tdp.setId(materials.size() - 1);
                                     break;
                                 case "CDP":
                                     Material cdp = new Material("CDP");
                                     materials.add(cdp);
+                                    cdp.setId(materials.size() - 1);
                                     break;
 //                            case "dUTP":
 //                                dUTPCount++;
@@ -108,6 +120,7 @@ import java.util.List;
                                 case "valin":
                                     Material valin = new Material("valin");
                                     materials.add(valin);
+                                    valin.setId(materials.size() - 1);
                                     break;
 //                            case "lizin":
 //                                lizinCount++;
@@ -118,44 +131,54 @@ import java.util.List;
                                 case "bag":
                                     Bag bag = new Bag();
                                     bags.add(bag);
+                                    bag.setId(bags.size() - 1);
                                     break;
                                 // AGENTS
                                 case "paralyzeAgent":
                                     ParalyzeAgent paralyzeAgent = new ParalyzeAgent(null, "paralyze");
                                     agents.add(paralyzeAgent);
+                                    paralyzeAgent.setId(agents.size() - 1);
                                     break;
                                 case "untouchableAgent":
                                     UntouchableAgent untouchableAgent = new UntouchableAgent(null, "untouchable");
                                     agents.add(untouchableAgent);
+                                    untouchableAgent.setId(agents.size() - 1);
                                     break;
                                 case "vitusDanceAgent":
                                     VitusDanceAgent vitusDanceAgent = new VitusDanceAgent(null, "vitus dance");
                                     agents.add(vitusDanceAgent);
+                                    vitusDanceAgent.setId(agents.size() - 1);
                                     break;
                                 case "bearDanceAgent":
                                     BearDanceAgent bearDanceAgent = new BearDanceAgent(null, "bear dance");
                                     agents.add(bearDanceAgent);
+                                    bearDanceAgent.setId(agents.size() - 1);
                                     break;
                                 case "forgetAgent":
                                     ForgetAgent forgetAgent = new ForgetAgent(null, "forget");
                                     agents.add(forgetAgent);
+                                    forgetAgent.setId(agents.size() - 1);
                                     break;
                                 //EFFECTS
                                 case "paralyzed":
                                     Paralyzed paralyzed = new Paralyzed();
                                     effects.add(paralyzed);
+                                    paralyzed.setId(effects.size() - 1);
                                     break;
                                 case "untouchable":
                                     Untouchable untouchable = new Untouchable();
                                     effects.add(untouchable);
+                                    untouchable.setId(effects.size() - 1);
                                     break;
                                 case "vitusDance":
                                     VitusDance vitusDance = new VitusDance();
                                     effects.add(vitusDance);
+                                    vitusDance.setId(effects.size() - 1);
                                     break;
                                 case "bearDance":
                                     BearDance bearDance = new BearDance();
                                     effects.add(bearDance);
+                                    bearDance.setId(effects.size() - 1);
                                     break;
                             }
                             break;
@@ -280,6 +303,54 @@ import java.util.List;
                                     int bagSize=Integer.parseInt(st);
                                     bags.get(bagID).setSize(bagSize);
                                     break;
+
+                                case "geneticCode":
+                                    //Meghatarozzuk az id-t, kinek allitunk be
+                                    st = st.substring(i+1, st.length());
+                                    i = st.indexOf(" ");
+                                    tmp = st.substring(0, i);
+                                    int id_geneticCode = Integer.parseInt(tmp) - 1;
+
+                                    //Meghatarozzuk melyik attributumot allitjuk be
+                                    st = st.substring(i+1, st.length());
+                                    i = st.indexOf(" ");
+                                    tmp = st.substring(0, i);
+
+                                    if(tmp.equals("agent")){
+                                        st = st.substring(i+1, st.length());        //leszedjuk a geneticCodest
+                                        i = st.indexOf(" ");                        //megmondja hol a geneticCodes
+                                        st = st.substring(i+1, st.length());        //kikapja az id-t
+                                        int id_agent=Integer.parseInt(st)-1;
+                                        geneticCodes.get(id_geneticCode).setAgent(agents.get(id_agent));
+                                    }
+                                    break;
+                                case "agent":
+                                    //Meghatarozzuk az id-t, kinek allitunk be
+                                    st = st.substring(i+1, st.length());
+                                    i = st.indexOf(" ");
+                                    tmp = st.substring(0, i);
+                                    int id_agent = Integer.parseInt(tmp) - 1;
+
+                                    //Meghatarozzuk melyik attributumot allitjuk be
+                                    st = st.substring(i+1, st.length());
+                                    i = st.indexOf(" ");
+                                    tmp = st.substring(0, i);
+
+                                    if(tmp.equals("materials")){
+                                        //Meghatarozzuk melyik attributumot allitjuk be
+                                        st = st.substring(i+1, st.length());
+                                        i = st.indexOf(" ");
+                                        tmp = st.substring(0, i);
+
+                                        if(tmp.equals("material")){
+                                            st = st.substring(i+1, st.length());        //leszedjuk a geneticCodest
+                                            i = st.indexOf(" ");                        //megmondja hol a geneticCodes
+                                            st = st.substring(i+1, st.length());        //kikapja az id-t
+                                            int id_material = Integer.parseInt(st)-1;
+                                            agents.get(id_agent).setMaterial(materials.get(id_material));
+                                        }
+                                    }
+                                    break;
                             }
                             break;
 
@@ -292,7 +363,8 @@ import java.util.List;
                             int id_v = Integer.parseInt(tmp) - 1;
 
                             st = st.substring(i+1, st.length());
-                            tmp = st;
+                            i = st.indexOf(" ");
+                            tmp = st.substring(0, i);
 
 
                             switch(tmp)
@@ -444,6 +516,78 @@ import java.util.List;
                                 case "destoryMaterial":
                                     Storage storage =(Storage)tiles.get(tileID);
                                     storage.DestroyMaterial();
+                            }
+
+                        case "add":
+                            st = st.substring(i+1, st.length());        //leszedjuk az elso szot
+                            i = st.indexOf(" ");                        //megmondja hol a masodik szo vege
+                            tmp = st.substring(0, i);                   //kikapja a masodik szot
+                            switch (tmp)
+                            {
+                                case "virologist":
+                                    st = st.substring(i+1, st.length());        //leszedjuk a virologistot
+                                    i = st.indexOf(" ");                        //megmondja hol a virologist
+                                    tmp = st.substring(0, i);                   //kikapja a számot
+                                    int idVirologistA=Integer.parseInt(tmp)-1;
+                                    st = st.substring(i+1, st.length());        //leszedjuk a szamot
+                                    i = st.indexOf(" ");                        //megmondja hol a szam
+                                    tmp = st.substring(0, i);                   //kikapja a virologus cselekveset
+                                    switch (tmp)
+                                    {
+                                        case "effects":
+                                            st = st.substring(i+1, st.length());        //leszedjuk a effectset
+                                            i = st.indexOf(" ");                        //megmondja hol az effectset
+                                            tmp = st.substring(0, i);                   //kikapja az effectet
+                                            st = st.substring(i+1, st.length());        //leszedjuk a effectet
+                                            i = st.indexOf(" ");                        //megmondja hol az effectet
+                                            tmp = st.substring(0, i);                   //kikapja a számát
+                                            int effectID=Integer.parseInt(tmp);
+                                            virologists.get(idVirologistA).addEffect(effects.get(effectID));
+                                            break;
+                                        case "wear":
+                                            st = st.substring(i+1, st.length());        //leszedjuk a weart
+                                            i = st.indexOf(" ");                        //megmondja hol az wear
+                                            tmp = st.substring(0, i);                   //kikapja az ProtectiveGeart
+                                            st = st.substring(i+1, st.length());        //leszedjuk a ProtectiveGeart
+                                            i = st.indexOf(" ");                        //megmondja hol a ProtectiveGear
+                                            tmp = st.substring(0, i);                   //kikapja a számot
+                                            int protectiveGearID=Integer.parseInt(tmp)-1;
+                                            virologists.get(idVirologistA).giveGear(protectiveGears.get(protectiveGearID));
+                                            break;
+                                    }
+                                    break;
+                                case "bag":
+                                    st = st.substring(i+1, st.length());        //leszedjuk a baget
+                                    i = st.indexOf(" ");                        //megmondja hol a bag
+                                    tmp = st.substring(0, i);                   //kikapja a számot
+                                    int bagID=Integer.parseInt(tmp)-1;
+                                    st = st.substring(i+1, st.length());        //leszedjuk a számot
+                                    i = st.indexOf(" ");                        //megmondja hol a szám
+                                    tmp = st.substring(0, i);                   //kikapja a szót
+                                    switch (tmp)
+                                    {
+                                        case "materials":
+                                            st = st.substring(i+1, st.length());        //leszedjuk a materialst
+                                            i = st.indexOf(" ");                        //megmondja hol a materials
+                                            tmp = st.substring(0, i);                   //kikapja a szót
+                                            st = st.substring(i+1, st.length());        //leszedjuk a materialt
+                                            i = st.indexOf(" ");                        //megmondja hol a material
+                                            tmp = st.substring(0, i);                   //kikapja a számot
+                                            int materialID=Integer.parseInt(tmp)-1;
+                                            bags.get(bagID).Add(materials.get(materialID));
+                                            break;
+                                        case "agents":
+                                            st = st.substring(i+1, st.length());        //leszedjuk az agentst
+                                            i = st.indexOf(" ");                        //megmondja hol a agents
+                                            tmp = st.substring(0, i);                   //kikapja a szót
+                                            st = st.substring(i+1, st.length());        //leszedjuk az agentet
+                                            i = st.indexOf(" ");                        //megmondja hol a agent
+                                            tmp = st.substring(0, i);                   //kikapja a számot
+                                            int agentID=Integer.parseInt(tmp)-1;
+                                            bags.get(bagID).Add(agents.get(agentID));
+                                            break;
+                                    }
+                                    break;
                             }
                     }
                 }

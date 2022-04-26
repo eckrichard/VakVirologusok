@@ -4,7 +4,7 @@ package main;
  * A virológusra ható ágensek ősosztálya.
  */
 public abstract class Effects implements Steppable{
-
+	protected int id;
 	Virologist virologist;
 
 	/**
@@ -23,4 +23,20 @@ public abstract class Effects implements Steppable{
 	 * @return hátralévő idő
 	 */
 	public abstract long getTime();
+
+	/**
+	 * Visszaadja a az osztály azonosítóját
+	 * @return id: azonosító szám
+	 */
+	public int getId(){
+		return id;
+	}
+
+	/**
+	 * Beállítja, hogy mennyi az id-je
+	 * @param id a a kapott id
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
 }
