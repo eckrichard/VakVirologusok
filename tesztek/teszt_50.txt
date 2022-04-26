@@ -9,5 +9,5 @@ add virologist 1 effects effect 1
 shelter destoryMaterial
 material lessMaterial n
 info tile 1 virologists
-info tile 2 all
 info virologist 1 all
+info tile 1 materials

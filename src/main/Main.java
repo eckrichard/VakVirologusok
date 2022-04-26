@@ -463,6 +463,13 @@ import java.util.List;
                                         case "virologists":
                                             tiles.get(tileID).Print('t');
                                             break;
+                                        case "materials":
+                                            if (tiles.get(tileID) instanceof Storage)
+                                            {
+                                                Storage storage=(Storage) tiles.get(tileID);
+                                                storage.Print('m');
+                                            }
+                                            break;
                                     }
                                     break;
                                 case "virologist":
