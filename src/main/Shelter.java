@@ -16,7 +16,6 @@ public class Shelter extends Tile {
 		super();
 		this.pG = pG;
 	}
-	public void setCollectable(ProtectiveGear pG) {this.pG = pG;}
 
 	/**
 	 * Megmondja, hogy melyik védőfelszerelés található a
@@ -51,7 +50,7 @@ public class Shelter extends Tile {
 		System.out.print("\tadjacentTiles: ");
 		if(adjacentTiles.size() != 0){
 			for(int i = 0; i < adjacentTiles.size(); i++)
-				System.out.print(adjacentTiles.get(i).getId() + 1 + ". tile ");
+				System.out.print((adjacentTiles.get(i).getId() + 1) + ". tile ");
 			System.out.println("");
 		}
 		if(adjacentTiles.size() == 0)
@@ -59,15 +58,15 @@ public class Shelter extends Tile {
 		System.out.print("\tvirologist: ");
 		if(virologists.size() != 0){
 			for(int i = 0; i < virologists.size(); i++)
-				System.out.print(virologists.get(i).getId() + 1  + ". virologist ");
+				System.out.print((virologists.get(i).getId() + 1)  + ". virologist ");
 			System.out.println("");
 		}
 		if(virologists.size() == 0)
 			System.out.println("null");
 		if(pG == null)
-			System.out.println("p_g: null");
+			System.out.println("\tp_g: null");
 		if(pG != null)
-			System.out.println("p_g: " + pG.getId() + 1 + ". protective gear");
+			System.out.println("\tp_g: " + (pG.getId() + 1) + ". protective gear");
 		System.out.println("");
 	}
 }

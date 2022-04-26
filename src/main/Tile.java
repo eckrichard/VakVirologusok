@@ -47,7 +47,12 @@ public class Tile {
 	 * @return A szomszédos mező
 	 */
 	public Tile GetNeighbor(long n) {
-		return adjacentTiles.get((int)n);
+		for(int i = 0; i < adjacentTiles.size(); i++){
+			if(adjacentTiles.get(i).getId() == (int)n){
+				return adjacentTiles.get(i);
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -94,6 +99,14 @@ public class Tile {
 	 */
 	public int getId(){
 		return id;
+	}
+
+	/**
+	 * Beállítja, hogy mennyi az id-je
+	 * @param id a a kapott id
+	 */
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/**

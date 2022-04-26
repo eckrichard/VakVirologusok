@@ -6,6 +6,7 @@ package main;
  */
 public abstract class Item {
 	protected String name;
+	protected int id;
 	protected Virologist virologist;
 
 	/**
@@ -42,5 +43,21 @@ public abstract class Item {
 	 */
 	public void setVirologist(Virologist v) {
 		this.virologist = v;
+	}
+
+	/**
+	 * Visszaadja a az osztály azonosítóját
+	 * @return id: azonosító szám
+	 */
+	public int getId(){
+		return id;
+	}
+
+	/**
+	 * Beállítja, hogy mennyi az id-je
+	 * @param id a a kapott id
+	 */
+	public void setId(int id) {
+		this.id = id;
 	}
 }

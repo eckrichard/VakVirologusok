@@ -79,6 +79,6 @@ public class Glove extends ProtectiveGear {
 	public void Print()
 	{
 		System.out.println("Glove:");
-		System.out.print("\tremainingUses: " + remainingUses);
+		System.out.println("\tremainingUses: " + remainingUses);
 	}
 }

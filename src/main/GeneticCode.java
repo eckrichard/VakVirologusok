@@ -4,6 +4,7 @@ package main;
  * Tárol egy ágenst. Feladata a genetikai kód virológushoz adása és egy ágens létrehozása.
  */
 public class GeneticCode {
+	protected int id;
 	private Agent agent;
 
 
@@ -39,4 +40,20 @@ public class GeneticCode {
 		return agent;
 	}
 	public void setAgent(Agent a) { agent = a;	}
+
+	/**
+	 * Visszaadja a az osztály azonosítóját
+	 * @return id: azonosító szám
+	 */
+	public int getId(){
+		return id;
+	}
+
+	/**
+	 * Beállítja, hogy mennyi az id-je
+	 * @param id a a kapott id
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
 }
