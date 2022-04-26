@@ -54,34 +54,46 @@ public class Storage extends Tile {
 	/**
 	 * Kiírja az osztály attribútumainak értékeit
 	 */
-	public void Print(){
-		System.out.println("Storage:");
-		System.out.println("\tcapacity: " + capacity);
-		System.out.print("\tadjacentTiles: ");
-		if(adjacentTiles.size() != 0){
-			for(int i = 0; i < adjacentTiles.size(); i++)
-				System.out.print((adjacentTiles.get(i).getId() + 1) + ". tile ");
+	public void Print(char c) {
+		if (c == 'a') {
+			System.out.println("Storage:");
+			System.out.println("\tcapacity: " + capacity);
+			System.out.print("\tadjacentTiles: ");
+			if (adjacentTiles.size() != 0) {
+				for (int i = 0; i < adjacentTiles.size(); i++)
+					System.out.print((adjacentTiles.get(i).getId() + 1) + ". tile ");
+				System.out.println("");
+			}
+			if (adjacentTiles.size() == 0)
+				System.out.println("null");
+			System.out.print("\tvirologist: ");
+			if (virologists.size() != 0) {
+				for (int i = 0; i < virologists.size(); i++)
+					System.out.print((virologists.get(i).getId() + 1) + ". virologist ");
+				System.out.println("");
+			}
+			if (virologists.size() == 0)
+				System.out.println("null");
+			System.out.print("\tmaterials: ");
+			if (materials != null && materials.size() > 0) {
+				for (int i = 0; i < materials.size(); i++)
+					System.out.print((materials.get(i).getId() + 1) + ". material ");
+				System.out.println("");
+			} else {
+				System.out.println("null");
+			}
 			System.out.println("");
 		}
-		if(adjacentTiles.size() == 0)
-			System.out.println("null");
-		System.out.print("\tvirologist: ");
-		if(virologists.size() != 0){
-			for(int i = 0; i < virologists.size(); i++)
-				System.out.print((virologists.get(i).getId() + 1) + ". virologist ");
-			System.out.println("");
+		if (c == 'm') {
+			System.out.println("Storage:");
+			System.out.print("\tmaterials: ");
+			if (materials != null && materials.size() > 0) {
+				for (int i = 0; i < materials.size(); i++)
+					System.out.print((materials.get(i).getId() + 1) + ". material ");
+				System.out.println("");
+			} else {
+				System.out.println("materials:" + 0);
+			}
 		}
-		if(virologists.size() == 0)
-			System.out.println("null");
-		System.out.print("\tmaterials: ");
-		if(materials != null && materials.size() > 0){
-			for(int i = 0; i < materials.size(); i++)
-				System.out.print((materials.get(i).getId() + 1) + ". material ");
-			System.out.println("");
-		}
-		else {
-			System.out.println("null");
-		}
-		System.out.println("");
 	}
 }
