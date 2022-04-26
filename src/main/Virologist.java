@@ -167,7 +167,9 @@ public class Virologist {
 	 * @param g a felszerelés
 	 */
 	public void giveGear(ProtectiveGear g) {
-		bag.Discard(g);
+		if(bag != null){
+			bag.Discard(g);
+		}
 	}
 
 	/**
