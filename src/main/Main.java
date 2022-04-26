@@ -571,8 +571,7 @@ import java.util.List;
                                             i = st.indexOf(" ");                        //megmondja hol a materials
                                             tmp = st.substring(0, i);                   //kikapja a szót
                                             st = st.substring(i+1, st.length());        //leszedjuk a materialt
-                                            i = st.indexOf(" ");                        //megmondja hol a material
-                                            tmp = st.substring(0, i);                   //kikapja a számot
+                                            tmp = st.substring(0, st.length());                   //kikapja a számot
                                             int materialID=Integer.parseInt(tmp)-1;
                                             bags.get(bagID).Add(materials.get(materialID));
                                             break;
