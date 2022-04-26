@@ -16,7 +16,6 @@ public class Storage extends Tile {
 	 */
 	public Storage(ArrayList<Material> m){
 		super();
-		materials = new ArrayList<Material>();
 		this.materials = m;
 	}
 
@@ -70,13 +69,14 @@ public class Storage extends Tile {
 		if(virologists.size() == 0)
 			System.out.println("null");
 		System.out.print("\tmaterials: ");
-		if(materials.size() != 0){
+		if(materials != null && materials.size() > 0){
 			for(int i = 0; i < materials.size(); i++)
 				System.out.print(materials.get(i).getId() + ". material ");
 			System.out.println("");
 		}
-		if(materials.size() == 0)
+		else {
 			System.out.println("null");
+		}
 		System.out.println("");
 	}
 }

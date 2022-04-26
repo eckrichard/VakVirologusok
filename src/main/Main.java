@@ -20,386 +20,403 @@ import java.util.List;
         // main driver method
         public static void main(String[] args) throws Exception
         {
-            System.out.println("Teszt sorszama:");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            String tesztSorszam = reader.readLine();
-            String path = "tesztek\\teszt_" + tesztSorszam + ".txt";
-            File file = new File(path);
+            Boolean tesztOn = true;
+            while(tesztOn) {
+                System.out.println("\\Teszt sorszama:");
+                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                String tesztSorszam = reader.readLine();
+                String path = "tesztek\\teszt_" + tesztSorszam + ".txt";
+                File file = new File(path);
 
-            BufferedReader br = new BufferedReader(new FileReader(file));
+                BufferedReader br = new BufferedReader(new FileReader(file));
 
-            String st;
+                String st;
 
-            List<Material> materials = new ArrayList<>();
-            List<ProtectiveGear> protectiveGears = new ArrayList<>();
-            List<Effects> effects = new ArrayList<>();
-            List<Virologist> virologists = new ArrayList<>();
-            List<GeneticCode> geneticCodes = new ArrayList<>();
-            List<Tile> tiles = new ArrayList<>();
-            List<Bag> bags = new ArrayList<>();
-            List<Agent> agents = new ArrayList<>();
+                List<Material> materials = new ArrayList<>();
+                List<ProtectiveGear> protectiveGears = new ArrayList<>();
+                List<Effects> effects = new ArrayList<>();
+                List<Virologist> virologists = new ArrayList<>();
+                List<GeneticCode> geneticCodes = new ArrayList<>();
+                List<Tile> tiles = new ArrayList<>();
+                List<Bag> bags = new ArrayList<>();
+                List<Agent> agents = new ArrayList<>();
 
-            while ((st = br.readLine()) != null) {
-                int i = st.indexOf(" ");            //ez itt megmondja hol az elso szokoz (elso szo vege)
-                String tmp = st.substring(0, i);    //ez itt kikapja a sorbol az elso szot, ez alapjan lehet switchelni
-                switch (tmp) {
-                    case "create":
-                        st = st.substring(i + 1, st.length());        //leszedjuk az elso szot
-                        i = st.indexOf(" ");                        //megmondja hol a masodik szo vege
-                        tmp = st;                   //kikapja a masodik szot
+                while ((st = br.readLine()) != null) {
+                    int i = st.indexOf(" ");            //ez itt megmondja hol az elso szokoz (elso szo vege)
+                    String tmp = st.substring(0, i);    //ez itt kikapja a sorbol az elso szot, ez alapjan lehet switchelni
+                    switch (tmp) {
+                        case "create":
+                            st = st.substring(i + 1, st.length());        //leszedjuk az elso szot
+                            i = st.indexOf(" ");                        //megmondja hol a masodik szo vege
+                            tmp = st;                   //kikapja a masodik szot
 
-                        switch (tmp) {
-                            case "virologist":
-                                Virologist v = new Virologist();
-                                virologists.add(v);
-                                break;
-                            //TILES INICILIZATION
-                            case "tile":
-                                Tile tile = new Tile();
-                                tiles.add(tile);
-                                break;
+                            switch (tmp) {
+                                case "virologist":
+                                    Virologist v = new Virologist();
+                                    virologists.add(v);
+                                    break;
+                                //TILES INICILIZATION
+                                case "tile":
+                                    Tile tile = new Tile();
+                                    tiles.add(tile);
+                                    break;
 
-                            case "shelter":
-                                Shelter shelter = new Shelter(null);
-                                tiles.add(shelter);
-                                break;
-                            case "storage":
-                                Storage storage = new Storage(null);
-                                tiles.add(storage);
-                                break;
-                            case "laboratory":
-                                Laboratory laboratory = new Laboratory(null);
-                                tiles.add(laboratory);
-                                break;
-                            //PROTECTIVE GEAR INICIALIZATION
-                            case "axe":
-                                Axe axe = new Axe("axe");
-                                protectiveGears.add(axe);
-                                break;
-                            case "cape":
-                                Cape cape = new Cape("cape");
-                                protectiveGears.add(cape);
-                                break;
-                            case "bonusBag":
-                                BonusBag bonusBag = new BonusBag("bonusBag");
-                                protectiveGears.add(bonusBag);
-                                break;
-                            case "glove":
-                                Glove glove = new Glove("glove");
-                                protectiveGears.add(glove);
-                                break;
-                            case "geneticCode":
-                                GeneticCode geneticCode = new GeneticCode(null);
-                                geneticCodes.add(geneticCode);
-                                break;
-                            case "TDP":
-                                Material tdp = new Material("TDP");
-                                materials.add(tdp);
-                                break;
-                            case "CDP":
-                                Material cdp = new Material("CDP");
-                                materials.add(cdp);
-                                break;
+                                case "shelter":
+                                    Shelter shelter = new Shelter(null);
+                                    tiles.add(shelter);
+                                    break;
+                                case "storage":
+                                    Storage storage = new Storage(null);
+                                    tiles.add(storage);
+                                    break;
+                                case "laboratory":
+                                    Laboratory laboratory = new Laboratory(null);
+                                    tiles.add(laboratory);
+                                    break;
+                                //PROTECTIVE GEAR INICIALIZATION
+                                case "axe":
+                                    Axe axe = new Axe("axe");
+                                    protectiveGears.add(axe);
+                                    break;
+                                case "cape":
+                                    Cape cape = new Cape("cape");
+                                    protectiveGears.add(cape);
+                                    break;
+                                case "bonusBag":
+                                    BonusBag bonusBag = new BonusBag("bonusBag");
+                                    protectiveGears.add(bonusBag);
+                                    break;
+                                case "glove":
+                                    Glove glove = new Glove("glove");
+                                    protectiveGears.add(glove);
+                                    break;
+                                case "geneticCode":
+                                    GeneticCode geneticCode = new GeneticCode(null);
+                                    geneticCodes.add(geneticCode);
+                                    break;
+                                case "TDP":
+                                    Material tdp = new Material("TDP");
+                                    materials.add(tdp);
+                                    break;
+                                case "CDP":
+                                    Material cdp = new Material("CDP");
+                                    materials.add(cdp);
+                                    break;
 //                            case "dUTP":
 //                                dUTPCount++;
 //                                break;
-                            case "valin":
-                                Material valin = new Material("valin");
-                                materials.add(valin);
-                                break;
+                                case "valin":
+                                    Material valin = new Material("valin");
+                                    materials.add(valin);
+                                    break;
 //                            case "lizin":
 //                                lizinCount++;
 //                                break;
 //                            case "szerin":
 //                                szerinCount++;
 //                                break;
-                            case "bag":
-                                Bag bag = new Bag();
-                                bags.add(bag);
-                                break;
-                            // AGENTS
-                            case "paralyzeAgent":
-                                ParalyzeAgent paralyzeAgent = new ParalyzeAgent(null, "paralyze");
-                                agents.add(paralyzeAgent);
-                                break;
-                            case "untouchableAgent":
-                                UntouchableAgent untouchableAgent = new UntouchableAgent(null, "untouchable");
-                                agents.add(untouchableAgent);
-                                break;
-                            case "vitusDanceAgent":
-                                VitusDanceAgent vitusDanceAgent = new VitusDanceAgent(null, "vitus dance");
-                                agents.add(vitusDanceAgent);
-                                break;
-                            case "bearDanceAgent":
-                                BearDanceAgent bearDanceAgent = new BearDanceAgent(null, "bear dance");
-                                agents.add(bearDanceAgent);
-                                break;
-                            case "forgetAgent":
-                                ForgetAgent forgetAgent = new ForgetAgent(null, "forget");
-                                agents.add(forgetAgent);
-                                break;
-                            //EFFECTS
-                            case "paralyzed":
-                                Paralyzed paralyzed = new Paralyzed();
-                                effects.add(paralyzed);
-                                break;
-                            case "untouchable":
-                                Untouchable untouchable = new Untouchable();
-                                effects.add(untouchable);
-                                break;
-                            case "vitusDance":
-                                VitusDance vitusDance = new VitusDance();
-                                effects.add(vitusDance);
-                                break;
-                            case "bearDance":
-                                BearDance bearDance = new BearDance();
-                                effects.add(bearDance);
-                                break;
-                        }
-                        break;
-                    case "set":
-                        st = st.substring(i+1, st.length());        //leszedjuk az elso szot
-                        i = st.indexOf(" ");                        //megmondja hol a masodik szo vege
-                        tmp = st.substring(0, i);                   //kikapja a masodik szot
+                                case "bag":
+                                    Bag bag = new Bag();
+                                    bags.add(bag);
+                                    break;
+                                // AGENTS
+                                case "paralyzeAgent":
+                                    ParalyzeAgent paralyzeAgent = new ParalyzeAgent(null, "paralyze");
+                                    agents.add(paralyzeAgent);
+                                    break;
+                                case "untouchableAgent":
+                                    UntouchableAgent untouchableAgent = new UntouchableAgent(null, "untouchable");
+                                    agents.add(untouchableAgent);
+                                    break;
+                                case "vitusDanceAgent":
+                                    VitusDanceAgent vitusDanceAgent = new VitusDanceAgent(null, "vitus dance");
+                                    agents.add(vitusDanceAgent);
+                                    break;
+                                case "bearDanceAgent":
+                                    BearDanceAgent bearDanceAgent = new BearDanceAgent(null, "bear dance");
+                                    agents.add(bearDanceAgent);
+                                    break;
+                                case "forgetAgent":
+                                    ForgetAgent forgetAgent = new ForgetAgent(null, "forget");
+                                    agents.add(forgetAgent);
+                                    break;
+                                //EFFECTS
+                                case "paralyzed":
+                                    Paralyzed paralyzed = new Paralyzed();
+                                    effects.add(paralyzed);
+                                    break;
+                                case "untouchable":
+                                    Untouchable untouchable = new Untouchable();
+                                    effects.add(untouchable);
+                                    break;
+                                case "vitusDance":
+                                    VitusDance vitusDance = new VitusDance();
+                                    effects.add(vitusDance);
+                                    break;
+                                case "bearDance":
+                                    BearDance bearDance = new BearDance();
+                                    effects.add(bearDance);
+                                    break;
+                            }
+                            break;
+                        case "set":
+                            st = st.substring(i+1, st.length());        //leszedjuk az elso szot
+                            i = st.indexOf(" ");                        //megmondja hol a masodik szo vege
+                            tmp = st.substring(0, i);                   //kikapja a masodik szot
 
-                        switch (tmp) {
-                            case "tile":
-                                //Meghatarozzuk az id-t, kinek allitunk be
-                                st = st.substring(i+1, st.length());
-                                i = st.indexOf(" ");
-                                tmp = st.substring(0, i);
-                                int id_a = Integer.parseInt(tmp) - 1;
-                                //Meghatarozzuk melyik attributumot allitjuk be
-                                st = st.substring(i+1, st.length());
-                                i = st.indexOf(" ");
-                                tmp = st.substring(0, i);
-
-                                switch (tmp) {
-                                    case "adjacentTiles":
-                                        st = st.substring(i+1, st.length());
-                                        int id_n = Integer.parseInt(st) - 1;
-                                        //System.out.println(tiles.size());
-                                        tiles.get(id_a).setNeighbor(tiles.get(id_n));
-                                        break;
-                                    case "p_g":
-                                        st = st.substring(i+1, st.length());
-                                        int id_pG = Integer.parseInt(st) - 1;
-                                        tiles.get(id_a).setCollectable(protectiveGears.get(id_pG));
-                                        break;
-                                    case "geneticCode":
-                                        st = st.substring(i+1, st.length());
-                                        int id_gC = Integer.parseInt(st) - 1;
-                                        tiles.get(id_a).setCollectable(geneticCodes.get(id_gC));
-                                        break;
-                                    case "materials":
-                                        st = st.substring(i+1, st.length());
-                                        int id_m = Integer.parseInt(st) - 1;
-                                        tiles.get(id_a).setCollectable(materials.get(id_m));
-                                        break;
-                                    case "LaboratoryInfect":
-                                        st = st.substring(i+1, st.length());
-                                        i = st.indexOf(" ");
-                                        tmp = st.substring(0, i);
-                                        st = st.substring(i+1, st.length());
-                                        i = st.indexOf(" ");
-                                        tmp = st.substring(0, i);
-                                        int virologistID=Integer.parseInt(tmp)-1;
-                                        Laboratory laboratory=(Laboratory) tiles.get(id_a);
-                                        laboratory.LaboratoryInfect(virologists.get(virologistID));
-                                        break;
-                                }
-                                break;
-                            case "virologist":
-                                st = st.substring(i+1, st.length());        //leszedjuk a virologistot
-                                i = st.indexOf(" ");                        //megmondja hol a virologist
-                                tmp = st.substring(0, i);                   //kikapja a számot
-                                int idVirologistA=Integer.parseInt(tmp)-1;
-                                st = st.substring(i+1, st.length());        //leszedjuk a szamot
-                                i = st.indexOf(" ");                        //megmondja hol a szam
-                                tmp = st.substring(0, i);                   //kikapja a szettelendo dolgot
-                                switch (tmp)
-                                {
-                                    case "bag":
-                                        st = st.substring(i+1, st.length());        //leszedjuk a baget
-                                        i = st.indexOf(" ");                        //megmondja hol a bag
-                                        tmp = st.substring(0, i);                   //kikapja a bag utani utasitast
-                                        st = st.substring(i+1, st.length());        //leszedjuk a bag utani utasitast
-                                        i = st.indexOf(" ");                        //megmondja hol az utasitas
-                                        tmp = st.substring(0, i);                   //kikapja a szettelendo szamot
-                                        int bagID=Integer.parseInt(tmp)-1;
-                                        virologists.get(idVirologistA).setBag(bags.get(bagID));
-                                        break;
-                                    case "codeCount":
-                                        st = st.substring(i+1, st.length());        //leszedjuk a codecountot
-                                        i = st.indexOf(" ");                        //megmondja hol a codecount
-                                        tmp = st.substring(0, i);                   //kikapja a szettelendo szamot
-                                        int codeCount=Integer.parseInt(tmp)-1;
-                                        virologists.get(idVirologistA).setCodeCount(codeCount);
-                                        break;
-                                    case "geneticCodes":
-                                        st = st.substring(i+1, st.length());        //leszedjuk a geneticCodest
-                                        i = st.indexOf(" ");                        //megmondja hol a geneticCodes
-                                        tmp = st.substring(0, i);                   //kikapja a geneticCodes utani utasitast
-                                        st = st.substring(i+1, st.length());        //leszedjuk a geneticCodes utani utasitast
-                                        i = st.indexOf(" ");                        //megmondja hol az utasitas
-                                        tmp = st.substring(0, i);                   //kikapja a szettelendo szamot
-                                        int geneticCodeID=Integer.parseInt(tmp)-1;
-                                        virologists.get(idVirologistA).setGeneticCodes(geneticCodes.get(geneticCodeID));
-                                        break;
-                                }
-                                break;
-                            case "bag":
-                                st = st.substring(i+1, st.length());        //leszedjuk a baget
-                                i = st.indexOf(" ");                        //megmondja hol a bag
-                                tmp = st.substring(0, i);                   //kikapja az idjet
-                                int bagID=Integer.parseInt(tmp)-1;
-                                st = st.substring(i+1, st.length());        //leszedjuk a idt
-                                i = st.indexOf(" ");                        //megmondja hol id
-                                tmp = st.substring(0, i);                   //kikapja az utasitást
-                                st = st.substring(i+1, st.length());        //leszedjuk a utasitast
-                                i = st.indexOf(" ");                        //megmondja hol az utasitas
-                                tmp = st.substring(0, i);                   //kikapja a szettelendo szamot
-                                int bagSize=Integer.parseInt(tmp);
-                                bags.get(bagID).setSize(bagSize);
-                                break;
-                        }
-                        break;
-
-                    // Módosítás eleje
-                    case "virologist":
-                        //Meghatarozzuk az id-t, kinek allitunk be
-                        st = st.substring(i+1, st.length());
-                        i = st.indexOf(" ");
-                        tmp = st.substring(0, i);
-                        int id_v = Integer.parseInt(tmp) - 1;
-
-                        st = st.substring(i+1, st.length());
-                        tmp = st;
-
-
-                        switch(tmp)
-                        {
-                            case "createagent":
-                                //Meghatarozzuk az id-t, a genetikai kódnak
-                                st = st.substring(i+1, st.length());
-                                int id_gc = Integer.parseInt(st) - 1;
-
-                                geneticCodes.get(id_gc).CreateAgent(virologists.get(id_v));
-                                break;
-                            case "move":
-                                st = st.substring(i+1, st.length());
-                                i = st.indexOf(" ");
-                                tmp = st.substring(0, i);
-                                if(tmp.equals("tile")){
-                                    //Meghatarozzuk az id-t, a mezőnek
+                            switch (tmp) {
+                                case "tile":
+                                    //Meghatarozzuk az id-t, kinek allitunk be
                                     st = st.substring(i+1, st.length());
-                                    int id_t = Integer.parseInt(st) - 1;
+                                    i = st.indexOf(" ");
+                                    tmp = st.substring(0, i);
+                                    int id_a = Integer.parseInt(tmp) - 1;
+                                    //Meghatarozzuk melyik attributumot allitjuk be
+                                    st = st.substring(i+1, st.length());
+                                    i = st.indexOf(" ");
+                                    tmp = st.substring(0, i);
 
-                                    virologists.get(id_v).Move(id_t);
-                                }
-                                break;
-                            case "palpatewall":
-                                virologists.get(id_v).PalpateWall();
-                                break;
-                            case "collectProtectiveGear":
-                                virologists.get(id_v).CollectProtectiveGear();
-                                break;
-                            case "useAgent":
-                                //Meghatarozzuk az id-t, kinek allitunk be
-                                st = st.substring(i+1, st.length());
+                                    switch (tmp) {
+                                        case "virologists": {
+                                            //Leszedjük a "virologist" et
+                                            st = st.substring(i+1, st.length());
+                                            i = st.indexOf(" ");
+                                            //Leszedjük a virológus id-ját
+                                            st = st.substring(i+1, st.length());
+                                            int virologistId = Integer.parseInt(st) -1;
+                                            //Beállítjuk a virológusnak ezt a tile-t
+                                            Virologist virologist = virologists.get(virologistId);
+                                            virologist.setTile(tiles.get(id_a));
+                                            //Beállítjuk a virológust a tile-ra
+                                            tiles.get(id_a).Accept(virologist);
+                                            break;
+                                        }
+                                        case "adjacentTiles":
+                                            st = st.substring(i+1, st.length());
+                                            int id_n = Integer.parseInt(st) - 1;
+                                            //System.out.println(tiles.size());
+                                            tiles.get(id_a).setNeighbor(tiles.get(id_n));
+                                            //Mivel az egyiknek beálltjuk így a másiknak is be kell.
+                                            tiles.get(id_n).setNeighbor(tiles.get(id_a));
+                                            break;
+                                        case "p_g":
+                                            st = st.substring(i+1, st.length());
+                                            int id_pG = Integer.parseInt(st) - 1;
+                                            tiles.get(id_a).setCollectable(protectiveGears.get(id_pG));
+                                            break;
+                                        case "geneticCode":
+                                            st = st.substring(i+1, st.length());
+                                            int id_gC = Integer.parseInt(st) - 1;
+                                            tiles.get(id_a).setCollectable(geneticCodes.get(id_gC));
+                                            break;
+                                        case "materials":
+                                            st = st.substring(i+1, st.length());
+                                            int id_m = Integer.parseInt(st) - 1;
+                                            tiles.get(id_a).setCollectable(materials.get(id_m));
+                                            break;
+                                        case "LaboratoryInfect":
+                                            st = st.substring(i+1, st.length());
+                                            i = st.indexOf(" ");
+                                            tmp = st.substring(0, i);
+                                            st = st.substring(i+1, st.length());
+                                            i = st.indexOf(" ");
+                                            tmp = st.substring(0, i);
+                                            int virologistID=Integer.parseInt(tmp)-1;
+                                            Laboratory laboratory=(Laboratory) tiles.get(id_a);
+                                            laboratory.LaboratoryInfect(virologists.get(virologistID));
+                                            break;
+                                    }
+                                    break;
+                                case "virologist":
+                                    st = st.substring(i+1, st.length());        //leszedjuk a virologistot
+                                    i = st.indexOf(" ");                        //megmondja hol a virologist
+                                    tmp = st.substring(0, i);                   //kikapja a számot
+                                    int idVirologistA=Integer.parseInt(tmp)-1;
+                                    st = st.substring(i+1, st.length());        //leszedjuk a szamot
+                                    i = st.indexOf(" ");                        //megmondja hol a szam
+                                    tmp = st.substring(0, i);                   //kikapja a szettelendo dolgot
+                                    switch (tmp)
+                                    {
+                                        case "bag":
+                                            st = st.substring(i+1, st.length());        //leszedjuk a baget
+                                            i = st.indexOf(" ");                        //megmondja hol a bag
+                                            tmp = st.substring(0, i);                   //kikapja a bag utani utasitast
+                                            st = st.substring(i+1, st.length());        //leszedjuk a bag utani utasitast
+                                            //kikapja a szettelendo szamot
+                                            int bagID=Integer.parseInt(st)-1;
+                                            Bag bag = bags.get(bagID);
+                                            Virologist virologist = virologists.get(idVirologistA);
+                                            //Bagnek beállítjuk a virológust
+                                            bag.setVirologist(virologist);
+                                            //Virológusnak beállítjuk a baget
+                                            virologist.setBag(bag);
+                                            break;
+                                        case "codeCount":
+                                            st = st.substring(i+1, st.length());        //leszedjuk a codeCountot
+                                            i = st.indexOf(" ");                        //megmondja hol a codecount
+                                            st = st.substring(i+1, st.length());                   //kikapja a codecountot
+                                            int codeCount=Integer.parseInt(st);
+                                            virologists.get(idVirologistA).setCodeCount(codeCount);
+                                            break;
+                                        case "geneticCodes":
+                                            st = st.substring(i+1, st.length());        //leszedjuk a geneticCodest
+                                            i = st.indexOf(" ");                        //megmondja hol a geneticCodes
+                                            st = st.substring(i+1, st.length());        //kikapja az id-t
+                                            int geneticCodeID=Integer.parseInt(st)-1;
+                                            virologists.get(idVirologistA).setGeneticCodes(geneticCodes.get(geneticCodeID));
+                                            break;
+                                    }
+                                    break;
+                                case "bag":
+                                    st = st.substring(i+1, st.length());        //leszedjuk a baget
+                                    i = st.indexOf(" ");                        //megmondja hol a bag
+                                    tmp = st.substring(0, i);                   //kikapja az idjet
+                                    int bagID=Integer.parseInt(tmp)-1;
+                                    st = st.substring(i+1, st.length());        //leszedjuk a idt
+                                    i = st.indexOf(" ");                        //megmondja hol id
+                                    tmp = st.substring(0, i);                   //kikapja az utasitást
+                                    st = st.substring(i+1, st.length());        //leszedjuk a utasitast
+                                    i = st.indexOf(" ");                        //megmondja hol az utasitas
+                                    int bagSize=Integer.parseInt(st);
+                                    bags.get(bagID).setSize(bagSize);
+                                    break;
+                            }
+                            break;
 
-                                if(st.length() > 0){
+                        // Módosítás eleje
+                        case "virologist":
+                            //Meghatarozzuk az id-t, kinek allitunk be
+                            st = st.substring(i+1, st.length());
+                            i = st.indexOf(" ");
+                            tmp = st.substring(0, i);
+                            int id_v = Integer.parseInt(tmp) - 1;
+
+                            st = st.substring(i+1, st.length());
+                            tmp = st;
+
+
+                            switch(tmp)
+                            {
+                                case "createagent":
+                                    //Meghatarozzuk az id-t, a genetikai kódnak
+                                    st = st.substring(i+1, st.length());
+                                    int id_gc = Integer.parseInt(st) - 1;
+
+                                    geneticCodes.get(id_gc).CreateAgent(virologists.get(id_v));
+                                    break;
+                                case "move":
+                                    st = st.substring(i+1, st.length());
+                                    i = st.indexOf(" ");
+                                    tmp = st.substring(0, i);
+                                    if(tmp.equals("tile")){
+                                        //Meghatarozzuk az id-t, a mezőnek
+                                        st = st.substring(i+1, st.length());
+                                        int id_t = Integer.parseInt(st) - 1;
+
+                                        virologists.get(id_v).Move(id_t);
+                                    }
+                                    break;
+                                case "palpatewall":
+                                    virologists.get(id_v).PalpateWall();
+                                    break;
+                                case "collectProtectiveGear":
+                                    virologists.get(id_v).CollectProtectiveGear();
+                                    break;
+                                case "useAgent":
+                                    //Meghatarozzuk az id-t, kinek allitunk be
+                                    st = st.substring(i+1, st.length());
+
+                                    if(st.length() > 0){
+                                        i = st.indexOf(" ");
+                                        tmp = st.substring(0, i);
+                                        int id_v2 = Integer.parseInt(tmp) - 1;
+
+                                        //Meghatarozzuk az id-t, melyik ágens
+                                        st = st.substring(i+1, st.length());
+                                        int id_a = Integer.parseInt(st) - 1;
+
+                                        virologists.get(id_v).UseAgent(virologists.get(id_v2), agents.get(id_a));
+                                        break;
+                                    }
+                                    else {
+                                        int id_a = Integer.parseInt(st) - 1;
+                                        virologists.get(id_v).UseAgent(virologists.get(id_v), agents.get(id_a));
+                                    }
+
+                                    break;
+                                case "takeGear":
+                                    //Meghatarozzuk az id-t, kinek allitunk be
+                                    st = st.substring(i+1, st.length());
                                     i = st.indexOf(" ");
                                     tmp = st.substring(0, i);
                                     int id_v2 = Integer.parseInt(tmp) - 1;
 
-                                    //Meghatarozzuk az id-t, melyik ágens
+                                    //Meghatarozzuk az id-t, melyik védőfelszerelést
                                     st = st.substring(i+1, st.length());
-                                    int id_a = Integer.parseInt(st) - 1;
+                                    int id_pg = Integer.parseInt(st) - 1;
 
-                                    virologists.get(id_v).UseAgent(virologists.get(id_v2), agents.get(id_a));
+                                    virologists.get(id_v).TakeGear(virologists.get(id_v2), protectiveGears.get(id_pg));
                                     break;
-                                }
-                                else {
-                                    int id_a = Integer.parseInt(st) - 1;
-                                    virologists.get(id_v).UseAgent(virologists.get(id_v), agents.get(id_a));
-                                }
-
-                                break;
-                            case "takeGear":
-                                //Meghatarozzuk az id-t, kinek allitunk be
-                                st = st.substring(i+1, st.length());
-                                i = st.indexOf(" ");
-                                tmp = st.substring(0, i);
-                                int id_v2 = Integer.parseInt(tmp) - 1;
-
-                                //Meghatarozzuk az id-t, melyik védőfelszerelést
-                                st = st.substring(i+1, st.length());
-                                int id_pg = Integer.parseInt(st) - 1;
-
-                                virologists.get(id_v).TakeGear(virologists.get(id_v2), protectiveGears.get(id_pg));
-                                break;
-                        } // Módosítás vége
-                    break;
-                    case "info":
-                        st = st.substring(i+1, st.length());        //leszedjuk az infot
-                        i = st.indexOf(" ");                        //megmondja hol az info
-                        tmp = st.substring(0, i);                   //kikapja a kovetkezo stringet
-                        switch (tmp)
-                        {
-                            case "tile":
-                                st = st.substring(i+1, st.length());        //leszedjuk a tilet
-                                i = st.indexOf(" ");                        //megmondja hol a tile
-                                tmp = st.substring(0, i);                   //kikapja az idt
-                                int tileID=Integer.parseInt(tmp)-1;
-                                tiles.get(tileID).Print();
-                                break;
-                            case "virologist":
-                                st = st.substring(i+1, st.length());        //leszedjuk a virologistet
-                                i = st.indexOf(" ");                        //megmondja hol a virologist
-                                tmp = st.substring(0, i);                   //kikapja az idt
-                                int virologistID=Integer.parseInt(tmp)-1;
-                                virologists.get(virologistID).Print();
-                                break;
-                            case "protectivegear":
-                                st = st.substring(i+1, st.length());        //leszedjuk a protectivegeart
-                                i = st.indexOf(" ");                        //megmondja hol a protecrivegear
-                                tmp = st.substring(0, i);                   //kikapja az idt
-                                int protectiveGearID=Integer.parseInt(tmp)-1;
-                                for (ProtectiveGear pg : protectiveGears)
-                                {
-                                    if (pg instanceof Glove)
+                            } // Módosítás vége
+                            break;
+                        case "info":
+                            st = st.substring(i+1, st.length());        //leszedjuk az infot
+                            i = st.indexOf(" ");                        //megmondja hol az info
+                            tmp = st.substring(0, i);                   //kikapja a kovetkezo stringet
+                            switch (tmp)
+                            {
+                                case "tile":
+                                    st = st.substring(i+1, st.length());        //leszedjuk a tilet
+                                    i = st.indexOf(" ");                        //megmondja hol a tile
+                                    tmp = st.substring(0, i);                   //kikapja az idt
+                                    int tileID=Integer.parseInt(tmp)-1;
+                                    tiles.get(tileID).Print();
+                                    break;
+                                case "virologist":
+                                    st = st.substring(i+1, st.length());        //leszedjuk a virologistet
+                                    i = st.indexOf(" ");                        //megmondja hol a virologist
+                                    tmp = st.substring(0, i);                   //kikapja az idt
+                                    int virologistID=Integer.parseInt(tmp)-1;
+                                    virologists.get(virologistID).Print();
+                                    break;
+                                case "protectivegear":
+                                    st = st.substring(i+1, st.length());        //leszedjuk a protectivegeart
+                                    i = st.indexOf(" ");                        //megmondja hol a protecrivegear
+                                    tmp = st.substring(0, i);                   //kikapja az idt
+                                    int protectiveGearID=Integer.parseInt(tmp)-1;
+                                    for (ProtectiveGear pg : protectiveGears)
                                     {
-                                        Glove glove=(Glove) pg;
-                                        glove.Print();
+                                        if (pg instanceof Glove)
+                                        {
+                                            Glove glove=(Glove) pg;
+                                            glove.Print();
+                                        }
                                     }
-                                }
-                                break;
-                            case "bag":
-                                st = st.substring(i+1, st.length());        //leszedjuk a baget
-                                i = st.indexOf(" ");                        //megmondja hol a bag
-                                tmp = st.substring(0, i);                   //kikapja az idt
-                                int bagID=Integer.parseInt(tmp);
-                                st = st.substring(i+1, st.length());        //leszedjuk az idt
-                                i = st.indexOf(" ");                        //megmondja hol az id
-                                tmp = st.substring(0, i);                   //kikapja az utasitast
-                                switch (tmp)
-                                {
-                                    case "all":
-                                        bags.get(bagID).Print('a');
-                                        break;
-                                    case "agents":
-                                        bags.get(bagID).Print('c');
-                                        break;
-                                }
-                                break;
-                        }
-                        break;
-                    case "laboratory":
-                        st = st.substring(i+1, st.length());
-                        i = st.indexOf(" ");
-                        tmp = st.substring(0, i);
-                        switch (tmp)
+                                    break;
+                                case "bag":
+                                    st = st.substring(i+1, st.length());        //leszedjuk a baget
+                                    i = st.indexOf(" ");                        //megmondja hol a bag
+                                    tmp = st.substring(0, i);                   //kikapja az idt
+                                    int bagID=Integer.parseInt(tmp) - 1 ;
+                                    st = st.substring(i+1, st.length());        //leszedjuk az idt
+                                    i = st.indexOf(" ");                        //megmondja hol az id
+                                    switch (st)
+                                    {
+                                        case "all":
+                                            bags.get(bagID).Print('a');
+                                            break;
+                                        case "agents":
+                                            bags.get(bagID).Print('c');
+                                            break;
+                                    }
+                                    break;
+                            }
+                            break;
+                        case "laboratory":
+                            st = st.substring(i+1, st.length());
+                            i = st.indexOf(" ");
+                            tmp = st.substring(0, i);
+                            switch (tmp)
                             {
                                 case"laboratoryInfect":
                                     st = st.substring(i+1, st.length());
@@ -413,22 +430,24 @@ import java.util.List;
                                     laboratory.LaboratoryInfect(virologists.get(virologistID));
                                     break;
                             }
-                        break;
-                    case "tile":
-                        st = st.substring(i+1, st.length());
-                        i = st.indexOf(" ");
-                        tmp = st.substring(0, i);
-                        int tileID=Integer.parseInt(tmp)-1;
-                        st = st.substring(i+1, st.length());
-                        i = st.indexOf(" ");
-                        tmp = st.substring(0, i);
-                        switch (tmp)
-                        {
-                            case "destoryMaterial":
-                                Storage storage =(Storage)tiles.get(tileID);
-                                storage.DestroyMaterial();
-                        }
+                            break;
+                        case "tile":
+                            st = st.substring(i+1, st.length());
+                            i = st.indexOf(" ");
+                            tmp = st.substring(0, i);
+                            int tileID=Integer.parseInt(tmp)-1;
+                            st = st.substring(i+1, st.length());
+                            i = st.indexOf(" ");
+                            tmp = st.substring(0, i);
+                            switch (tmp)
+                            {
+                                case "destoryMaterial":
+                                    Storage storage =(Storage)tiles.get(tileID);
+                                    storage.DestroyMaterial();
+                            }
+                    }
                 }
+
             }
         }
     }
