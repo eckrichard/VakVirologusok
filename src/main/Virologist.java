@@ -89,6 +89,7 @@ public class Virologist {
 	public void UseAgent(Virologist v, Agent a) {
 		if(!v.getUntouchable()){
 			v.HitByAgent(a);
+			bag.Discard(a);
 		}
 	}
 
