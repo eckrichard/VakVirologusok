@@ -34,7 +34,7 @@ public class Laboratory extends Tile {
 		bearDance = bearDanceAgent;
 	}
 
-	public void setCollectable(GeneticCode g) { geneticCode = g;}
+	public void setCollectable(Object o) { geneticCode = (GeneticCode) o;}
 
 	/**
 	 * Megmondja, hogy a mezőn melyik genetikai kód található

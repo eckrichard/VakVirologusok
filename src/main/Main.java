@@ -364,8 +364,12 @@ import java.util.List;
 
                             st = st.substring(i+1, st.length());
                             i = st.indexOf(" ");
-                            tmp = st.substring(0, i);
-
+                            if(i > 0){
+                                tmp = st.substring(0, i);
+                            }
+                            else {
+                                tmp = st.substring(0, st.length());
+                            }
 
                             switch(tmp)
                             {

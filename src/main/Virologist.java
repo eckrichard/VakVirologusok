@@ -66,9 +66,11 @@ public class Virologist {
 	 */
 	public void Move(long n) {
 		Tile t2 = tile.GetNeighbor(n);
-		tile.Remove(this);
-		tile.Accept(this);
-		tile = t2;
+		if(t2 != null){
+			tile.Remove(this);
+			tile.Accept(this);
+			tile = t2;
+		}
 	}
 
 	/**
