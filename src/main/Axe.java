@@ -54,7 +54,7 @@ public class Axe extends ProtectiveGear{
      * metódusát
      * @param v akit megtámad
      */
-    private void Attack(Virologist v){
+    public void Attack(Virologist v){
         v.Die();
         usable = false;
     }
