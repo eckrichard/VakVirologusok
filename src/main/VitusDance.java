@@ -21,6 +21,9 @@ public class VitusDance extends Effects {
 	public void Step() {
 		if(timeDancing > 0) {
 			timeDancing--;
+			if(timeDancing == 0){
+				virologist.removeEffect(this);
+			}
 		}
 	}
 

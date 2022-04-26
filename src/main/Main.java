@@ -635,12 +635,20 @@ import java.util.List;
                             axe.Attack(virologists.get(virologistID));
                             break;
                         case "agent":
-                            for( Agent agent : agents) {
-                                agent.Step();
+                            for(Virologist virologist : virologists) {
+                                int iter = 0;
+                              while (virologist.getBag().getAgents() != null  && iter < virologist.getBag().getAgents().size()) {
+                                  virologist.getBag().getAgents().get(iter).Step();
+                                  iter++;
+                              }
+                              int iter1 = 0;
+                              while(virologist.getEffects() != null && iter < virologist.getEffects().size()) {
+                                 virologist.getEffects().get(iter1).Step();
+                                 iter1++;
+                              }
+
                             }
-                            for( Effects effect : effects) {
-                                effect.Step();
-                            }
+
                             break;
                     }
                 }

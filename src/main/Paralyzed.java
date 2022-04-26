@@ -19,8 +19,11 @@ public class Paralyzed extends Effects{
 	 */
 	@Override
 	public void Step() {
-		if(timeParalyzed > 0){
+		if(timeParalyzed > 0) {
 			timeParalyzed--;
+			if(timeParalyzed == 0){
+				virologist.removeEffect(this);
+			}
 		}
 	}
 

@@ -20,8 +20,11 @@ public class BearDance extends Effects {
      */
     @Override
     public void Step() {
-        if(virologist.getTile() != null) {
+        if(effected > 0) {
             effected--;
+            if(effected == 0){
+                virologist.removeEffect(this);
+            }
         }
     }
 

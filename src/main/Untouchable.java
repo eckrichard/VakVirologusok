@@ -23,6 +23,7 @@ public class Untouchable extends Effects implements Steppable {
 			timeUntouchable--;
 			if(timeUntouchable == 0){
 				virologist.setUntouchbale(false);
+				virologist.removeEffect(this);
 			}
 		}
 	}

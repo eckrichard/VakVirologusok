@@ -80,7 +80,7 @@ public class Virologist {
 	{
 		return untouchbale;
 	}
-
+	public List<Effects> getEffects() {return this.effects;}
 	/**
 	 * A virológus egy ágenst használ
 	 * @param v A virológus akire az ágenst felkenték
@@ -363,5 +363,9 @@ public class Virologist {
 		if(effects.size() == 0)
 			System.out.println("null");
 		System.out.println("");
+	}
+
+	public void removeEffect(Effects effect) {
+		this.effects.remove(effect);
 	}
 }
