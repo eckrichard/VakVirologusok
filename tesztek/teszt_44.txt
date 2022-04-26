@@ -10,6 +10,4 @@ create axe
 set tile 1 p_g 1
 virologist 1 collectProtectiveGear
 attack virologist 2
-die virologist 2
-remove virologist 2
 info virologist 2 all

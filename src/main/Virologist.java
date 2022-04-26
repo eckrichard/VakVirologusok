@@ -88,9 +88,18 @@ public class Virologist {
 	 */
 	public void UseAgent(Virologist v, Agent a) {
 		if(!v.getUntouchable()){
-			v.HitByAgent(a);
-			bag.Discard(a);
+			if(v.isThrowBackAvailable()){
+				for(ProtectiveGear gear : v.getWear()){
+					if(gear instanceof Glove){
+						gear.Use(this, a);
+					}
+				}
+			}
+			else {
+				v.HitByAgent(a);
+			}
 		}
+		bag.Discard(a);
 	}
 
 	/**
@@ -299,6 +308,10 @@ public class Virologist {
 		return agentResistance;
 	}
 
+	public boolean isThrowBackAvailable() {
+		return throwBackAvailable;
+	}
+
 	/**
 	 * Beállítja az érinthetetlenséget
 	 * @param untouchbale igaz vagy hamis, hogy érinthetetlen
@@ -328,41 +341,46 @@ public class Virologist {
 	 */
 	public void Print(){
 		System.out.println("Virologist:");
-		System.out.print("\tgeneticCodes: ");
-		if(geneticCodes.size() != 0){
-			for(int i = 0; i < geneticCodes.size(); i++)
-				System.out.print((geneticCodes.get(i).getId() + 1) + ". geneticCodes ");
-			System.out.println("");
+		if(tile == null){
+			System.out.println("\tnull");
 		}
-		if(geneticCodes.size() == 0)
-			System.out.println("null");
-		System.out.println("\tcodeCount: " + codeCount);
-		System.out.println("\tagentResistance: " + agentResistance);
-		if(throwBackAvailable)
-			System.out.println("\tthrowBackAvailable: true");
-		if(!throwBackAvailable)
-			System.out.println("\tthrowBackAvailable: false");
-		System.out.println("\ttile: " + (tile.getId() + 1) + ". tile");
-		if(bag == null)
-			System.out.println("\tbag: null");
-		if(bag != null)
-			System.out.println("\tbag: " + (bag.getId() + 1) + ". bag");
-		System.out.print("\twear: ");
-		if(wear.size() != 0){
-			for(int i = 0; i < wear.size(); i++)
-				System.out.print((wear.get(i).getId() + 1) + ". ProtectiveGear ");
-			System.out.println("");
-		}
-		if(wear.size() == 0)
-			System.out.println("null");
-		System.out.print("\teffects: ");
-		if(effects.size() != 0){
+		else {
+			System.out.print("\tgeneticCodes: ");
+			if(geneticCodes.size() != 0){
+				for(int i = 0; i < geneticCodes.size(); i++)
+					System.out.print((geneticCodes.get(i).getId() + 1) + ". geneticCodes ");
+				System.out.println("");
+			}
+			if(geneticCodes.size() == 0)
+				System.out.println("null");
+			System.out.println("\tcodeCount: " + codeCount);
+			System.out.println("\tagentResistance: " + agentResistance);
+			if(throwBackAvailable)
+				System.out.println("\tthrowBackAvailable: true");
+			if(!throwBackAvailable)
+				System.out.println("\tthrowBackAvailable: false");
+			System.out.println("\ttile: " + (tile.getId() + 1) + ". tile");
+			if(bag == null)
+				System.out.println("\tbag: null");
+			if(bag != null)
+				System.out.println("\tbag: " + (bag.getId() + 1) + ". bag");
+			System.out.print("\twear: ");
+			if(wear.size() != 0){
+				for(int i = 0; i < wear.size(); i++)
+					System.out.print((wear.get(i).getId() + 1) + ". ProtectiveGear ");
+				System.out.println("");
+			}
+			if(wear.size() == 0)
+				System.out.println("null");
+			System.out.print("\teffects: ");
+			if(effects.size() != 0){
 				System.out.print((effects.get(0).getId() + 1) + ". Effects ");
+				System.out.println("");
+			}
+			if(effects.size() == 0)
+				System.out.println("null");
 			System.out.println("");
 		}
-		if(effects.size() == 0)
-			System.out.println("null");
-		System.out.println("");
 	}
 
 	public void removeEffect(Effects effect) {
