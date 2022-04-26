@@ -87,7 +87,7 @@ public class Virologist {
 	 * @param a A felkent ágens
 	 */
 	public void UseAgent(Virologist v, Agent a) {
-		if(v.getUntouchable()){
+		if(!v.getUntouchable()){
 			v.HitByAgent(a);
 		}
 	}
