@@ -143,26 +143,26 @@ public class Bag {
 		if(c == 'a') {
 			System.out.println("\tsize: " + size);
 			System.out.println("\tvirologist: " + (virologist.getId() + 1) + ". virologist");
-			System.out.print("\tagents:");
+			System.out.print("\tagents: ");
 			if(agents.size() != 0){
 				for(int i = 0; i < agents.size(); i++)
-					System.out.print(agents.get(i).getId() + ". Agent ");
+					System.out.print((agents.get(i).getId() + 1) + ". Agent ");
 				System.out.println("");
 			}
 			if(agents.size() == 0)
 				System.out.println("null");
-			System.out.print("\tprotectiveGears:");
+			System.out.print("\tprotectiveGears: ");
 			if(protectiveGears.size() != 0){
 				for(int i = 0; i < protectiveGears.size(); i++)
-					System.out.print(protectiveGears.get(i).getId() + ". protectiveGear ");
+					System.out.print((protectiveGears.get(i).getId() + 1)+ ". protectiveGear ");
 				System.out.println("");
 			}
 			if(protectiveGears.size() == 0)
 				System.out.println("null");
-			System.out.print("\tmaterials:");
+			System.out.print("\tmaterials: ");
 			if(materials.size() != 0){
 				for(int i = 0; i < materials.size(); i++)
-					System.out.print(materials.get(i).getId() + ". material ");
+					System.out.print((materials.get(i).getId() + 1)+ ". material ");
 				System.out.println("");
 			}
 			if(materials.size() == 0)
@@ -170,10 +170,10 @@ public class Bag {
 			System.out.println("");
 		}
 		if(c == 'b'){
-			System.out.print("\tmaterials:");
+			System.out.print("\tmaterials: ");
 			if(materials.size() != 0){
 				for(int i = 0; i < materials.size(); i++)
-					System.out.print(materials.get(i).getId() + ". material ");
+					System.out.print((materials.get(i).getId() + 1) + ". material ");
 				System.out.println("");
 			}
 			if(materials.size() == 0)
@@ -181,10 +181,10 @@ public class Bag {
 			System.out.println("");
 		}
 		if(c == 'c') {
-			System.out.print("\tagents:");
+			System.out.print("\tagents: ");
 			if (agents.size() != 0) {
 				for (int i = 0; i < agents.size(); i++)
-					System.out.print(agents.get(i).getId() + ". Agent ");
+					System.out.print((agents.get(i).getId() + 1) + ". Agent ");
 				System.out.println("");
 			}
 			if (agents.size() == 0)

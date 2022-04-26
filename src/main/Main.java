@@ -383,8 +383,7 @@ import java.util.List;
                                         //Meghatarozzuk az id-t, a mezőnek
                                         st = st.substring(i+1, st.length());
                                         int id_t = Integer.parseInt(st) - 1;
-
-                                        virologists.get(id_v).Move(id_t);
+                                        virologists.get(id_v).Move(id_t - 1);
                                     }
                                     break;
                                 case "palpatewall":
