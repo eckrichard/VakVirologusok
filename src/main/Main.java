@@ -363,8 +363,7 @@ import java.util.List;
                             int id_v = Integer.parseInt(tmp) - 1;
 
                             st = st.substring(i+1, st.length());
-                            i = st.indexOf(" ");
-                            tmp = st.substring(0, i);
+                            tmp = st.substring(0, st.length());
 
 
                             switch(tmp)
@@ -539,9 +538,8 @@ import java.util.List;
                                             i = st.indexOf(" ");                        //megmondja hol az effectset
                                             tmp = st.substring(0, i);                   //kikapja az effectet
                                             st = st.substring(i+1, st.length());        //leszedjuk a effectet
-                                            i = st.indexOf(" ");                        //megmondja hol az effectet
-                                            tmp = st.substring(0, i);                   //kikapja a számát
-                                            int effectID=Integer.parseInt(tmp);
+                                            tmp = st.substring(0, st.length());                   //kikapja a számát
+                                            int effectID=Integer.parseInt(tmp)-1;
                                             virologists.get(idVirologistA).addEffect(effects.get(effectID));
                                             break;
                                         case "wear":
@@ -549,10 +547,9 @@ import java.util.List;
                                             i = st.indexOf(" ");                        //megmondja hol az wear
                                             tmp = st.substring(0, i);                   //kikapja az ProtectiveGeart
                                             st = st.substring(i+1, st.length());        //leszedjuk a ProtectiveGeart
-                                            i = st.indexOf(" ");                        //megmondja hol a ProtectiveGear
-                                            tmp = st.substring(0, i);                   //kikapja a számot
+                                            tmp = st.substring(0, st.length());                   //kikapja a számot
                                             int protectiveGearID=Integer.parseInt(tmp)-1;
-                                            virologists.get(idVirologistA).giveGear(protectiveGears.get(protectiveGearID));
+                                            virologists.get(idVirologistA).Wear(protectiveGears.get(protectiveGearID));
                                             break;
                                     }
                                     break;
@@ -571,7 +568,7 @@ import java.util.List;
                                             i = st.indexOf(" ");                        //megmondja hol a materials
                                             tmp = st.substring(0, i);                   //kikapja a szót
                                             st = st.substring(i+1, st.length());        //leszedjuk a materialt
-                                            tmp = st.substring(0, st.length());                   //kikapja a számot
+                                            tmp = st.substring(0, st.length());
                                             int materialID=Integer.parseInt(tmp)-1;
                                             bags.get(bagID).Add(materials.get(materialID));
                                             break;
@@ -580,8 +577,7 @@ import java.util.List;
                                             i = st.indexOf(" ");                        //megmondja hol a agents
                                             tmp = st.substring(0, i);                   //kikapja a szót
                                             st = st.substring(i+1, st.length());        //leszedjuk az agentet
-                                            i = st.indexOf(" ");                        //megmondja hol a agent
-                                            tmp = st.substring(0, i);                   //kikapja a számot
+                                            tmp = st.substring(0, st.length());                   //kikapja a számot
                                             int agentID=Integer.parseInt(tmp)-1;
                                             bags.get(bagID).Add(agents.get(agentID));
                                             break;
