@@ -563,7 +563,7 @@ import java.util.List;
                                             tmp = st.substring(0, i);                   //kikapja az ProtectiveGeart
                                             st = st.substring(i+1, st.length());        //leszedjuk a ProtectiveGeart
                                             int protectiveGearID=Integer.parseInt(st)-1;
-                                            virologists.get(idVirologistA).giveGear(protectiveGears.get(protectiveGearID));
+                                            virologists.get(idVirologistA).Wear(protectiveGears.get(protectiveGearID));
                                             break;
                                     }
                                     break;
