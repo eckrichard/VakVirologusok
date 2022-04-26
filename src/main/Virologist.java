@@ -88,8 +88,17 @@ public class Virologist {
 	 */
 	public void UseAgent(Virologist v, Agent a) {
 		if(!v.getUntouchable()){
-			v.HitByAgent(a);
-			bag.Discard(a);
+			if(v.isThrowBackAvailable()){
+				for(ProtectiveGear gear : v.getWear()){
+					if(gear instanceof Glove){
+						gear.Use(this, a);
+					}
+				}
+			}
+			else {
+				v.HitByAgent(a);
+				bag.Discard(a);
+			}
 		}
 	}
 
@@ -297,6 +306,10 @@ public class Virologist {
 	 */
 	public double getAgentResistance() {
 		return agentResistance;
+	}
+
+	public boolean isThrowBackAvailable() {
+		return throwBackAvailable;
 	}
 
 	/**

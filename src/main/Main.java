@@ -402,7 +402,7 @@ import java.util.List;
                                     //Meghatarozzuk az id-t, kinek allitunk be
                                     st = st.substring(i+1, st.length());
 
-                                    if(st.length() > 0){
+                                    if(st.length() > 1){
                                         i = st.indexOf(" ");
                                         tmp = st.substring(0, i);
                                         int id_v2 = Integer.parseInt(tmp) - 1;
