@@ -451,7 +451,14 @@ import java.util.List;
                                     switch (tmp)
                                     {
                                         case "all":
-                                            tiles.get(tileID).Print('a');
+                                            if (tiles.get(tileID) instanceof Laboratory)
+                                            {
+                                                Laboratory laboratory=(Laboratory) tiles.get(tileID);
+                                                laboratory.Print();
+                                            }
+                                            else {
+                                                tiles.get(tileID).Print('a');
+                                            }
                                             break;
                                         case "virologists":
                                             tiles.get(tileID).Print('t');
@@ -530,8 +537,19 @@ import java.util.List;
                                 case "destoryMaterial":
                                     Storage storage =(Storage)tiles.get(tileID);
                                     storage.DestroyMaterial();
+                                    break;
+                                case "LaboratoryInfect":
+                                    st = st.substring(i+1, st.length());
+                                    i = st.indexOf(" ");
+                                    tmp = st.substring(0, i);
+                                    st = st.substring(i+1, st.length());
+                                    tmp = st.substring(0, st.length());
+                                    int virologistID=Integer.parseInt(tmp)-1;
+                                    Laboratory laboratory=(Laboratory) tiles.get(tileID);
+                                    laboratory.LaboratoryInfect(virologists.get(virologistID));
+                                    break;
                             }
-
+                            break;
                         case "add":
                             st = st.substring(i+1, st.length());        //leszedjuk az elso szot
                             i = st.indexOf(" ");                        //megmondja hol a masodik szo vege
@@ -597,8 +615,18 @@ import java.util.List;
                                             bags.get(bagID).Add(agents.get(agentID));
                                             break;
                                     }
-                                    break;
                             }
+                            break;
+                        case "attack":
+                            st = st.substring(i+1, st.length());        //leszedjuk az agentst
+                            i = st.indexOf(" ");                        //megmondja hol a agents
+                            tmp = st.substring(0, i);                   //kikapja a szót
+                            st = st.substring(i+1, st.length());        //leszedjuk az agentet
+                            tmp = st.substring(0, st.length());                   //kikapja a számot
+                            int virologistID=Integer.parseInt(tmp)-1;
+                            Axe axe=new Axe("axe");
+                            axe.Attack(virologists.get(virologistID));
+                            break;
                     }
                 }
 

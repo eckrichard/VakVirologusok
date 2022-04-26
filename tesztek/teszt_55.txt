@@ -24,9 +24,6 @@ tile 3 LaboratoryInfect virologist 2
 add virologist 2 effects effect 1
 virologist 1 move tile 3
 attack virologist 2
-die virologist 2
-remove virologist 2
-info virologist 2 all
 info bag 1 all
 info tile 2 all
 info tile 3 all
