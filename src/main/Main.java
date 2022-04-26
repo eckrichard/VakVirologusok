@@ -479,7 +479,7 @@ import java.util.List;
                                     int virologistID=Integer.parseInt(tmp)-1;
                                     virologists.get(virologistID).Print();
                                     break;
-                                case "protectivegear":
+                                case "protectiveGear":
                                     st = st.substring(i+1, st.length());        //leszedjuk a protectivegeart
                                     i = st.indexOf(" ");                        //megmondja hol a protecrivegear
                                     tmp = st.substring(0, i);                   //kikapja az idt

@@ -25,7 +25,10 @@ public class VitusDanceAgent extends Agent {
 	 * @param n Az idő mértéke
 	 */
 	public void setStatus(long n, Virologist v) {
-
+		VitusDance vitusDance = new VitusDance();
+		vitusDance.setVirologist(v);
+		vitusDance.setTimeEffected(n);
+		v.addEffect(vitusDance);
 	}
 
 	/**
