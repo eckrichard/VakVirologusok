@@ -255,6 +255,8 @@ public class Virologist {
 	 */
 	public void addEffect(Effects e){
 		effects.add(e);
+		e.setVirologist(this);
+		e.setTimeEffected(e.getTime());
 	}
 
 	/**

@@ -26,6 +26,7 @@ public class UntouchableAgent extends Agent {
 	 */
 	public void setStatus(long n, Virologist v) {
 		Untouchable untouchable = new Untouchable();
+		untouchable.setVirologist(v);
 		untouchable.setTimeEffected(n);
 		v.addEffect(untouchable);
 	}
