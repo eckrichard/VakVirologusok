@@ -111,5 +111,6 @@ public class Laboratory extends Tile {
 			System.out.println((bearDance.getId() + 1) + ". agent");
 			System.out.println("");
 		}
+		System.out.println("");
 	}
 }
