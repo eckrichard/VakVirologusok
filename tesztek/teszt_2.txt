@@ -1,6 +1,7 @@
 create virologist
 create bag
 create geneticCode
+create paralyzeAgent
 create valin
 create valin
 create CDP
@@ -9,6 +10,12 @@ create CDP
 set virologist 1 bag bag 1
 set virologist 1 geneticCodes 1
 set virologist 1 codeCount 1
+set geneticCode 1 agent 1
+set agent 1 materials material 1
+set agent 1 materials material 2
+set agent 1 materials material 3
+set agent 1 materials material 4
+set agent 1 materials material 5
 add bag 1 materials material 1
 add bag 1 materials material 2
 add bag 1 materials material 3
