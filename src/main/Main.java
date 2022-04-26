@@ -446,7 +446,17 @@ import java.util.List;
                                     i = st.indexOf(" ");                        //megmondja hol a tile
                                     tmp = st.substring(0, i);                   //kikapja az idt
                                     int tileID=Integer.parseInt(tmp)-1;
-                                    tiles.get(tileID).Print();
+                                    st = st.substring(i+1, st.length());        //leszedjuk a tilet
+                                    tmp = st.substring(0, st.length());                   //kikapja az idt
+                                    switch (tmp)
+                                    {
+                                        case "all":
+                                            tiles.get(tileID).Print('a');
+                                            break;
+                                        case "virologists":
+                                            tiles.get(tileID).Print('t');
+                                            break;
+                                    }
                                     break;
                                 case "virologist":
                                     st = st.substring(i+1, st.length());        //leszedjuk a virologistet
