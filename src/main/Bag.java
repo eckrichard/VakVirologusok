@@ -101,6 +101,7 @@ public class Bag {
 	 */
 	public void Add(Agent a) {
 		agents.add(a);
+		a.setBag(this);
 	}
 
 	/**

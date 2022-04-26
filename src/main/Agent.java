@@ -44,7 +44,7 @@ public abstract class Agent extends Item implements Steppable {
 		if(usable > 0){
 			usable--;
 			if (usable == 0) {
-				getBag().getAgents().remove(this);
+				bag.getAgents().remove(this);
 			}
 		}
 	}
