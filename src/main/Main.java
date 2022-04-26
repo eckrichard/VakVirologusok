@@ -543,9 +543,8 @@ import java.util.List;
                                             i = st.indexOf(" ");                        //megmondja hol az effectset
                                             tmp = st.substring(0, i);                   //kikapja az effectet
                                             st = st.substring(i+1, st.length());        //leszedjuk a effectet
-                                            i = st.indexOf(" ");                        //megmondja hol az effectet
-                                            tmp = st.substring(0, i);                   //kikapja a számát
-                                            int effectID=Integer.parseInt(tmp);
+                                            tmp = st.substring(0, st.length());                   //kikapja a számát
+                                            int effectID=Integer.parseInt(tmp)-1;
                                             virologists.get(idVirologistA).addEffect(effects.get(effectID));
                                             break;
                                         case "wear":

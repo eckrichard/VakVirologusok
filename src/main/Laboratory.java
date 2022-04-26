@@ -61,6 +61,7 @@ public class Laboratory extends Tile {
 		Random rand = new Random();
 		double random = (double)rand.nextInt(1000) / 10.0;
 		if(v.getUntouchable() == false && random > v.getAgentResistance()){
+			BearDanceAgent bearDance=new BearDanceAgent(null,"bear dance");
 			v.HitByAgent(bearDance);
 		}
 	}
