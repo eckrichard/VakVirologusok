@@ -2,6 +2,7 @@ package main;
 
 import gui.GameMenu;
 import gui.GeneticCodesMenu;
+import gui.ThrowbackMenu;
 
 import java.awt.*;
 import java.io.*;
@@ -14,6 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         GameMenu gameMenu = new GameMenu();
+        ThrowbackMenu throwbackMenu = new ThrowbackMenu();
     }
 }
 
