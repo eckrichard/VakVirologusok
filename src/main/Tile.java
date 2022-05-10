@@ -1,5 +1,7 @@
 package main;
 
+import gui.TileView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,8 @@ public class Tile {
 	protected long capacity;
 	protected ArrayList<Tile> adjacentTiles;
 	protected ArrayList<Virologist> virologists;
+
+	protected TileView view;
 
 	/**
 	 * Egy mező konstruktora

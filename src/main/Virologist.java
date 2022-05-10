@@ -1,5 +1,7 @@
 package main;
 
+import gui.VirologistView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -18,6 +20,8 @@ public class Virologist {
 	private ArrayList<ProtectiveGear> wear;
 	private Bag bag;
 	private Tile tile;
+
+	private VirologistView view;
 
 	/**
 	 * A virológus egyik konstruktora
@@ -194,7 +198,7 @@ public class Virologist {
 	}
 
 	/**
-	 * Ágenst add a táskához
+	 * Agenst add a taskahoz
 	 * @param a Az az ágens, amit hozzáadunk
 	 */
 	public void addAgent(Agent a) {

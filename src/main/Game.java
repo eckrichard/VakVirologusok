@@ -1,9 +1,12 @@
 package main;
 
+import gui.GamePanel;
+
 /**
  * A játék indítása és befejezése a feladata.
  */
 public class Game {
+	private GamePanel panel;
 
 	private Map map;
 	private boolean gaímerunning;
