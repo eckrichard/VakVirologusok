@@ -1,5 +1,8 @@
 package main;
 
+import gui.GameMenu;
+import gui.GeneticCodesMenu;
+
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -7,13 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
-//public class Main {
-//
-//    public static void main(String[] args) {
-//
-//    }
-//}
+public class Main {
 
+    public static void main(String[] args) {
+        GameMenu gameMenu = new GameMenu();
+    }
+}
+
+
+/*
     // Main class
     public class Main {
 
@@ -655,4 +660,4 @@ import java.util.List;
 
             }
         }
-    }
+    }*/
