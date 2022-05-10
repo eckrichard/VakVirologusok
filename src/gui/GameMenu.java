@@ -71,7 +71,7 @@ public class GameMenu {
 
         bEndTurn = new JButton("End Turn");
         bEndTurn.addActionListener(e -> {
-            // MAjd a következő virológusra vált
+            // Majd a következő virológusra vált
         });
 
         lVirologistStats = new JLabel("Virologist stats:");
@@ -106,7 +106,13 @@ public class GameMenu {
         pVirologistStats.add(virologistout, BorderLayout.CENTER);
         rightSide.add(pVirologistStats);
 
-        game.add(rightSide, BorderLayout.LINE_END);
+        JPanel rightPanel = new JPanel(new BorderLayout());
+        rightPanel.add(rightSide, BorderLayout.CENTER);
+        rightPanel.add(new JPanel(), BorderLayout.PAGE_END);
+        rightPanel.add(new JPanel(), BorderLayout.PAGE_START);
+        rightPanel.add(new JPanel(), BorderLayout.LINE_START);
+        rightPanel.add(new JPanel(), BorderLayout.LINE_END);
+        game.add(rightPanel, BorderLayout.LINE_END);
 
         game.setVisible(true);
         game.setDefaultCloseOperation(EXIT_ON_CLOSE);
