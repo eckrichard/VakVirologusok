@@ -61,7 +61,9 @@ public class Map {
 		}
 		for(int i = 0; i < virologistNumber; i++){
 			Bag bag = new Bag();
-			virologists.add(new Virologist(tiles.get(0), bag));
+			Virologist virologist = new Virologist(tiles.get(0), bag);
+			virologists.add(virologist);
+			virologist.setMap(this);
 		}
 		//virologists.get(1).getBag().setSize(20);
 		//virologists.get(0).setTile(tiles.get(15));

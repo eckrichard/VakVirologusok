@@ -46,7 +46,8 @@ public class BonusBag extends ProtectiveGear {
 	 * hanem viselni is fogja a virológus és meghívja a setAttribute-ot
 	 */
 	public void Wear(){
-		setAttribute(virologist);
+		if(!virologist.getWear().contains(this))
+			setAttribute(virologist);
 	}
 
 	/**

@@ -49,7 +49,8 @@ public class Glove extends ProtectiveGear {
 	 */
 	@Override
 	public void Wear() {
-		setAttribute(virologist);
+		if(!virologist.getWear().contains(this))
+			setAttribute(virologist);
 	}
 
 	/**

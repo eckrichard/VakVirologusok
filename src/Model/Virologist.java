@@ -20,6 +20,7 @@ public class Virologist {
 	private ArrayList<ProtectiveGear> wear;
 	private Bag bag;
 	private Tile tile;
+	private Map map;
 
 	private VirologistView view;
 
@@ -55,6 +56,10 @@ public class Virologist {
 
 	public void setBag(Bag b) { this.bag = b;	}
 	public void setTile(Tile t) { this.tile = t;	}
+
+	public void setMap(Map map) {
+		this.map = map;
+	}
 
 	public void setGeneticCodes(ArrayList<GeneticCode> geneticCodes) {
 		this.geneticCodes = geneticCodes;
@@ -238,6 +243,7 @@ public class Virologist {
 	public void Die() {
 		tile.Remove(this);
 		tile = null;
+		map.getVirologists().remove(this);
 	}
 
 	/**
