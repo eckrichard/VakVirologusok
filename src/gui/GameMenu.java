@@ -37,13 +37,13 @@ public class GameMenu {
         fGame.setSize(new Dimension(1280,720));
 
         final JMenuBar jMenuBar = new JMenuBar();
-        JMenu gamemenu = new JMenu("Game");
-        JMenuItem newgame = new JMenuItem("New Game", KeyEvent.VK_P);
-        newgame.addActionListener(e -> {
+        JMenu gameMenu = new JMenu("Game");
+        JMenuItem newGame = new JMenuItem("New Game", KeyEvent.VK_P);
+        newGame.addActionListener(e -> {
             MainMenu mainMenu = new MainMenu(game, this);
         });
-        gamemenu.add(newgame);
-        jMenuBar.add(gamemenu);
+        gameMenu.add(newGame);
+        jMenuBar.add(gameMenu);
         fGame.setJMenuBar(jMenuBar);
 
         JPanel table = new JPanel();
