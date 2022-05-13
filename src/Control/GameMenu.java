@@ -32,8 +32,8 @@ public class GameMenu implements ActionListener {
 
     public GameMenu(Game game){
         this.game = game;
-        init();
-        //initJustMap();
+        //init();
+        initJustMap();
     }
 
     public JFrame getFrame() {

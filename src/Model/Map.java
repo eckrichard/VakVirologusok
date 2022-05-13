@@ -63,8 +63,8 @@ public class Map {
 			Bag bag = new Bag();
 			virologists.add(new Virologist(tiles.get(0), bag));
 		}
-		virologists.get(1).getBag().setSize(20);
-		virologists.get(0).setTile(tiles.get(15));
+		//virologists.get(1).getBag().setSize(20);
+		//virologists.get(0).setTile(tiles.get(15));
 	}
 
 	public void setMapNumber(int mapNumber) {
