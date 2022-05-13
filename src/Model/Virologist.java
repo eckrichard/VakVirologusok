@@ -51,6 +51,7 @@ public class Virologist {
 		geneticCodes = new ArrayList<GeneticCode>();
 		effects = new ArrayList<Effects>();
 		this.bag = bag;
+		bag.setVirologist(this);
 		this.tile = tile;
 	}
 
@@ -163,9 +164,9 @@ public class Virologist {
 	 */
 	public void Wear(ProtectiveGear g) {
 		if(!wear.contains(g)){
-			wear.add(g);
 			g.setVirologist(this);
 			g.Wear();
+			wear.add(g);
 		}
 	}
 
@@ -301,7 +302,7 @@ public class Virologist {
 	 * @param agentResistance az új ellenállás
 	 */
 	public void setAgentResistance(double agentResistance) {
-		this.agentResistance = agentResistance;
+		this.agentResistance += agentResistance;
 	}
 
 	/**

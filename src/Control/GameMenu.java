@@ -197,7 +197,7 @@ public class GameMenu implements ActionListener {
         }
         if(e.getActionCommand().equals("wear"))
         {
-            WearMenu Wearmenu = new WearMenu();
+            WearMenu Wearmenu = new WearMenu(game.getMap().getVirologists().get(game.getActive()), this);
         }
         if(e.getActionCommand().equals("endturn"))
         {

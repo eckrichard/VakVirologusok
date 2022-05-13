@@ -136,7 +136,7 @@ public class BagMenu {
                         Object[] options = {"Wear!", "Discard!"};
                         int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the protective gear?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
                         if (result == 0){
-                            virologistBag.getProtectiveGears().get(row).Wear();
+                            virologist.Wear(virologistBag.getProtectiveGears().get(row));
                             gameMenu.updateStats();
                         }
                         else if (result == 1){

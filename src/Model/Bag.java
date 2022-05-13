@@ -89,6 +89,8 @@ public class Bag {
 	 */
 	public void Discard(ProtectiveGear g) {
 		protectiveGears.remove(g);
+		if(virologist.getWear().contains(g))
+			g.takeAway(virologist);
 	}
 	/**
 	 * Kiveszi a listából az anyagot. Ezt nem helyezi sehova, a tárgy megsemmisül.
