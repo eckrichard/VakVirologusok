@@ -27,6 +27,13 @@ public class Game {
 		gamerunning = true;
 	}
 
+	public void setActive() {
+		if(active != map.getVirologists().size() - 1)
+			active++;
+		else
+			active = 0;
+	}
+
 	/**
 	 * Leállítja a játékot
 	 */

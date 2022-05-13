@@ -62,6 +62,7 @@ public class Map {
 			Bag bag = new Bag();
 			virologists.add(new Virologist(tiles.get(0), bag));
 		}
+		virologists.get(1).getBag().setSize(20);
 	}
 
 	public void setMapNumber(int mapNumber) {
