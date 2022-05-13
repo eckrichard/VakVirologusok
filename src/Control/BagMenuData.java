@@ -30,6 +30,12 @@ public class BagMenuData extends AbstractTableModel {
         return item.getName();
     }
 
+    public String getColumnName(int columnIndex) {
+        switch(columnIndex) {
+            default: return "Name";
+        }
+    }
+
     public Class<?> getColumnClass(int columnIndex) {
         return String.class;
     }

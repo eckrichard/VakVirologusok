@@ -21,14 +21,16 @@ public class BagMenu {
     private JTable agentTable;
     private JTable protectiveGearTable;
     private JTable materialTable;
+    private GameMenu gameMenu;
 
     private BagMenuData agents;
     private BagMenuData protectiveGears;
     private BagMenuData materials;
 
-    public BagMenu(Virologist v){
+    public BagMenu(Virologist v, GameMenu gameMenu){
         virologist = v;
         virologistBag = virologist.getBag();
+        this.gameMenu = gameMenu;
         init();
     }
 
@@ -72,15 +74,13 @@ public class BagMenu {
         agentTable.setFillsViewportHeight(true);
         protectiveGearTable.setFillsViewportHeight(true);
         materialTable.setFillsViewportHeight(true);
+        agentTable.setTableHeader(null);
+        protectiveGearTable.setTableHeader(null);
+        materialTable.setTableHeader(null);
 
-        //TODO scrollpane
         pAgent.add(new JScrollPane(agentTable), BorderLayout.CENTER);
         pProtectiveGears.add(new JScrollPane(protectiveGearTable), BorderLayout.CENTER);
         pMaterials.add(new JScrollPane(materialTable), BorderLayout.CENTER);
-
-        pAgent.add(agentTable);
-        pProtectiveGears.add(protectiveGearTable);
-        pMaterials.add(materialTable);
 
         agentTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -94,14 +94,17 @@ public class BagMenu {
                     if (result == 0){
                         virologist.UseAgent(virologist, virologistBag.getAgents().get(row));
                         agents.removeItem(row);
+                        gameMenu.updateStats();
                     }
                     else if (result == 1){
                         virologist.UseAgent(virologist.getTile().GetOtherVirologist(virologist), virologistBag.getAgents().get(row));
                         agents.removeItem(row);
+                        gameMenu.updateStats();
                     }
                     else if (result == 2){
                         agents.removeItem(row);
                         virologistBag.Discard(virologistBag.getAgents().get(row));
+                        gameMenu.updateStats();
                     }
                 }
             }
@@ -121,10 +124,12 @@ public class BagMenu {
                         int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the protective gear?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
                         if (result == 0){
                             virologistBag.getProtectiveGears().get(row).Use(virologist.getTile().GetOtherVirologist(virologist), null);
+                            gameMenu.updateStats();
                         }
                         else if (result == 1){
                             protectiveGears.removeItem(row);
                             virologistBag.Discard(virologistBag.getProtectiveGears().get(row));
+                            gameMenu.updateStats();
                         }
                     }
                     else{
@@ -132,10 +137,12 @@ public class BagMenu {
                         int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the protective gear?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
                         if (result == 0){
                             virologistBag.getProtectiveGears().get(row).Wear();
+                            gameMenu.updateStats();
                         }
                         else if (result == 1){
                             protectiveGears.removeItem(row);
                             virologistBag.Discard(virologistBag.getProtectiveGears().get(row));
+                            gameMenu.updateStats();
                         }
                     }
                 }
@@ -154,6 +161,7 @@ public class BagMenu {
                     if (result == 0){
                         materials.removeItem(row);
                         virologistBag.Discard(virologistBag.getMaterials().get(row));
+                        gameMenu.updateStats();
                     }
                 }
             }

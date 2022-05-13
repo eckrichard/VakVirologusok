@@ -55,7 +55,9 @@ public class Virologist {
 	}
 
 	public void setBag(Bag b) { this.bag = b;	}
-	public void setTile(Tile t) { this.tile = t;	}
+	public void setTile(Tile t) {
+		this.tile = t;
+	}
 
 	public void setMap(Map map) {
 		this.map = map;

@@ -66,9 +66,7 @@ public class GameMenu implements ActionListener {
         lGeneticCodes = new JLabel("Open Genteic Codes");
         bGeneticCodes = new JButton("Genteic Codes");
         bGeneticCodes.setActionCommand("codes");
-        bGeneticCodes.addActionListener(e -> {
-            GeneticCodesMenu GCmenu = new GeneticCodesMenu(game.getMap().getVirologists().get(game.getActive()));
-        });
+        bGeneticCodes.addActionListener(this);
 
         lCollect = new JLabel("Collect collectable");
         bCollect = new JButton("Collect");
@@ -176,7 +174,7 @@ public class GameMenu implements ActionListener {
         }
         if(e.getActionCommand().equals("bag"))
         {
-            BagMenu Bagmenu = new BagMenu(game.getMap().getVirologists().get(game.getActive()));
+            BagMenu Bagmenu = new BagMenu(game.getMap().getVirologists().get(game.getActive()), this);
         }
         if(e.getActionCommand().equals("codes"))
         {
