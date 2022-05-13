@@ -19,31 +19,36 @@ public class GameMenu {
     private JLabel lWear;
     private JLabel lVirologistStats;
     private JPanel pVirologistStats;
+    private JFrame fGame;
     private MenuController menuController;
-    private Game gameClass;
+    private Game game;
 
     public GameMenu(Game game){
-        gameClass = game;
+        this.game = game;
         init();
     }
 
+    public JFrame getFrame() {
+        return fGame;
+    }
+
     public void init(){
-        JFrame game = new JFrame("VakVirologusok");
-        game.setSize(new Dimension(1280,720));
+        fGame = new JFrame("VakVirologusok");
+        fGame.setSize(new Dimension(1280,720));
 
         final JMenuBar jMenuBar = new JMenuBar();
         JMenu gamemenu = new JMenu("Game");
         JMenuItem newgame = new JMenuItem("New Game", KeyEvent.VK_P);
         newgame.addActionListener(e -> {
-            MainMenu mainMenu = new MainMenu();
+            MainMenu mainMenu = new MainMenu(game, this);
         });
         gamemenu.add(newgame);
         jMenuBar.add(gamemenu);
-        game.setJMenuBar(jMenuBar);
+        fGame.setJMenuBar(jMenuBar);
 
         JPanel table = new JPanel();
         table.setBackground(Color.BLACK);
-        game.add(table, BorderLayout.CENTER);
+        fGame.add(table, BorderLayout.CENTER);
         JPanel rightSide = new JPanel(new GridLayout(0,1));
         JPanel buttons = new JPanel(new GridLayout(0,1));
         lBag = new JLabel("Open Bag");
@@ -55,7 +60,7 @@ public class GameMenu {
         lGeneticCodes = new JLabel("Open Genteic Codes");
         bGeneticCodes = new JButton("Genteic Codes");
         bGeneticCodes.addActionListener(e -> {
-            GeneticCodesMenu GCmenu = new GeneticCodesMenu();
+            GeneticCodesMenu GCmenu = new GeneticCodesMenu(game.getMap().getVirologists().get(game.getActive()));
         });
 
         lCollect = new JLabel("Collect collectable");
@@ -79,18 +84,18 @@ public class GameMenu {
         pVirologistStats = new JPanel(new BorderLayout());
         JPanel virologistout = new JPanel(new GridLayout(0,2));
         virologistout.add(new JLabel("Code count: "));
-        virologistout.add(new JLabel(String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).getCodeCount())));
+        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getCodeCount())));
         virologistout.add(new JLabel("Agent resistance: "));
-        virologistout.add(new JLabel(String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).getAgentResistance())));
+        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getAgentResistance())));
         virologistout.add(new JLabel("Throwback available: "));
-        virologistout.add(new JLabel(String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).isThrowBackAvailable())));
+        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).isThrowBackAvailable())));
         virologistout.add(new JLabel("Effects count:"));
-        virologistout.add(new JLabel(String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).getEffects().size())));
+        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getEffects().size())));
         virologistout.add(new JLabel("Bag size: "));
-        virologistout.add(new JLabel(String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).getBag().getSize()) +
-                " / " + String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).getBag().getUsedSize())));
+        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getBag().getSize()) +
+                " / " + String.valueOf(game.getMap().getVirologists().get(game.getActive()).getBag().getUsedSize())));
         virologistout.add(new JLabel("Untouchable: "));
-        virologistout.add(new JLabel(String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).getUntouchable())));
+        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getUntouchable())));
 
         buttons.add(lBag);
         buttons.add(bBag);
@@ -114,9 +119,9 @@ public class GameMenu {
         rightPanel.add(new JPanel(), BorderLayout.PAGE_START);
         rightPanel.add(new JPanel(), BorderLayout.LINE_START);
         rightPanel.add(new JPanel(), BorderLayout.LINE_END);
-        game.add(rightPanel, BorderLayout.LINE_END);
+        fGame.add(rightPanel, BorderLayout.LINE_END);
 
-        game.setVisible(true);
-        game.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        fGame.setVisible(true);
+        fGame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }

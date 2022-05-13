@@ -9,7 +9,7 @@ public class Game {
 	private GamePanel panel;
 
 	private Map map;
-	private boolean gaímerunning;
+	private boolean gamerunning;
 	private int active = 0;
 
 	/**
@@ -24,14 +24,14 @@ public class Game {
 	 */
 	public void startGame() {
 		map.Build();
-		gaímerunning = true;
+		gamerunning = true;
 	}
 
 	/**
 	 * Leállítja a játékot
 	 */
 	public void endGame() {
-		gaímerunning = false;
+		gamerunning = false;
 	}
 
 	public int getActive(){

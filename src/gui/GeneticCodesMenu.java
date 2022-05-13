@@ -1,17 +1,19 @@
 package gui;
 
+import main.Virologist;
+
 import javax.swing.*;
 import java.awt.*;
-
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class GeneticCodesMenu {
     private JOptionPane jPopup;
     private JLabel lCodes;
     private JPanel pCodes;
     private MenuController menuController;
+    private Virologist virologist;
 
-    public GeneticCodesMenu() {
+    public GeneticCodesMenu(Virologist virologist) {
+        this.virologist = virologist;
         init();
     }
 
