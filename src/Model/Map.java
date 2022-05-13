@@ -38,8 +38,7 @@ public class Map {
 				//tiles.add(new Storage());
 			}
 			for(int i = 0; i < 2; i++){
-				Cape cape = new Cape("cape");
-				tiles.add(new Shelter(cape));
+				//tiles.add(new Shelter());
 			}
 		}
 		/**

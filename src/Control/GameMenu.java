@@ -32,8 +32,8 @@ public class GameMenu implements ActionListener {
 
     public GameMenu(Game game){
         this.game = game;
-        //init();
-        initJustMap();
+        init();
+        //initJustMap();
     }
 
     public JFrame getFrame() {
@@ -172,7 +172,7 @@ public class GameMenu implements ActionListener {
         }
         if(e.getActionCommand().equals("bag"))
         {
-            BagMenu Bagmenu = new BagMenu(game.getMap().getVirologists().get(game.getActive()).getBag());
+            BagMenu Bagmenu = new BagMenu(game.getMap().getVirologists().get(game.getActive()));
         }
         if(e.getActionCommand().equals("codes"))
         {

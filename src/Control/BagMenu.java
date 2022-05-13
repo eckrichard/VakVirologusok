@@ -1,9 +1,11 @@
 package Control;
 
-import Model.Bag;
+import Model.*;
+
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class BagMenu {
     private JOptionPane jPopup;
@@ -14,10 +16,19 @@ public class BagMenu {
     private JPanel pProtectiveGears;
     private JPanel pMaterials;
     private MenuController menuController;
+    private Virologist virologist;
     private Bag virologistBag;
+    private JTable agentTable;
+    private JTable protectiveGearTable;
+    private JTable materialTable;
 
-    public BagMenu(Bag b){
-        virologistBag = b;
+    private BagMenuData agents;
+    private BagMenuData protectiveGears;
+    private BagMenuData materials;
+
+    public BagMenu(Virologist v){
+        virologist = v;
+        virologistBag = virologist.getBag();
         init();
     }
 
@@ -36,48 +47,117 @@ public class BagMenu {
         JPanel gear = new JPanel(new BorderLayout());
         pMaterials = new JPanel();
         JPanel material = new JPanel(new BorderLayout());
-        // Csak, hogy látszódjon
-        pAgent.setBackground(Color.RED);
-        pProtectiveGears.setBackground(Color.WHITE);
-        pMaterials.setBackground(Color.GREEN);
 
         lAgent = new JLabel("Agents");
         lProtectiveGears = new JLabel("Protecive gears");
         lMaterials = new JLabel("Materials");
 
-        //csak teszteléshez
-/*
-        ParalyzeAgent a1 = new ParalyzeAgent(null, "agent1");
-        ForgetAgent a2 = new ForgetAgent(null, "agent2");
-        UntouchableAgent a3 = new UntouchableAgent(null, "agent3");
+        /**
+         * a táblák adatai
+         */
+        agents = new BagMenuData(new ArrayList<Item>(virologistBag.getAgents()));
+        protectiveGears = new BagMenuData(new ArrayList<Item>(virologistBag.getProtectiveGears()));
+        materials = new BagMenuData(new ArrayList<Item>(virologistBag.getMaterials()));
 
-        virologistBag.Add(a1);
-        virologistBag.Add(a2);
-        virologistBag.Add(a3);
+        pAgent.setLayout(new BorderLayout());
+        pProtectiveGears.setLayout(new BorderLayout());
+        pMaterials.setLayout(new BorderLayout());
 
-        Glove g = new Glove("glove");
-        Cape c = new Cape("cape");
-        virologistBag.Add(g);
-        virologistBag.Add(c);
+        /**
+         * a táblázatok beállítása
+         */
+        agentTable = new JTable(agents);
+        protectiveGearTable = new JTable(protectiveGears);
+        materialTable = new JTable(materials);
+        agentTable.setFillsViewportHeight(true);
+        protectiveGearTable.setFillsViewportHeight(true);
+        materialTable.setFillsViewportHeight(true);
 
-        for(int i = 0; i < 20; i++){
-            virologistBag.Add(new Material("material"));
-        }
-        */
-        pAgent.setLayout(new BoxLayout(pAgent, BoxLayout.Y_AXIS));
-        pProtectiveGears.setLayout(new BoxLayout(pProtectiveGears, BoxLayout.Y_AXIS));
-        pMaterials.setLayout(new FlowLayout());
-        if(virologistBag != null){
-            for(int i = 0; i < virologistBag.getAgents().size(); i++){
-                pAgent.add(new JLabel(virologistBag.getAgents().get(i).getName()));
+        //TODO scrollpane
+        pAgent.add(new JScrollPane(agentTable), BorderLayout.CENTER);
+        pProtectiveGears.add(new JScrollPane(protectiveGearTable), BorderLayout.CENTER);
+        pMaterials.add(new JScrollPane(materialTable), BorderLayout.CENTER);
+
+        pAgent.add(agentTable);
+        pProtectiveGears.add(protectiveGearTable);
+        pMaterials.add(materialTable);
+
+        agentTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = agentTable.rowAtPoint(evt.getPoint());
+                int col = agentTable.columnAtPoint(evt.getPoint());
+                if (row >= 0 && col >= 0) {
+                    JFrame jFrame = new JFrame();
+                    Object[] options = {"Use on self!", "Use on other virologist!", "Discard!"};
+                    int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the agent?", "Options", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[2]);
+                    if (result == 0){
+                        virologist.UseAgent(virologist, virologistBag.getAgents().get(row));
+                        agents.removeItem(row);
+                    }
+                    else if (result == 1){
+                        virologist.UseAgent(virologist.getTile().GetOtherVirologist(virologist), virologistBag.getAgents().get(row));
+                        agents.removeItem(row);
+                    }
+                    else if (result == 2){
+                        agents.removeItem(row);
+                        virologistBag.Discard(virologistBag.getAgents().get(row));
+                    }
+                }
             }
-            for(int i = 0; i < virologistBag.getProtectiveGears().size(); i++){
-                pProtectiveGears.add(new JLabel(virologistBag.getProtectiveGears().get(i).getName()));
+        });
+
+        protectiveGearTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boolean axe = false;
+                int row = protectiveGearTable.rowAtPoint(evt.getPoint());
+                int col = protectiveGearTable.columnAtPoint(evt.getPoint());
+                if (row >= 0 && col >= 0) {
+                    if(virologistBag.getProtectiveGears().get(row) instanceof Axe) axe = true;
+                    JFrame jFrame = new JFrame();
+                    if(axe){
+                        Object[] options = {"Use!", "Discard!"};
+                        int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the protective gear?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+                        if (result == 0){
+                            virologistBag.getProtectiveGears().get(row).Use(virologist.getTile().GetOtherVirologist(virologist), null);
+                        }
+                        else if (result == 1){
+                            protectiveGears.removeItem(row);
+                            virologistBag.Discard(virologistBag.getProtectiveGears().get(row));
+                        }
+                    }
+                    else{
+                        Object[] options = {"Wear!", "Discard!"};
+                        int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the protective gear?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+                        if (result == 0){
+                            virologistBag.getProtectiveGears().get(row).Wear();
+                        }
+                        else if (result == 1){
+                            protectiveGears.removeItem(row);
+                            virologistBag.Discard(virologistBag.getProtectiveGears().get(row));
+                        }
+                    }
+                }
             }
-            for(int i = 0; i < virologistBag.getMaterials().size(); i++){
-                pMaterials.add(new JLabel(virologistBag.getMaterials().get(i).getName()));
+        });
+
+        materialTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = materialTable.rowAtPoint(evt.getPoint());
+                int col = materialTable.columnAtPoint(evt.getPoint());
+                if (row >= 0 && col >= 0) {
+                    JFrame jFrame = new JFrame();
+                    Object[] options = {"Discard!"};
+                    int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the material?","Options", JOptionPane.PLAIN_MESSAGE, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                    if (result == 0){
+                        materials.removeItem(row);
+                        virologistBag.Discard(virologistBag.getMaterials().get(row));
+                    }
+                }
             }
-        }
+        });
 
         bag.add(jPanel);
         jPanel.add(grid);
