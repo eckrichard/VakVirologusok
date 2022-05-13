@@ -112,6 +112,10 @@ public class GameMenu implements ActionListener {
         rightPanel.add(new JPanel(), BorderLayout.LINE_END);
         fGame.add(rightPanel, BorderLayout.LINE_END);
 
+        GamePanel leftPanel = new GamePanel(game);
+        leftPanel.Draw();
+        fGame.add(leftPanel);
+
         fGame.setVisible(true);
         fGame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }

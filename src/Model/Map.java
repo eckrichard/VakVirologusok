@@ -28,8 +28,8 @@ public class Map {
 		 * Map1
 		 */
 		if(mapNumber == 1){
-			int[] pointsX = {0, 134, 216, 230, 0};
-			int[] pointsY = {0, 0, 235, 154, 250};
+			int[] pointsX = {0, 134, 230, 216, 0};
+			int[] pointsY = {0, 0, 154, 235, 250};
 			Tile A = new Tile(pointsX, pointsY, 5);
 			tiles.add(A);
 		}
@@ -48,6 +48,8 @@ public class Map {
 		//virologists.get(1).getBag().setSize(20);
 		//virologists.get(0).setTile(tiles.get(15));
 	}
+
+	public Tile getTile(int i) {return tiles.get(i);}
 
 	public void setMapNumber(int mapNumber) {
 		this.mapNumber = mapNumber;
