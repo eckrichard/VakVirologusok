@@ -46,7 +46,7 @@ public class BagMenu {
         lMaterials = new JLabel("Materials");
 
         //csak teszteléshez
-        /*
+/*
         ParalyzeAgent a1 = new ParalyzeAgent(null, "agent1");
         ForgetAgent a2 = new ForgetAgent(null, "agent2");
         UntouchableAgent a3 = new UntouchableAgent(null, "agent3");
