@@ -1,5 +1,7 @@
 package gui;
 
+import main.*;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,8 +14,10 @@ public class BagMenu {
     private JPanel pProtectiveGears;
     private JPanel pMaterials;
     private MenuController menuController;
+    private Bag virologistBag;
 
-    public BagMenu(){
+    public BagMenu(Bag b){
+        virologistBag = b;
         init();
     }
 
@@ -40,6 +44,40 @@ public class BagMenu {
         lAgent = new JLabel("Agents");
         lProtectiveGears = new JLabel("Protecive gears");
         lMaterials = new JLabel("Materials");
+
+        //csak teszteléshez
+        /*
+        ParalyzeAgent a1 = new ParalyzeAgent(null, "agent1");
+        ForgetAgent a2 = new ForgetAgent(null, "agent2");
+        UntouchableAgent a3 = new UntouchableAgent(null, "agent3");
+
+        virologistBag.Add(a1);
+        virologistBag.Add(a2);
+        virologistBag.Add(a3);
+
+        Glove g = new Glove("glove");
+        Cape c = new Cape("cape");
+        virologistBag.Add(g);
+        virologistBag.Add(c);
+
+        for(int i = 0; i < 20; i++){
+            virologistBag.Add(new Material("material"));
+        }
+        */
+        pAgent.setLayout(new BoxLayout(pAgent, BoxLayout.Y_AXIS));
+        pProtectiveGears.setLayout(new BoxLayout(pProtectiveGears, BoxLayout.Y_AXIS));
+        pMaterials.setLayout(new FlowLayout());
+        if(virologistBag != null){
+            for(int i = 0; i < virologistBag.getAgents().size(); i++){
+                pAgent.add(new JLabel(virologistBag.getAgents().get(i).getName()));
+            }
+            for(int i = 0; i < virologistBag.getProtectiveGears().size(); i++){
+                pProtectiveGears.add(new JLabel(virologistBag.getProtectiveGears().get(i).getName()));
+            }
+            for(int i = 0; i < virologistBag.getMaterials().size(); i++){
+                pMaterials.add(new JLabel(virologistBag.getMaterials().get(i).getName()));
+            }
+        }
 
         bag.add(jPanel);
         jPanel.add(grid);

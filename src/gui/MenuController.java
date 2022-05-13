@@ -9,7 +9,7 @@ public class MenuController {
     private BagMenu bagMenu;
     private GameMenu gameMenu;
 
-    public void actionEvet(ActionEvent e){
+    public void actionEvent(ActionEvent e){
 
     }
 }

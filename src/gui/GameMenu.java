@@ -49,7 +49,7 @@ public class GameMenu {
         lBag = new JLabel("Open Bag");
         bBag = new JButton("Bag");
         bBag.addActionListener(e -> {
-            BagMenu Bagmenu = new BagMenu();
+            BagMenu Bagmenu = new BagMenu(gameClass.getMap().getVirologists().get(gameClass.getActive()).getBag());
         });
 
         lGeneticCodes = new JLabel("Open Genteic Codes");
