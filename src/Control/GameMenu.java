@@ -43,9 +43,8 @@ public class GameMenu implements ActionListener {
         final JMenuBar jMenuBar = new JMenuBar();
         JMenu gameMenu = new JMenu("Game");
         JMenuItem newGame = new JMenuItem("New Game", KeyEvent.VK_P);
-        newGame.addActionListener(e -> {
-            MainMenu mainMenu = new MainMenu(game, this);
-        });
+        newGame.setActionCommand("newgame");
+        newGame.addActionListener(this);
         gameMenu.add(newGame);
         jMenuBar.add(gameMenu);
         fGame.setJMenuBar(jMenuBar);
@@ -57,27 +56,25 @@ public class GameMenu implements ActionListener {
         JPanel buttons = new JPanel(new GridLayout(0,1));
         lBag = new JLabel("Open Bag");
         bBag = new JButton("Bag");
-        bBag.addActionListener(e -> {
-            BagMenu Bagmenu = new BagMenu(game.getMap().getVirologists().get(game.getActive()).getBag());
-        });
+        bBag.setActionCommand("bag");
+        bBag.addActionListener(this);
 
         lGeneticCodes = new JLabel("Open Genteic Codes");
         bGeneticCodes = new JButton("Genteic Codes");
+        bGeneticCodes.setActionCommand("codes");
         bGeneticCodes.addActionListener(e -> {
             GeneticCodesMenu GCmenu = new GeneticCodesMenu(game.getMap().getVirologists().get(game.getActive()));
         });
 
         lCollect = new JLabel("Collect collectable");
         bCollect = new JButton("Collect");
-        bCollect.addActionListener(e -> {
-            // Majd meghívja a virológus mezőjének a getCollectable-t
-        });
+        bCollect.setActionCommand("collect");
+        bCollect.addActionListener(this);
 
         lWear = new JLabel("Open wear");
         bWear = new JButton("Wear");
-        bWear.addActionListener(e -> {
-            WearMenu Waarmenu = new WearMenu();
-        });
+        bWear.setActionCommand("wear");
+        bWear.addActionListener(this);
 
         bEndTurn = new JButton("End Turn");
         bEndTurn.setActionCommand("endturn");
@@ -135,6 +132,26 @@ public class GameMenu implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("newgame"))
+        {
+            MainMenu mainMenu = new MainMenu(game, this);
+        }
+        if(e.getActionCommand().equals("bag"))
+        {
+            BagMenu Bagmenu = new BagMenu(game.getMap().getVirologists().get(game.getActive()).getBag());
+        }
+        if(e.getActionCommand().equals("codes"))
+        {
+            GeneticCodesMenu GCmenu = new GeneticCodesMenu(game.getMap().getVirologists().get(game.getActive()));
+        }
+        if(e.getActionCommand().equals("collect"))
+        {
+
+        }
+        if(e.getActionCommand().equals("wear"))
+        {
+            WearMenu Wearmenu = new WearMenu();
+        }
         if(e.getActionCommand().equals("endturn"))
         {
             game.setActive();
