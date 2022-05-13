@@ -1,6 +1,9 @@
 package Control;
 
 import Model.Game;
+import Model.Laboratory;
+import Model.Shelter;
+import Model.Storage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,8 +32,8 @@ public class GameMenu implements ActionListener {
 
     public GameMenu(Game game){
         this.game = game;
-        //init();
-        initJustMap();
+        init();
+        //initJustMap();
     }
 
     public JFrame getFrame() {
@@ -153,6 +156,14 @@ public class GameMenu implements ActionListener {
         return virologistout;
     }
 
+    public void updateStats(){
+        pVirologistStats.remove(virologistout);
+        virologistout = initStats();
+        pVirologistStats.add(virologistout);
+        pVirologistStats.revalidate();
+        pVirologistStats.repaint();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("newgame"))
@@ -169,7 +180,18 @@ public class GameMenu implements ActionListener {
         }
         if(e.getActionCommand().equals("collect"))
         {
-
+            if(game.getMap().getVirologists().get(game.getActive()).getTile() instanceof Laboratory){
+                game.getMap().getVirologists().get(game.getActive()).PalpateWall();
+                updateStats();
+            }
+            if(game.getMap().getVirologists().get(game.getActive()).getTile() instanceof Storage){
+                game.getMap().getVirologists().get(game.getActive()).CollectMaterial();
+                updateStats();
+            }
+            if(game.getMap().getVirologists().get(game.getActive()).getTile() instanceof Shelter){
+                game.getMap().getVirologists().get(game.getActive()).CollectProtectiveGear();
+                updateStats();
+            }
         }
         if(e.getActionCommand().equals("wear"))
         {
@@ -178,11 +200,7 @@ public class GameMenu implements ActionListener {
         if(e.getActionCommand().equals("endturn"))
         {
             game.setActive();
-            pVirologistStats.remove(virologistout);
-            virologistout = initStats();
-            pVirologistStats.add(virologistout);
-            pVirologistStats.revalidate();
-            pVirologistStats.repaint();
+            updateStats();
         }
     }
 }

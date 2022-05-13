@@ -38,7 +38,8 @@ public class Map {
 				//tiles.add(new Storage());
 			}
 			for(int i = 0; i < 2; i++){
-				//tiles.add(new Shelter());
+				Cape cape = new Cape("cape");
+				tiles.add(new Shelter(cape));
 			}
 		}
 		/**
@@ -63,6 +64,7 @@ public class Map {
 			virologists.add(new Virologist(tiles.get(0), bag));
 		}
 		virologists.get(1).getBag().setSize(20);
+		virologists.get(0).setTile(tiles.get(15));
 	}
 
 	public void setMapNumber(int mapNumber) {
