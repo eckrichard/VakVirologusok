@@ -5,6 +5,8 @@ import Model.Game;
 import javax.swing.*;
 import java.awt.*;
 
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+
 public class MainMenu {
     private JRadioButton rMap1;
     private JRadioButton rMap2;
@@ -117,5 +119,8 @@ public class MainMenu {
         newGame.add(jPanel);
 
         newGame.setVisible(true);
+        if(gameMenu == null){
+            newGame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        }
     }
 }
