@@ -60,7 +60,7 @@ public class Map {
 		}
 		for(int i = 0; i < virologistNumber; i++){
 			Bag bag = new Bag();
-			virologists.add(new Virologist());
+			virologists.add(new Virologist(tiles.get(0), bag));
 		}
 	}
 
