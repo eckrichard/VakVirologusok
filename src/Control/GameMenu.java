@@ -4,11 +4,13 @@ import Model.Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-public class GameMenu {
+public class GameMenu implements ActionListener {
     private JButton bBag;
     private JButton bGeneticCodes;
     private JButton bCollect;
@@ -20,6 +22,7 @@ public class GameMenu {
     private JLabel lWear;
     private JLabel lVirologistStats;
     private JPanel pVirologistStats;
+    private JPanel virologistout;
     private JFrame fGame;
     private MenuController menuController;
     private Game game;
@@ -77,26 +80,12 @@ public class GameMenu {
         });
 
         bEndTurn = new JButton("End Turn");
-        bEndTurn.addActionListener(e -> {
-            // Majd a következő virológusra vált
-        });
+        bEndTurn.setActionCommand("endturn");
+        bEndTurn.addActionListener(this);
 
         lVirologistStats = new JLabel("Virologist stats:");
         pVirologistStats = new JPanel(new BorderLayout());
-        JPanel virologistout = new JPanel(new GridLayout(0,2));
-        virologistout.add(new JLabel("Code count: "));
-        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getCodeCount())));
-        virologistout.add(new JLabel("Agent resistance: "));
-        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getAgentResistance())));
-        virologistout.add(new JLabel("Throwback available: "));
-        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).isThrowBackAvailable())));
-        virologistout.add(new JLabel("Effects count:"));
-        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getEffects().size())));
-        virologistout.add(new JLabel("Bag size: "));
-        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getBag().getSize()) +
-                " / " + String.valueOf(game.getMap().getVirologists().get(game.getActive()).getBag().getUsedSize())));
-        virologistout.add(new JLabel("Untouchable: "));
-        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getUntouchable())));
+        virologistout = initStats();
 
         buttons.add(lBag);
         buttons.add(bBag);
@@ -124,5 +113,36 @@ public class GameMenu {
 
         fGame.setVisible(true);
         fGame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    public JPanel initStats(){
+        JPanel virologistout = new JPanel(new GridLayout(0,2));
+        virologistout.add(new JLabel("Code count: "));
+        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getCodeCount())));
+        virologistout.add(new JLabel("Agent resistance: "));
+        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getAgentResistance())));
+        virologistout.add(new JLabel("Throwback available: "));
+        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).isThrowBackAvailable())));
+        virologistout.add(new JLabel("Effects count:"));
+        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getEffects().size())));
+        virologistout.add(new JLabel("Bag size: "));
+        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getBag().getSize()) +
+                " / " + String.valueOf(game.getMap().getVirologists().get(game.getActive()).getBag().getUsedSize())));
+        virologistout.add(new JLabel("Untouchable: "));
+        virologistout.add(new JLabel(String.valueOf(game.getMap().getVirologists().get(game.getActive()).getUntouchable())));
+        return virologistout;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("endturn"))
+        {
+            game.setActive();
+            pVirologistStats.remove(virologistout);
+            virologistout = initStats();
+            pVirologistStats.add(virologistout);
+            pVirologistStats.revalidate();
+            pVirologistStats.repaint();
+        }
     }
 }
