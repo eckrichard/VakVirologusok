@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 /**
  * Egy mező, amin a virológus védőfelszerelést tud majd szerezni. A feladata az, hogy ha a
  * virológus megkísérli felvenni a védőfelszerelést, akkor megmondja, hogy ott melyik védőfelszerelés
@@ -12,8 +14,8 @@ public class Shelter extends Tile {
 	 * Az óvóhely konstruktora
 	 * @param pG a mezőn található védőfelszerelés
 	 */
-	public Shelter(ProtectiveGear pG){
-		super();
+	public Shelter(ProtectiveGear pG, int[] _pointsX, int[] _pointsY, int n){
+		super(_pointsX, _pointsY, n);
 		this.pG = pG;
 	}
 

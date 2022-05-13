@@ -1,6 +1,6 @@
 package Control;
 
-import Model.Game;
+import Control.Game;
 import Model.Laboratory;
 import Model.Shelter;
 import Model.Storage;

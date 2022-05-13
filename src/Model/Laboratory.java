@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -16,8 +17,8 @@ public class Laboratory extends Tile {
 	 * genetikai kód található itt, beardance-t nullra állítja
 	 * @param code a rajta található kód
 	 */
-	public Laboratory(GeneticCode code) {
-		super();
+	public Laboratory(GeneticCode code,  int[] _pointsX, int[] _pointsY, int n) {
+		super(_pointsX, _pointsY, n);
 		geneticCode = code;
 		bearDance = null;
 	}
@@ -28,8 +29,8 @@ public class Laboratory extends Tile {
 	 * @param code a genetikai kód
 	 * @param bearDanceAgent a medvetánc ágens
 	 */
-	public Laboratory(GeneticCode code, BearDanceAgent bearDanceAgent) {
-		super();
+	public Laboratory(GeneticCode code, BearDanceAgent bearDanceAgent, int[] _pointsX, int[] _pointsY, int n) {
+		super(_pointsX, _pointsY, n);
 		geneticCode = code;
 		bearDance = bearDanceAgent;
 	}

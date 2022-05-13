@@ -14,17 +14,33 @@ public class Tile {
 	protected long capacity;
 	protected ArrayList<Tile> adjacentTiles;
 	protected ArrayList<Virologist> virologists;
+	protected int pointsX[];
+	protected int pointsY[];
+	protected int n;
 
 	protected TileView view;
 
 	/**
 	 * Egy mező konstruktora
 	 */
-	public Tile() {
+	public Tile(int _pointsX[], int _pointsY[], int _n) {
 		capacity = 2;
 		adjacentTiles = new ArrayList<Tile>();
 		virologists = new ArrayList<Virologist>();
+		this.pointsX = _pointsX;
+		this.pointsY = _pointsY;
+		this.n = _n;
 	}
+
+	public int[] getPointsX() {
+		return pointsX;
+	}
+
+	public int[] getPointsY() {
+		return pointsY;
+	}
+
+	public int getN() {return n;}
 
 	/**
 	 * Eltávolítja az adott mezőről a virológust.

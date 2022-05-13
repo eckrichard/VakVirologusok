@@ -28,35 +28,16 @@ public class Map {
 		 * Map1
 		 */
 		if(mapNumber == 1){
-			for(int i = 0; i < 14; i++){
-				tiles.add(new Tile());
-			}
-			for(int i = 0; i < 2; i++){
-				//tiles.add(new Laboratory());
-			}
-			for(int i = 0; i < 2; i++){
-				//tiles.add(new Storage());
-			}
-			for(int i = 0; i < 2; i++){
-				//tiles.add(new Shelter());
-			}
+			int[] pointsX = {0, 134, 216, 230, 0};
+			int[] pointsY = {0, 0, 235, 154, 250};
+			Tile A = new Tile(pointsX, pointsY, 5);
+			tiles.add(A);
 		}
 		/**
 		 * Map2
 		 */
 		else {
-			for(int i = 0; i < 27; i++){
-				tiles.add(new Tile());
-			}
-			for(int i = 0; i < 4; i++){
-				//tiles.add(new Laboratory());
-			}
-			for(int i = 0; i < 4; i++){
-				//tiles.add(new Storage());
-			}
-			for(int i = 0; i < 4; i++){
-				//tiles.add(new Shelter());
-			}
+			;
 		}
 		for(int i = 0; i < virologistNumber; i++){
 			Bag bag = new Bag();

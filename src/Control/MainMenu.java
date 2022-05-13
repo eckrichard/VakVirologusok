@@ -1,6 +1,6 @@
 package Control;
 
-import Model.Game;
+import Control.Game;
 
 import javax.swing.*;
 import java.awt.*;

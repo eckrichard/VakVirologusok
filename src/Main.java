@@ -1,4 +1,4 @@
-import Model.Game;
+import Control.Game;
 import Control.MainMenu;
 
 public class Main {

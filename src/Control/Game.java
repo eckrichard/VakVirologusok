@@ -1,6 +1,7 @@
-package Model;
+package Control;
 
 import Control.GamePanel;
+import Model.Map;
 
 /**
  * A játék indítása és befejezése a feladata.

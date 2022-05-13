@@ -13,8 +13,8 @@ public class Storage extends Tile {
 	 * A raktár konstruktora
 	 * @param m a raktárban található anyagok
 	 */
-	public Storage(ArrayList<Material> m){
-		super();
+	public Storage(ArrayList<Material> m, int[] _pointsX, int[] _pointsY, int n){
+		super(_pointsX, _pointsY, n);
 		this.materials = m;
 	}
 
