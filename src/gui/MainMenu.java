@@ -1,5 +1,7 @@
 package gui;
 
+import main.Game;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,8 +17,17 @@ public class MainMenu {
     private JLabel lMap1;
     private JLabel lMap2;
     private MenuController menuController;
+    private Game game;
+    private GameMenu gameMenu;
 
-    public MainMenu(){
+    public MainMenu(Game game){
+        this.game = game;
+        init();
+    }
+
+    public MainMenu(Game game, GameMenu gameMenu){
+        this.game = game;
+        this.gameMenu = gameMenu;
         init();
     }
 
@@ -54,7 +65,31 @@ public class MainMenu {
 
         bStartGame = new JButton("Start Game");
         bStartGame.addActionListener(e -> {
-            // Elindítja a megfelelő paraméterezéssel az új játékot
+            int map = 0;
+            int player = 0;
+            if(rMap1.isSelected()){
+                map = 1;
+            }
+            if(rMap2.isSelected()){
+                map = 2;
+            }
+            if(rPlayers4.isSelected()){
+                player = 4;
+            }
+            if(rPlayers5.isSelected()){
+                player = 5;
+            }
+            if(rPlayers6.isSelected()){
+                player = 6;
+            }
+            game.getMap().setMapNumber(map);
+            game.getMap().setVirologistNumber(player);
+            game.startGame();
+            newGame.setVisible(false);
+            if(gameMenu != null){
+                gameMenu.getFrame().setVisible(false);
+            }
+            gameMenu = new GameMenu(game);
         });
 
         map1.add(rMap1, BorderLayout.PAGE_START);
