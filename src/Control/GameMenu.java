@@ -26,7 +26,8 @@ public class GameMenu {
 
     public GameMenu(Game game){
         this.game = game;
-        init();
+        //init();
+        initJustMap();
     }
 
     public JFrame getFrame() {
@@ -121,6 +122,28 @@ public class GameMenu {
         rightPanel.add(new JPanel(), BorderLayout.LINE_START);
         rightPanel.add(new JPanel(), BorderLayout.LINE_END);
         fGame.add(rightPanel, BorderLayout.LINE_END);
+
+        fGame.setVisible(true);
+        fGame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    public void initJustMap(){
+        fGame = new JFrame("VakVirologusok");
+        fGame.setSize(new Dimension(1000,700));
+
+        final JMenuBar jMenuBar = new JMenuBar();
+        JMenu gameMenu = new JMenu("Game");
+        JMenuItem newGame = new JMenuItem("New Game", KeyEvent.VK_P);
+        newGame.addActionListener(e -> {
+            MainMenu mainMenu = new MainMenu(game, this);
+        });
+        gameMenu.add(newGame);
+        jMenuBar.add(gameMenu);
+        fGame.setJMenuBar(jMenuBar);
+
+        JPanel table = new JPanel();
+        table.setBackground(Color.BLACK);
+        fGame.add(table, BorderLayout.CENTER);
 
         fGame.setVisible(true);
         fGame.setDefaultCloseOperation(EXIT_ON_CLOSE);
