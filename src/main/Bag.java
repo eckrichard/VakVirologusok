@@ -49,6 +49,10 @@ public class Bag {
 		return size;
 	}
 
+	public long getUsedSize(){
+		return agents.size() + protectiveGears.size() + materials.size();
+	}
+
 	/**
 	 * Megmondja, hogy milyen ágensei vannak
 	 * @return az ágensek

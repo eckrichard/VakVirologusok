@@ -59,6 +59,7 @@ public class Map {
 			}
 		}
 		for(int i = 0; i < virologistNumber; i++){
+			Bag bag = new Bag();
 			virologists.add(new Virologist());
 		}
 	}
@@ -69,5 +70,9 @@ public class Map {
 
 	public void setVirologistNumber(int virologistNumber) {
 		this.virologistNumber = virologistNumber;
+	}
+
+	public List<Virologist> getVirologists() {
+		return virologists;
 	}
 }

@@ -20,9 +20,10 @@ public class GameMenu {
     private JLabel lVirologistStats;
     private JPanel pVirologistStats;
     private MenuController menuController;
-    private Map map;
+    private Game gameClass;
 
-    public GameMenu(){
+    public GameMenu(Game game){
+        gameClass = game;
         init();
     }
 
@@ -78,17 +79,18 @@ public class GameMenu {
         pVirologistStats = new JPanel(new BorderLayout());
         JPanel virologistout = new JPanel(new GridLayout(0,2));
         virologistout.add(new JLabel("Code count: "));
-        virologistout.add(new JLabel("szam"));
+        virologistout.add(new JLabel(String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).getCodeCount())));
         virologistout.add(new JLabel("Agent resistance: "));
-        virologistout.add(new JLabel("szam"));
+        virologistout.add(new JLabel(String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).getAgentResistance())));
         virologistout.add(new JLabel("Throwback available: "));
-        virologistout.add(new JLabel("true/false"));
+        virologistout.add(new JLabel(String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).isThrowBackAvailable())));
         virologistout.add(new JLabel("Effects count:"));
-        virologistout.add(new JLabel("szam"));
+        virologistout.add(new JLabel(String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).getEffects().size())));
         virologistout.add(new JLabel("Bag size: "));
-        virologistout.add(new JLabel("max/jelenlegi"));
+        virologistout.add(new JLabel(String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).getBag().getSize()) +
+                " / " + String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).getBag().getUsedSize())));
         virologistout.add(new JLabel("Untouchable: "));
-        virologistout.add(new JLabel("true/false"));
+        virologistout.add(new JLabel(String.valueOf(gameClass.getMap().getVirologists().get(gameClass.getActive()).getUntouchable())));
 
         buttons.add(lBag);
         buttons.add(bBag);

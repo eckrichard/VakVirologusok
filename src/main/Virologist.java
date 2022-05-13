@@ -332,6 +332,10 @@ public class Virologist {
 		return id;
 	}
 
+	public long getCodeCount() {
+		return codeCount;
+	}
+
 	/**
 	 * Beállítja, hogy mennyi az id-je
 	 * @param id a a kapott id

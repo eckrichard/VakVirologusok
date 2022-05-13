@@ -14,7 +14,9 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        GameMenu gameMenu = new GameMenu();
+        Game game = new Game();
+        game.startGame();
+        GameMenu gameMenu = new GameMenu(game);
         //ThrowbackMenu throwbackMenu = new ThrowbackMenu();
     }
 }
