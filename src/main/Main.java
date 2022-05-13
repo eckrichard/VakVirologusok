@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         GameMenu gameMenu = new GameMenu();
-        ThrowbackMenu throwbackMenu = new ThrowbackMenu();
+        //ThrowbackMenu throwbackMenu = new ThrowbackMenu();
     }
 }
 
