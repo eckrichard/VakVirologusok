@@ -1,7 +1,6 @@
 package Control;
 
 import Model.GeneticCode;
-import Model.Item;
 import Model.Virologist;
 
 import javax.swing.*;
@@ -15,7 +14,7 @@ public class GeneticCodesMenu {
     private MenuController menuController;
     private Virologist virologist;
     private GameMenu gameMenu;
-    private JTable geneticCOdeTable;
+    private JTable geneticCodeTable;
 
     private GeneticCodeMenuData geneticcodes;
 
@@ -37,17 +36,21 @@ public class GeneticCodesMenu {
 
         geneticcodes = new GeneticCodeMenuData(new ArrayList<GeneticCode>(virologist.getGeneticCodes()));
         pCodes.setLayout(new BorderLayout());
-        geneticCOdeTable = new JTable(geneticcodes);
-        geneticCOdeTable.setFillsViewportHeight(true);
-        geneticCOdeTable.setTableHeader(null);
-        pCodes.add(new JScrollPane(geneticCOdeTable), BorderLayout.CENTER);
+        geneticCodeTable = new JTable(geneticcodes);
+        geneticCodeTable.setFillsViewportHeight(true);
+        geneticCodeTable.setTableHeader(null);
+        geneticCodeTable.setRowHeight(20);
+        geneticCodeTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+        geneticCodeTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+        geneticCodeTable.setShowGrid(false);
+        pCodes.add(new JScrollPane(geneticCodeTable), BorderLayout.CENTER);
 
-        geneticCOdeTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        geneticCodeTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boolean axe = false;
-                int row = geneticCOdeTable.rowAtPoint(evt.getPoint());
-                int col = geneticCOdeTable.columnAtPoint(evt.getPoint());
+                int row = geneticCodeTable.rowAtPoint(evt.getPoint());
+                int col = geneticCodeTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
                     JFrame jFrame = new JFrame();
                     Object[] options = {"Create Agent!"};

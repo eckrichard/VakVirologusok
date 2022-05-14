@@ -42,6 +42,10 @@ public class TakeGearMenu {
         protectiveGearTable = new JTable(protectiveGears);
         protectiveGearTable.setFillsViewportHeight(true);
         protectiveGearTable.setTableHeader(null);
+        protectiveGearTable.setRowHeight(20);
+        protectiveGearTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+        protectiveGearTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+        protectiveGearTable.setShowGrid(false);
         pProtectiveGears.add(new JScrollPane(protectiveGearTable), BorderLayout.CENTER);
 
         protectiveGearTable.addMouseListener(new java.awt.event.MouseAdapter() {

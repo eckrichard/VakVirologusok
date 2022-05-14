@@ -23,7 +23,7 @@ public class GeneticCodeMenuData extends AbstractTableModel {
         for(GeneticCode codes : i){
             agents.add(codes.getAgent());
             try {
-                ImageIcon icon = new ImageIcon(ImageIO.read(new File("images/cream.png")));
+                ImageIcon icon = new ImageIcon(ImageIO.read(new File("images/code.png")));
                 icons.add(icon);
             } catch (IOException e) {
                 e.printStackTrace();
