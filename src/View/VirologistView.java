@@ -9,6 +9,7 @@ public class VirologistView extends Drawable{
     private Virologist virologist;
 
     public void draw(Graphics g){
-
+        g.setColor(color);
+        g.fillOval(50,50,50,50);
     }
 }
