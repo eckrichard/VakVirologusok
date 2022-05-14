@@ -58,6 +58,7 @@ public class Virologist {
 	public void setBag(Bag b) { this.bag = b;	}
 	public void setTile(Tile t) {
 		this.tile = t;
+		tile.Accept(this);
 	}
 
 	public void setMap(Map map) {
