@@ -2,8 +2,11 @@ package Control;
 
 import Control.Game;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
@@ -60,7 +63,12 @@ public class MainMenu {
         playerbuttons.add(rPlayers6);
         rPlayers4.setSelected(true);
 
-        lMap1 = new JLabel("Map1");
+        try {
+            ImageIcon iimap1 = new ImageIcon(ImageIO.read(new File("images/map1.png")));
+            lMap1 = new JLabel(iimap1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         lMap2 = new JLabel("Map2");
         lMapSelect = new JLabel("Map select");
         lPlayerSelect = new JLabel("Players count");
