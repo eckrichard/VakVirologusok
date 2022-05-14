@@ -14,7 +14,7 @@ public class VirologistView extends Drawable{
         this.y = p.getY();
     }
     public void draw(Graphics g){
-        g.setColor(Color.BLACK);
-        g.fillOval((int)this.x,(int)this.y,50,50);
+        g.setColor(Color.BLUE);
+        g.fillOval((int)this.x,(int)this.y,20,20);
     }
 }

@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
 import static javax.swing.text.StyleConstants.getBackground;
@@ -38,7 +39,14 @@ public class GamePanel extends JPanel {
             Virologist virologist = game.getMap().getVirologists().get(i);
             Tile tile = virologist.getTile();
             Polygon polygon = new Polygon(tile.getPointsX(), tile.getPointsY(), tile.getN());
+            int xcenter,ycenter;
+            int pX[]=tile.getPointsX();
+            int pY[]=tile.getPointsY();
+            xcenter=(getMaxValue(pX)+getMinValue(pX))/2;
+            ycenter=(getMaxValue(pY)+getMinValue(pY))/2;
             VirologistView tmp = new VirologistView();
+            Point po =new Point(xcenter,ycenter);
+            tmp.setCoordinates(po);
             virologistViews.add(tmp);
         }
         addMouseListener(new MouseAdapter() {
@@ -78,5 +86,24 @@ public class GamePanel extends JPanel {
         for (int i = 0; i < virologistViews.size(); i++) {
             virologistViews.get(i).draw(g);
         }
+    }
+
+    public static int getMaxValue(int[] numbers){
+        int maxValue = numbers[0];
+        for(int i=1;i < numbers.length;i++){
+            if(numbers[i] > maxValue){
+                maxValue = numbers[i];
+            }
+        }
+        return maxValue;
+    }
+    public static int getMinValue(int[] numbers){
+        int minValue = numbers[0];
+        for(int i=1;i<numbers.length;i++){
+            if(numbers[i] < minValue){
+                minValue = numbers[i];
+            }
+        }
+        return minValue;
     }
 }
