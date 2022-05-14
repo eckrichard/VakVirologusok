@@ -64,6 +64,7 @@ public class GamePanel extends JPanel {
                     Polygon poly = new Polygon(xpoints,ypoints,npoints);
                     if(poly.contains(p)) {
                         virologistViews.get(activeVirologist).setCoordinates(p);
+                        draw();
                     }
                 }
             }
