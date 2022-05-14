@@ -1,7 +1,6 @@
 package View;
 
 import java.awt.*;
-
 import Model.Tile;
 
 public class TileView extends Drawable{

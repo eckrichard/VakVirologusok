@@ -1,6 +1,7 @@
 package Control;
 
 import Model.Axe;
+import Model.Bag;
 import Model.Item;
 import Model.Virologist;
 
@@ -8,28 +9,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class WearMenu {
+public class TakeGearMenu {
     private JOptionPane jPopup;
     private JLabel lProtectiveGears;
     private JPanel pProtectiveGears;
-    private JTable protectiveGearTable;
-    private MenuController menuController;
-
     private Virologist virologist;
-
+    private Bag virologistBag;
+    private JTable protectiveGearTable;
     private GameMenu gameMenu;
 
     private BagMenuData protectiveGears;
 
-    public WearMenu(Virologist v, GameMenu gameMenu){
+    public TakeGearMenu(Virologist v, GameMenu gameMenu){
         virologist = v;
+        virologistBag = virologist.getBag();
         this.gameMenu = gameMenu;
         init();
     }
 
     public void init(){
-        JFrame wearmenu = new JFrame("Wear");
-        wearmenu.setSize(new Dimension(300, 300));
+        JFrame bag = new JFrame("Take gear");
+        bag.setSize(new Dimension(300, 300));
         final JPanel jPanel = new JPanel(new BorderLayout());
         final JPanel jEmptyLeft = new JPanel();
         final JPanel jEmptyRight = new JPanel();
@@ -37,7 +37,7 @@ public class WearMenu {
         pProtectiveGears = new JPanel();
         lProtectiveGears = new JLabel("Protective gears");
 
-        protectiveGears = new BagMenuData(new ArrayList<Item>(virologist.getWear()));
+        protectiveGears = new BagMenuData(new ArrayList<Item>(virologistBag.getProtectiveGears()));
         pProtectiveGears.setLayout(new BorderLayout());
         protectiveGearTable = new JTable(protectiveGears);
         protectiveGearTable.setFillsViewportHeight(true);
@@ -51,34 +51,28 @@ public class WearMenu {
         protectiveGearTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boolean axe = false;
                 int row = protectiveGearTable.rowAtPoint(evt.getPoint());
                 int col = protectiveGearTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
                     JFrame jFrame = new JFrame();
-                    Object[] options = {"Unwear!", "Discard!"};
-                    int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the protective gear?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
-                    if (result == 0){
-                        protectiveGears.removeItem(row);
-                        virologist.getWear().get(row).takeAway(virologist);
-                        gameMenu.updateStats();
-                    }
-                    else if (result == 1){
-                        protectiveGears.removeItem(row);
-                        virologist.getBag().Discard(virologist.getWear().get(row));
-                        gameMenu.updateStats();
-                    }
+                        Object[] options = {"Take!"};
+                        int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the protective gear?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                        if (result == 0){
+                            protectiveGears.removeItem(row);
+                            virologist.getTile().GetOtherVirologist(virologist).TakeGear(virologist, virologistBag.getProtectiveGears().get(row));
+                            gameMenu.updateStats();
+                        }
                 }
             }
         });
 
-        wearmenu.add(jPanel);
+        bag.add(jPanel);
         jPanel.add(lProtectiveGears, BorderLayout.PAGE_START);
         jPanel.add(pProtectiveGears, BorderLayout.CENTER);
         jPanel.add(jEmptyLeft, BorderLayout.LINE_START);
         jPanel.add(jEmptyRight, BorderLayout.LINE_END);
         jPanel.add(jEmptyBottom, BorderLayout.PAGE_END);
 
-        wearmenu.setVisible(true);
+        bag.setVisible(true);
     }
 }

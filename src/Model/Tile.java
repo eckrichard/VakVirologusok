@@ -149,10 +149,20 @@ public class Tile {
 	}
 
 	/**
+	 * Visszaadja a szomszédos mezőket
+	 *
+	 *
+	 */
+
+	public ArrayList<Tile> getAdjacentTiles() {
+		return this.adjacentTiles;
+	}
+	/**
 	 * Beállítja, hogy mennyi az id-je
 	 *
 	 * @param id a a kapott id
 	 */
+
 	public void setId(int id) {
 		this.id = id;
 	}

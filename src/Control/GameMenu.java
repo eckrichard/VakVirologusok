@@ -1,9 +1,7 @@
 package Control;
 
 import Control.Game;
-import Model.Laboratory;
-import Model.Shelter;
-import Model.Storage;
+import Model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +12,7 @@ import java.awt.event.KeyEvent;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class GameMenu implements ActionListener {
+    private JOptionPane jPopup;
     private JButton bBag;
     private JButton bGeneticCodes;
     private JButton bCollect;
@@ -166,6 +165,21 @@ public class GameMenu implements ActionListener {
         pVirologistStats.repaint();
     }
 
+    private void collect(){
+        if(game.getMap().getVirologists().get(game.getActive()).getTile() instanceof Laboratory){
+            game.getMap().getVirologists().get(game.getActive()).PalpateWall();
+            updateStats();
+        }
+        if(game.getMap().getVirologists().get(game.getActive()).getTile() instanceof Storage){
+            game.getMap().getVirologists().get(game.getActive()).CollectMaterial();
+            updateStats();
+        }
+        if(game.getMap().getVirologists().get(game.getActive()).getTile() instanceof Shelter){
+            game.getMap().getVirologists().get(game.getActive()).CollectProtectiveGear();
+            updateStats();
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("newgame"))
@@ -178,22 +192,38 @@ public class GameMenu implements ActionListener {
         }
         if(e.getActionCommand().equals("codes"))
         {
-            GeneticCodesMenu GCmenu = new GeneticCodesMenu(game.getMap().getVirologists().get(game.getActive()));
+            GeneticCodesMenu GCmenu = new GeneticCodesMenu(game.getMap().getVirologists().get(game.getActive()), this);
         }
         if(e.getActionCommand().equals("collect"))
         {
-            if(game.getMap().getVirologists().get(game.getActive()).getTile() instanceof Laboratory){
-                game.getMap().getVirologists().get(game.getActive()).PalpateWall();
-                updateStats();
+            if(game.getMap().getVirologists().get(game.getActive()).getTile().GetOtherVirologist(game.getMap().getVirologists().get(game.getActive())) == null){
+                collect();
             }
-            if(game.getMap().getVirologists().get(game.getActive()).getTile() instanceof Storage){
-                game.getMap().getVirologists().get(game.getActive()).CollectMaterial();
-                updateStats();
+            else {
+                Virologist virologist = game.getMap().getVirologists().get(game.getActive());
+                Virologist otherVIrologist = game.getMap().getVirologists().get(game.getActive()).getTile().GetOtherVirologist(virologist);
+                boolean paralyzed = false;
+                if(otherVIrologist.getEffects().size() > 0){
+                    for(Effects effect : otherVIrologist.getEffects()){
+                      if(effect instanceof Paralyzed){
+                          paralyzed = true;
+                         break;
+                        }
+                    }
+                }
+                if(paralyzed){
+                    JFrame jFrame = new JFrame();
+                    Object[] options = {"Collect!", "Take gear!"};
+                    int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the protective gear?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+                    if(result == 0){
+                        collect();
+                    }
+                    else if(result == 1){
+                        TakeGearMenu takeGearMenu = new TakeGearMenu(otherVIrologist, this);
+                    }
+                }
             }
-            if(game.getMap().getVirologists().get(game.getActive()).getTile() instanceof Shelter){
-                game.getMap().getVirologists().get(game.getActive()).CollectProtectiveGear();
-                updateStats();
-            }
+
         }
         if(e.getActionCommand().equals("wear"))
         {

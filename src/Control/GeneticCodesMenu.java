@@ -1,9 +1,11 @@
 package Control;
 
+import Model.GeneticCode;
 import Model.Virologist;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GeneticCodesMenu {
     private JOptionPane jPopup;
@@ -11,9 +13,14 @@ public class GeneticCodesMenu {
     private JPanel pCodes;
     private MenuController menuController;
     private Virologist virologist;
+    private GameMenu gameMenu;
+    private JTable geneticCodeTable;
 
-    public GeneticCodesMenu(Virologist virologist) {
-        this.virologist = virologist;
+    private GeneticCodeMenuData geneticcodes;
+
+    public GeneticCodesMenu(Virologist v, GameMenu gameMenu) {
+        virologist = v;
+        this.gameMenu = gameMenu;
         init();
     }
 
@@ -25,9 +32,37 @@ public class GeneticCodesMenu {
         final JPanel jEmptyRight = new JPanel();
         final JPanel jEmptyBottom = new JPanel();
         pCodes = new JPanel();
-        // Csak, hogy látszódjon
-        pCodes.setBackground(Color.BLACK);
         lCodes = new JLabel("Codes");
+
+        geneticcodes = new GeneticCodeMenuData(new ArrayList<GeneticCode>(virologist.getGeneticCodes()));
+        pCodes.setLayout(new BorderLayout());
+        geneticCodeTable = new JTable(geneticcodes);
+        geneticCodeTable.setFillsViewportHeight(true);
+        geneticCodeTable.setTableHeader(null);
+        geneticCodeTable.setRowHeight(20);
+        geneticCodeTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+        geneticCodeTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+        geneticCodeTable.setShowGrid(false);
+        pCodes.add(new JScrollPane(geneticCodeTable), BorderLayout.CENTER);
+
+        geneticCodeTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boolean axe = false;
+                int row = geneticCodeTable.rowAtPoint(evt.getPoint());
+                int col = geneticCodeTable.columnAtPoint(evt.getPoint());
+                if (row >= 0 && col >= 0) {
+                    JFrame jFrame = new JFrame();
+                    Object[] options = {"Create Agent!"};
+                    int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the genetic code?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                    if (result == 0){
+                        geneticcodes.removeItem(row);
+                        virologist.getGeneticCodes().get(row).CreateAgent(virologist);
+                        gameMenu.updateStats();
+                    }
+                }
+            }
+        });
 
         geneteicCodes.add(jPanel);
         jPanel.add(lCodes, BorderLayout.PAGE_START);

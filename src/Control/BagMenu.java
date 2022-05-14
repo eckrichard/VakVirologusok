@@ -77,6 +77,18 @@ public class BagMenu {
         agentTable.setTableHeader(null);
         protectiveGearTable.setTableHeader(null);
         materialTable.setTableHeader(null);
+        agentTable.setRowHeight(20);
+        protectiveGearTable.setRowHeight(20);
+        materialTable.setRowHeight(20);
+        agentTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+        agentTable.getColumnModel().getColumn(1).setPreferredWidth(300);
+        protectiveGearTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+        protectiveGearTable.getColumnModel().getColumn(1).setPreferredWidth(300);
+        materialTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+        materialTable.getColumnModel().getColumn(1).setPreferredWidth(300);
+        agentTable.setShowGrid(false);
+        protectiveGearTable.setShowGrid(false);
+        materialTable.setShowGrid(false);
 
         pAgent.add(new JScrollPane(agentTable), BorderLayout.CENTER);
         pProtectiveGears.add(new JScrollPane(protectiveGearTable), BorderLayout.CENTER);
