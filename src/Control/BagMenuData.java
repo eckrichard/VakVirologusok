@@ -60,11 +60,24 @@ public class BagMenuData extends AbstractTableModel {
                 }
             }
             else if(item instanceof Material){
-                try {
-                    ImageIcon icon = new ImageIcon(ImageIO.read(new File("images/material.png")));
-                    icons.add(icon);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if(item.getName().equalsIgnoreCase("Valin") ||
+                        item.getName().equalsIgnoreCase("Szerin") ||
+                        item.getName().equalsIgnoreCase("tdp") ||
+                        item.getName().equalsIgnoreCase("Timidin-difoszfát")) {
+                    try {
+                        ImageIcon icon = new ImageIcon(ImageIO.read(new File("images/amino-acids.png")));
+                        icons.add(icon);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else {
+                    try {
+                        ImageIcon icon = new ImageIcon(ImageIO.read(new File("images/material.png")));
+                        icons.add(icon);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
