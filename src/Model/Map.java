@@ -39,8 +39,12 @@ public class Map {
 		for(int i = 0; i < virologistNumber; i++){
 			Bag bag = new Bag();
 			Virologist virologist = new Virologist(null, bag);
-			virologists.add(virologist);
+
 			virologist.setMap(this);
+			int rannum = (int) ((Math.random() * (tiles.size() - 0)) + 0);
+			Tile ranTile = tiles.get(rannum);
+			virologist.setTile(ranTile);
+			virologists.add(virologist);
 		}
 		/*tesztelésre
 		virologists.get(0).getBag().Add(new Glove("gear"));
@@ -199,6 +203,10 @@ public class Map {
 
 	public void setVirologistNumber(int virologistNumber) {
 		this.virologistNumber = virologistNumber;
+	}
+
+	public int getVirologistNumber() {
+		return this.virologistNumber;
 	}
 
 	public List<Virologist> getVirologists() {
