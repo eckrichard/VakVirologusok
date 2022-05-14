@@ -111,7 +111,7 @@ public class GameMenu implements ActionListener {
         fGame.add(rightPanel, BorderLayout.LINE_END);
 
         GamePanel leftPanel = new GamePanel(game);
-        leftPanel.Draw();
+        leftPanel.draw();
         fGame.add(leftPanel);
 
         fGame.setVisible(true);

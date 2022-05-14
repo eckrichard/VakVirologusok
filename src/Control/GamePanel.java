@@ -1,16 +1,18 @@
 package Control;
 
+import Model.Tile;
 import View.TileView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GamePanel extends JPanel {
 //    private GameControl gameControl;
 //    public void run(){}
 //    public void paintComponents(Graphics g){}
     private Game game;
-    private TileView tileView;
+    private ArrayList<TileView> tileViews = new ArrayList<>();
 
     public GamePanel(Game _game) {
         this.setBackground(Color.BLACK);
@@ -19,12 +21,15 @@ public class GamePanel extends JPanel {
         this.setLayout(null);
         this.requestFocusInWindow();
         this.game = _game;
-        tileView = new TileView(Color.cyan, game.getMap().getTile(0));
+        for(int i = 0; i < game.getMap().getTiles().size(); i++) {
+            TileView tmp = new TileView(game.getMap().getTile(i));
+            tileViews.add(tmp);
+        }
 
         this.requestFocusInWindow();
     }
 
-    public void Draw() {
+    public void draw() {
         //this.grabFocus();
         this.repaint();
     }
@@ -32,6 +37,8 @@ public class GamePanel extends JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        tileView.draw(g);
+        for (int i = 0; i < tileViews.size(); i++) {
+            tileViews.get(i).draw(g);
+        }
     }
 }

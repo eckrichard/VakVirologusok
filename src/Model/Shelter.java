@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +18,7 @@ public class Shelter extends Tile {
 	public Shelter(ProtectiveGear pG, int[] _pointsX, int[] _pointsY, int n){
 		super(_pointsX, _pointsY, n);
 		this.pG = pG;
+		this.color = new Color(249, 251, 250);
 	}
 
 	/**

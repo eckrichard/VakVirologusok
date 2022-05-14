@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +17,7 @@ public class Storage extends Tile {
 	public Storage(ArrayList<Material> m, int[] _pointsX, int[] _pointsY, int n){
 		super(_pointsX, _pointsY, n);
 		this.materials = m;
+		this.color = new Color(210, 216, 216);
 	}
 
 	public void setCollectable(Object o){

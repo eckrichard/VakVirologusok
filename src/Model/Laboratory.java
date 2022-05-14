@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -11,7 +12,6 @@ import java.util.Random;
 public class Laboratory extends Tile {
 	private GeneticCode geneticCode;
 	private BearDanceAgent bearDance;
-
 	/**
 	 * A laboratórium konstruktora. Beállítja, hogy melyik
 	 * genetikai kód található itt, beardance-t nullra állítja
@@ -21,6 +21,7 @@ public class Laboratory extends Tile {
 		super(_pointsX, _pointsY, n);
 		geneticCode = code;
 		bearDance = null;
+		color = new Color(183, 219, 243);
 	}
 
 	/**
@@ -33,6 +34,7 @@ public class Laboratory extends Tile {
 		super(_pointsX, _pointsY, n);
 		geneticCode = code;
 		bearDance = bearDanceAgent;
+		color = new Color(183, 219, 243);
 	}
 
 	public void setCollectable(Object o) { geneticCode = (GeneticCode) o;}

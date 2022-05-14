@@ -2,6 +2,7 @@ package Model;
 
 import View.TileView;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +18,7 @@ public class Tile {
 	protected int pointsX[];
 	protected int pointsY[];
 	protected int n;
+	protected Color color;
 
 	protected TileView view;
 
@@ -30,17 +32,25 @@ public class Tile {
 		this.pointsX = _pointsX;
 		this.pointsY = _pointsY;
 		this.n = _n;
+		this.color = new Color(181, 238, 205);
 	}
 
+	/**Kirajzoláshoz fognak kelleni az alábbi getterek:
+	 * Ezzel lekérdezhetők az X koordináták sorban:*/
 	public int[] getPointsX() {
 		return pointsX;
 	}
 
+	/**Ezzel az Y koordináták: 	*/
 	public int[] getPointsY() {
 		return pointsY;
 	}
 
+	/**Ezzel, hogy mennyi csúcsa van a mezőnek összesen:	*/
 	public int getN() {return n;}
+
+	/**Ezzel pedig, hogy milyen színe van a mezőnek:	*/
+	public Color getColor() {return color;}
 
 	/**
 	 * Eltávolítja az adott mezőről a virológust.
@@ -78,13 +88,22 @@ public class Tile {
 	}
 
 	/**
-	 * Beállítja a szomszédos mezőt
+	 * Beállítja a szomszédos mezőt, a hatékonyság kedvéért oda-vissza hat
 	 *
 	 * @param tile a szomszédos mező
 	 */
 	public void setNeighbor(Tile tile) {
 		adjacentTiles.add(tile);
+		tile.setTheOtherNeighbor(this);
 	}
+
+	/**Erre azért van szükség, mert ha csak előbbi létezne,
+	 * akkor a végtelenségig adogatnák egymást szomszédnak
+	 * Ha meg csak utóbbi létezik, akkor kétszer annyi munka lenne Map-ben*/
+	public void setTheOtherNeighbor(Tile tile) {
+		adjacentTiles.add(tile);
+	}
+
 
 	/**
 	 * Visszaadja a másik virológust a mezőről
