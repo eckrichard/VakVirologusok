@@ -178,7 +178,7 @@ public class GameMenu implements ActionListener {
         }
         if(e.getActionCommand().equals("codes"))
         {
-            GeneticCodesMenu GCmenu = new GeneticCodesMenu(game.getMap().getVirologists().get(game.getActive()));
+            GeneticCodesMenu GCmenu = new GeneticCodesMenu(game.getMap().getVirologists().get(game.getActive()), this);
         }
         if(e.getActionCommand().equals("collect"))
         {
