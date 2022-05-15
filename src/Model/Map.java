@@ -46,15 +46,6 @@ public class Map {
 			virologist.setTile(ranTile);
 			virologists.add(virologist);
 		}
-		/*tesztelésre
-		virologists.get(0).getBag().Add(new Glove("gear"));
-		virologists.get(0).getBag().Add(new BonusBag("gear"));
-		virologists.get(0).getBag().Add(new Cape("gear"));
-		virologists.get(0).getBag().Add(new Axe("gear"));
-		virologists.get(0).getBag().Add(new ForgetAgent(null,"agent"));
-		virologists.get(0).getBag().Add(new Material("TDP"));
-		virologists.get(0).getBag().Add(new Material("CDP"));
-		virologists.get(0).LearnCode(new GeneticCode(new ForgetAgent(null, "forget")));*/
 	}
 	
 	public void addPolygon(int type, int[] pointsX, int[] pointsY, int n) {

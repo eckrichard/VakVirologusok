@@ -69,7 +69,12 @@ public class MainMenu {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        lMap2 = new JLabel("Map2");
+        try {
+            ImageIcon iimap2 = new ImageIcon(ImageIO.read(new File("images/map2.png")));
+            lMap2 = new JLabel(iimap2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         lMapSelect = new JLabel("Map select");
         lPlayerSelect = new JLabel("Players count");
 
