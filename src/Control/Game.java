@@ -18,6 +18,7 @@ public class Game {
 	 */
 	public Game(){
 		map = new Map();
+		map.setGame(this);
 	}
 
 	/**
@@ -33,6 +34,10 @@ public class Game {
 			active++;
 		else
 			active = 0;
+	}
+
+	public void setActiveDie() {
+		this.active--;
 	}
 
 	/**

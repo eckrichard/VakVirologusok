@@ -1,5 +1,7 @@
 package Model;
 
+import Control.Game;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,8 @@ public class Map {
 	private int mapNumber = 1;
 	private int virologistNumber = 4;
 
+	Game game;
+
 	/**
 	 * A pálya konstruktora
 	 */
@@ -19,6 +23,11 @@ public class Map {
 		tiles = new ArrayList<Tile>();
 		virologists = new ArrayList<Virologist>();
 	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
 	/**
 	 * Megépíti a pályát
 	 *
@@ -440,6 +449,15 @@ public class Map {
 	}
 
 	public void virologistDie(Virologist v){
+		int i = 0;
+		for(Virologist virologist : virologists){
+			if(v == virologist)
+				break;
+			i++;
+		}
+		if(i < game.getActive()){
+			game.setActiveDie();
+		}
 		virologists.remove(v);
 		virologistNumber--;
 	}
