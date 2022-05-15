@@ -259,26 +259,23 @@ public class Virologist {
 	 * @return van-e elég anyag a létrehozáshoz
 	 */
 	public boolean useMaterials(ArrayList<Material> neededMaterials) {
-		int equals = 0;
-		List<Integer> idx = new ArrayList<>();
+		ArrayList<Material> need = new ArrayList<>();
 		for(int i = 0; i < neededMaterials.size(); i++){
-			int materialidx = 0;
 			for(Material material : bag.getMaterials()){
-				if(material.ItemEqual(neededMaterials.get(i)) && !idx.contains(materialidx)){
-					equals++;
-					idx.add(materialidx);
+				if(material.ItemEqual(neededMaterials.get(i))){
+					need.add(material);
+					bag.Discard(material);
 					break;
 				}
-				materialidx++;
 			}
 		}
-		if(equals == neededMaterials.size()){
-			for(int i = idx.size() - 1; i >= 0; i--){
-				bag.Discard(bag.getMaterials().get(idx.get(i)));
-			}
+		if(need.size() == neededMaterials.size()){
 			return true;
 		}
 		else {
+			for(Material material : need){
+				bag.Add(material);
+			}
 			return false;
 		}
 	}

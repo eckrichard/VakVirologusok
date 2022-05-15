@@ -228,10 +228,10 @@ public class Map {
 		tiles.get(14).setCollectable(geneticCode1);
 
 		ArrayList<Material> agent2materials = new ArrayList<>();
-		agent2materials.add(tdp);
-		agent2materials.add(tdp);
-		agent2materials.add(lizin);
-		agent2materials.add(cdp);
+		agent2materials.add(new Material("TDP"));
+		agent2materials.add(new Material("TDP"));
+		agent2materials.add(new Material("Lizin"));
+		agent2materials.add(new Material("CDP"));
 		ForgetAgent forgetAgent = new ForgetAgent(agent2materials, "Forget agent");
 		GeneticCode geneticCode2 = new GeneticCode(forgetAgent);
 		tiles.get(15).setCollectable(geneticCode2);
