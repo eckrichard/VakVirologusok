@@ -15,7 +15,6 @@ public class BagMenu {
     private JPanel pAgent;
     private JPanel pProtectiveGears;
     private JPanel pMaterials;
-    private MenuController menuController;
     private Virologist virologist;
     private Bag virologistBag;
     private JTable agentTable;

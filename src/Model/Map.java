@@ -66,7 +66,13 @@ public class Map {
 			virologists.add(virologist);
 		}
 	}
-	
+
+	/**
+	 * Ez a függvény a Tile létrehozásáért felel:
+	 *  - a kapott type alapján eldönti, hogy pontosan milyen mezőt kell létrehoznia
+	 *  - átadja az x-ek és y-ok tömbjét, azért ilyen formában, mert a kirajzolás is így fog menni
+	 *  - átadja, hogy mennyi ponttal rendelkezik összesen
+	 * */
 	public void addPolygon(int type, int[] pointsX, int[] pointsY, int n) {
 		switch (type) {
 			case 1:
@@ -92,6 +98,12 @@ public class Map {
 		}
 	}
 
+	/**
+	 * Az alábbi függvények mind 1-1 polygon létrehozásáért felelnek:
+	 *  - sorban kapnak pontokat, x és a hozzátartozó y koordinátákat
+	 *  - ezeket ketté választja két tömbbe
+	 *  - a két tömbböt tovább adja az addPolygon-nak, a kapott type-pal, illetve a pontok számával együtt
+	 * */
 	public void createPolygon(int type, int x1, int y1, int x2, int y2, int x3, int y3){
 		int[] pointsX = {x1, x2, x3};
 		int[] pointsY = {y1, y2, y3};
@@ -118,6 +130,11 @@ public class Map {
 		addPolygon(type, pointsX, pointsY, 7);
 	}
 
+	/**
+	 * Az alábbi függvény az egyes mezők létrehozásáért felel sorban
+	 * Meghívja a megfelelő createPolygon függvényt, és átadja neki sorban a szükséges paramétereket
+	 * A legvégén meghívja még a setNeighbors-t, hogy a mezők létrejötte után a szomszédok ismerjék is egymást
+	 * */
 	public void createTiles1() {
 		//Sima mezők létrehozása, típus azonosítójuk: 1
 		createPolygon(1, 0, 0, 134, 0, 230, 154, 138, 233, 0, 250);							//	A
@@ -152,6 +169,11 @@ public class Map {
 		setCollectables1();
 	}
 
+	/**
+	 * Sorban végigmegy minden mezőn és beállítja a megfelelő szomszédokat egymásnak
+	 * Mivel ez oda-vissza hat a két mezőre, így ezt elég csak az egyik irányba elvégezni
+	 * A függvény végére szép lassan elfogynak a beállítandó szomszédok
+	 * */
 	public void setNeighbors1() {
 		//A
 		tiles.get(0).setNeighbor(tiles.get(14));
@@ -251,6 +273,9 @@ public class Map {
 		tiles.get(17).setCollectable(glove);
 	}
 
+	/**
+	 * Ez a függvény ugyanazt végzi el, mint az 1-es változat, csak a 2-es térképpel
+	 * */
 	public void createTiles2() {
 		//Sima mezők létrehozása, típus azonosítójuk: 1
 		//A
@@ -310,6 +335,10 @@ public class Map {
 		setNeighbors2();
 	}
 
+	/**
+	 * Akárcsak a fentebbi függvény, ez is a második térképhez tartozik,
+	 * ezt leszámítva ugyanazt csinálja, mint a setNeighbors1
+	 * */
 	public void setNeighbors2() {
 		//A
 		tiles.get(0).setNeighbor(tiles.get(1));

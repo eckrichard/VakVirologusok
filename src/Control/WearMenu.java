@@ -13,7 +13,6 @@ public class WearMenu {
     private JLabel lProtectiveGears;
     private JPanel pProtectiveGears;
     private JTable protectiveGearTable;
-    private MenuController menuController;
 
     private Virologist virologist;
 

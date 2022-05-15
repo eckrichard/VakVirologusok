@@ -21,7 +21,6 @@ public class MainMenu {
     private JButton bStartGame;
     private JLabel lMap1;
     private JLabel lMap2;
-    private MenuController menuController;
     private Game game;
     private GameMenu gameMenu;
 

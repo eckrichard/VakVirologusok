@@ -1,7 +1,5 @@
 package Model;
 
-import View.ItemView;
-
 /**
  * A raktárban tárolandó anyagok és védőfelszerelések ősosztálya. A virológus raktárában
  * szereplő dolgokat ennek a segítségével tároljuk egy listában.
@@ -10,8 +8,6 @@ public abstract class Item {
 	protected String name;
 	protected int id;
 	protected Virologist virologist;
-
-	protected ItemView view;
 
 	/**
 	 * Egy tárgy konstruktora, ami beállítja a nevét

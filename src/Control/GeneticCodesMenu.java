@@ -11,7 +11,6 @@ public class GeneticCodesMenu {
     private JOptionPane jPopup;
     private JLabel lCodes;
     private JPanel pCodes;
-    private MenuController menuController;
     private Virologist virologist;
     private GameMenu gameMenu;
     private JTable geneticCodeTable;

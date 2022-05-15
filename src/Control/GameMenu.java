@@ -26,7 +26,6 @@ public class GameMenu implements ActionListener {
     private JPanel pVirologistStats;
     private JPanel virologistout;
     private JFrame fGame;
-    private MenuController menuController;
     private GamePanel leftPanel;
     private Game game;
 

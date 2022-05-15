@@ -86,6 +86,12 @@ public class GamePanel extends JPanel {
         this.repaint();
     }
 
+    /**
+     * Függvény, ami bejárja az összes tileView-t
+     * és kirajzoltatja a mezőket, illetve a virológusokat
+     * Kékkel, akik épp nem várnak
+     * Pirossal, amelyik éppen aktív, vagyis soron van
+     * */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
