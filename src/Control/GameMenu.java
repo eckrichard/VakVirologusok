@@ -254,8 +254,24 @@ public class GameMenu implements ActionListener {
                 game.setActive();
                 updateStats();
             }
+            timeStep(v);
             game.setHasMoved(false);
             leftPanel.draw();
+        }
+    }
+    /*
+    * Lépteti a virológus idejét
+    * */
+    public void timeStep(Virologist v) {
+        int iter = 0;
+        while (v.getBag().getAgents() != null  && iter < v.getBag().getAgents().size()) {
+            v.getBag().getAgents().get(iter).Step();
+            iter++;
+        }
+        int iter1 = 0;
+        while(v.getEffects() != null && iter < v.getEffects().size()) {
+            v.getEffects().get(iter1).Step();
+            iter1++;
         }
     }
 }
