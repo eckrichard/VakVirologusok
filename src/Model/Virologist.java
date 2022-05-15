@@ -307,6 +307,67 @@ public class Virologist {
 	}
 
 	/**
+	 * A virológus vítustáncát végzi el
+	 * Ha a virológus vítustáncol, akkor véletrenszerűen mozgatja
+	 */
+	public void VitusDanceActionPerform()
+	{
+		List<Effects> effects=this.getEffects();
+		for (Effects e : effects)
+		{
+			if (e instanceof VitusDance)
+			{
+				Tile tile=this.getTile();
+				ArrayList<Tile> adjecentTiles=tile.getAdjacentTiles();
+				int size= adjecentTiles.size();
+				Random rand=new Random();
+				int intRandom=rand.nextInt(size);
+				Tile selectedTile=adjecentTiles.get(intRandom);
+				int selectedID=selectedTile.getId();
+				this.Move(selectedID);
+				return;
+			}
+		}
+		return;
+	}
+
+	/**
+	 * A virológus medvetáncát végzi el
+	 * Ha a virológus medvetáncol, akkor véletrenszerűen mozgatja
+	 */
+	public void BearDanceActionPerform()
+	{
+		List<Effects> effects=this.getEffects();
+		for (Effects e : effects)
+		{
+			if (e instanceof BearDance)
+			{
+				Tile tile=this.getTile();
+				if (tile instanceof Storage)
+				{
+					Storage storage=(Storage)tile;
+					storage.DestroyMaterial();
+				}
+				Virologist otherVirologist=tile.GetOtherVirologist(this);
+				if(otherVirologist!=null)
+				{
+					BearDanceAgent bearDanceAgent=new BearDanceAgent(null,"bear dance");
+					this.UseAgent(otherVirologist,bearDanceAgent);
+				}
+				ArrayList<Tile> adjecentTiles=tile.getAdjacentTiles();
+				int size= adjecentTiles.size();
+				Random rand=new Random();
+				int intRandom=rand.nextInt(size);
+				Tile selectedTile=adjecentTiles.get(intRandom);
+				int selectedID=selectedTile.getId();
+				this.Move(selectedID);
+				return;
+			}
+		}
+		return;
+	}
+
+	/**
 	 * Visszaadja az ismert genetikai kódokat
 	 * @return az ismert kódok
 	 */
