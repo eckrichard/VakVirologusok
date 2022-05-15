@@ -27,7 +27,7 @@ public abstract class Item {
 	 * @param i A tárgy amit összehasonlítunk
 	 */
 	public boolean ItemEqual(Item i) {
-		if(this.name.equals(i.name)){
+		if(this.name.equalsIgnoreCase(i.name)){
 			return true;
 		}
 		return false;
