@@ -245,10 +245,10 @@ public class Map {
 		GeneticCode geneticCode2 = new GeneticCode(forgetAgent);
 		tiles.get(15).setCollectable(geneticCode2);
 
-		Cape cape = new Cape("Cape");
-		Axe axe = new Axe("Axe");
-		tiles.get(16).setCollectable(cape);
-		tiles.get(17).setCollectable(axe);
+		BonusBag bag = new BonusBag("Bag");
+		Glove glove = new Glove("Glove");
+		tiles.get(16).setCollectable(bag);
+		tiles.get(17).setCollectable(glove);
 	}
 
 	public void createTiles2() {

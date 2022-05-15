@@ -31,9 +31,9 @@ public class Glove extends ProtectiveGear {
 	 */
 	public void throwBack(Virologist v, Agent a) {
 		if(v.getUntouchable() == false){
-			remainingUses--;
 			v.HitByAgent(a);
 		}
+		remainingUses--;
 	}
 	/**
 	 * Hozzáadja a Glove-ot a virológushoz
@@ -68,6 +68,9 @@ public class Glove extends ProtectiveGear {
 	 */
 	public void Use(Virologist v, Agent a) {
 		throwBack(v, a);
+		if(remainingUses == 0){
+			virologist.setThrowBackAvailable(false);
+		}
 	}
 
 	/**

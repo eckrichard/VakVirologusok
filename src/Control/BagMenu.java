@@ -109,7 +109,20 @@ public class BagMenu {
                         gameMenu.updateStats();
                     }
                     else if (result == 1){
-                        virologist.UseAgent(virologist.getTile().GetOtherVirologist(virologist), virologistBag.getAgents().get(row));
+                        if(virologist.getTile().GetOtherVirologist(virologist).isThrowBackAvailable()){
+                            JFrame throwback = new JFrame();
+                            Object[] options2 = {"Yes!", "No!"};
+                            int result2 = jPopup.showOptionDialog(throwback, "Do you want throwback the agent?", "Options", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[1]);
+                            if(result2 == 0){
+                                virologist.UseAgent(virologist.getTile().GetOtherVirologist(virologist), virologistBag.getAgents().get(row), true);
+                            }
+                            else if(result2 == 1){
+                                virologist.UseAgent(virologist.getTile().GetOtherVirologist(virologist), virologistBag.getAgents().get(row), false);
+                            }
+                        }
+                        else {
+                            virologist.UseAgent(virologist.getTile().GetOtherVirologist(virologist), virologistBag.getAgents().get(row));
+                        }
                         agents.removeItem(row);
                         gameMenu.updateStats();
                     }

@@ -103,10 +103,18 @@ public class Virologist {
 	 */
 	public void UseAgent(Virologist v, Agent a) {
 		if(!v.getUntouchable()){
-			if(v.isThrowBackAvailable()){
+			v.HitByAgent(a);
+		}
+		bag.Discard(a);
+	}
+
+	public void UseAgent(Virologist v, Agent a, boolean throwback) {
+		if(!v.getUntouchable()){
+			if(throwback){
 				for(ProtectiveGear gear : v.getWear()){
 					if(gear instanceof Glove){
 						gear.Use(this, a);
+						break;
 					}
 				}
 			}
