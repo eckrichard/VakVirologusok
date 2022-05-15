@@ -85,7 +85,10 @@ public class GamePanel extends JPanel {
             tileViews.get(i).draw(g);
         }
         for (int i = 0; i < virologistViews.size(); i++) {
-            virologistViews.get(i).draw(g);
+            if(i == game.getActive())
+                virologistViews.get(i).draw(g, Color.RED);
+            else
+                virologistViews.get(i).draw(g, Color.BLUE);
         }
     }
 

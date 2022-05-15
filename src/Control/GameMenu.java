@@ -27,6 +27,7 @@ public class GameMenu implements ActionListener {
     private JPanel virologistout;
     private JFrame fGame;
     private MenuController menuController;
+    private GamePanel leftPanel;
     private Game game;
 
     public GameMenu(Game game){
@@ -109,7 +110,7 @@ public class GameMenu implements ActionListener {
         rightPanel.add(new JPanel(), BorderLayout.LINE_END);
         fGame.add(rightPanel, BorderLayout.LINE_END);
 
-        GamePanel leftPanel = new GamePanel(game);
+        leftPanel = new GamePanel(game);
         leftPanel.draw();
         fGame.add(leftPanel);
 
@@ -233,6 +234,7 @@ public class GameMenu implements ActionListener {
         {
             game.setActive();
             updateStats();
+            leftPanel.draw();
         }
     }
 }
