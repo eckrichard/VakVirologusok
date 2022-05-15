@@ -206,10 +206,10 @@ public class GameMenu implements ActionListener {
             }
             else {
                 Virologist virologist = game.getMap().getVirologists().get(game.getActive());
-                Virologist otherVIrologist = game.getMap().getVirologists().get(game.getActive()).getTile().GetOtherVirologist(virologist);
+                Virologist otherVirologist = game.getMap().getVirologists().get(game.getActive()).getTile().GetOtherVirologist(virologist);
                 boolean paralyzed = false;
-                if(otherVIrologist.getEffects().size() > 0){
-                    for(Effects effect : otherVIrologist.getEffects()){
+                if(otherVirologist.getEffects().size() > 0){
+                    for(Effects effect : otherVirologist.getEffects()){
                       if(effect instanceof Paralyzed){
                           paralyzed = true;
                          break;
@@ -224,8 +224,11 @@ public class GameMenu implements ActionListener {
                         collect();
                     }
                     else if(result == 1){
-                        TakeGearMenu takeGearMenu = new TakeGearMenu(otherVIrologist, this);
+                        TakeGearMenu takeGearMenu = new TakeGearMenu(otherVirologist, this);
                     }
+                }
+                else {
+                    collect();
                 }
             }
 
