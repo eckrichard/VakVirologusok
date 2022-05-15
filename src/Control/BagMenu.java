@@ -134,9 +134,12 @@ public class BagMenu {
                     if(axe){
                         Object[] options = {"Use!", "Discard!"};
                         int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the protective gear?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
-                        if (result == 0){
-                            virologistBag.getProtectiveGears().get(row).Use(virologist.getTile().GetOtherVirologist(virologist), null);
+                        if (result == 0 && ((Axe) virologistBag.getProtectiveGears().get(row)).getUsable()){
+                            Virologist other = virologist.getTile().GetOtherVirologist(virologist);
+                            virologistBag.getProtectiveGears().get(row).Use(other, null);
                             gameMenu.updateStats();
+                            gameMenu.getGamePanel().virologistDie(other);
+                            gameMenu.getGamePanel().draw();
                         }
                         else if (result == 1){
                             protectiveGears.removeItem(row);

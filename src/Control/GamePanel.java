@@ -62,16 +62,19 @@ public class GamePanel extends JPanel {
                     int[] ypoints = tile.getPointsY();
                     int npoints = tile.getN();
                     Polygon poly = new Polygon(xpoints,ypoints,npoints);
-                    if(poly.contains(p)) {
+                    if(poly.contains(p) && game.getMap().getVirologists().get(activeVirologist).Move(tile.getId())) {
                         virologistViews.get(activeVirologist).setCoordinates(p);
                         draw();
-                        game.getMap().getVirologists().get(activeVirologist).Move(tile.getId());
                     }
                 }
             }
 
         });
         this.requestFocusInWindow();
+    }
+
+    public void virologistDie(Virologist v){
+        virologistViews.remove(v.getId());
     }
 
     public void draw() {

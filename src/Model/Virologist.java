@@ -77,13 +77,15 @@ public class Virologist {
 	 * A virológus az egyik mezőről a másikra lép
 	 * @param n A mező száma amire lép a virológus
 	 */
-	public void Move(long n) {
+	public boolean Move(long n) {
 		Tile t2 = tile.GetNeighbor(n);
-		if(t2 != null){
+		if(t2 != null && t2.virologists.size() < t2.capacity){
 			tile.Remove(this);
-			tile.Accept(this);
+			t2.Accept(this);
 			tile = t2;
+			return true;
 		}
+		return false;
 	}
 
 	/**
@@ -247,7 +249,7 @@ public class Virologist {
 	public void Die() {
 		tile.Remove(this);
 		tile = null;
-		map.getVirologists().remove(this);
+		map.virologistDie(this);
 	}
 
 	/**

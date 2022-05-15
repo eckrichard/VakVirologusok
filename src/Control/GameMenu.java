@@ -181,6 +181,10 @@ public class GameMenu implements ActionListener {
         }
     }
 
+    public GamePanel getGamePanel(){
+        return leftPanel;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("newgame"))

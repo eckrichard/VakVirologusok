@@ -44,6 +44,7 @@ public class Map {
 			int rannum = (int) ((Math.random() * (tiles.size() - 0)) + 0);
 			Tile ranTile = tiles.get(rannum);
 			virologist.setTile(ranTile);
+			virologist.setId(virologists.size());
 			virologists.add(virologist);
 		}
 	}
@@ -436,5 +437,10 @@ public class Map {
 
 	public List<Virologist> getVirologists() {
 		return virologists;
+	}
+
+	public void virologistDie(Virologist v){
+		virologists.remove(v);
+		virologistNumber--;
 	}
 }
