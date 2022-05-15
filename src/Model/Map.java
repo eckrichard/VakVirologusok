@@ -52,18 +52,22 @@ public class Map {
 		switch (type) {
 			case 1:
 				Tile tmp = new Tile(pointsX, pointsY, n);
+				tmp.setId(tiles.size());
 				tiles.add(tmp);
 				break;
 			case 2:
 				Laboratory tmp_L = new Laboratory(null, pointsX, pointsY, n);
+				tmp_L.setId(tiles.size());
 				tiles.add(tmp_L);
 				break;
 			case 3:
 				Shelter tmp_Sh = new Shelter(null, pointsX, pointsY, n);
+				tmp_Sh.setId(tiles.size());
 				tiles.add(tmp_Sh);
 				break;
 			case 4:
 				Storage tmp_St = new Storage(null, pointsX, pointsY, n);
+				tmp_St.setId(tiles.size());
 				tiles.add(tmp_St);
 				break;
 		}
@@ -126,6 +130,7 @@ public class Map {
 		createPolygon(4, 649, 383, 886, 363, 831, 530);
 
 		setNeighbors1();
+		setCollectables1();
 	}
 
 	public void setNeighbors1() {
@@ -144,7 +149,9 @@ public class Map {
 		//D
 		tiles.get(3).setNeighbor(tiles.get(5));
 		//E
+		tiles.get(4).setNeighbor(tiles.get(5));
 		tiles.get(4).setNeighbor(tiles.get(8));
+		tiles.get(4).setNeighbor(tiles.get(9));
 		tiles.get(4).setNeighbor(tiles.get(16));
 		//F
 		tiles.get(5).setNeighbor(tiles.get(18));
@@ -182,6 +189,47 @@ public class Map {
 		//R1 - ezen a ponton már ennek is megvan minden szomszédja
 		//R2 - ennek is
 		//R3 - és ennek is
+	}
+
+	public void setCollectables1(){
+		Material tdp= new Material("TDP");
+		tiles.get(18).setCollectable(tdp);
+		for(int i = 0; i < 10; i++){
+			tdp = new Material("TDP");
+			tiles.get(18).setCollectable(tdp);
+		}
+		Material lizin = new Material("Lizin");
+		tiles.get(19).setCollectable(lizin);
+		for(int i = 0; i < 10; i++){
+			lizin = new Material("Lizin");
+			tiles.get(19).setCollectable(lizin);
+		}
+		Material cdp = new Material("CDP");
+		tiles.get(20).setCollectable(cdp);
+		for(int i = 0; i < 10; i++){
+			cdp = new Material("CDP");
+			tiles.get(20).setCollectable(cdp);
+		}
+		ArrayList<Material> agent1materials = new ArrayList<>();
+		agent1materials.add(tdp);
+		agent1materials.add(lizin);
+		UntouchableAgent untouchableAgent = new UntouchableAgent(agent1materials, "Untouchable agent");
+		GeneticCode geneticCode1 = new GeneticCode(untouchableAgent);
+		tiles.get(14).setCollectable(geneticCode1);
+
+		ArrayList<Material> agent2materials = new ArrayList<>();
+		agent2materials.add(tdp);
+		agent2materials.add(tdp);
+		agent2materials.add(lizin);
+		agent2materials.add(cdp);
+		ForgetAgent forgetAgent = new ForgetAgent(agent2materials, "Forget agent");
+		GeneticCode geneticCode2 = new GeneticCode(forgetAgent);
+		tiles.get(15).setCollectable(geneticCode2);
+
+		Cape cape = new Cape("Cape");
+		Axe axe = new Axe("Axe");
+		tiles.get(16).setCollectable(cape);
+		tiles.get(17).setCollectable(axe);
 	}
 
 	public void createTiles2() {
@@ -239,6 +287,8 @@ public class Map {
 		createPolygon(4, 306, 360, 502, 336, 529, 440, 424, 467, 296, 403);
 		createPolygon(4, 721, 330, 825, 357, 825, 440, 680, 493);
 		createPolygon(4, 269, 600, 404, 553, 461, 633, 512, 700, 273, 700);
+
+		setNeighbors2();
 	}
 
 	public void setNeighbors2() {

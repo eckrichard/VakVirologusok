@@ -65,6 +65,7 @@ public class GamePanel extends JPanel {
                     if(poly.contains(p)) {
                         virologistViews.get(activeVirologist).setCoordinates(p);
                         draw();
+                        game.getMap().getVirologists().get(activeVirologist).Move(tile.getId());
                     }
                 }
             }

@@ -56,7 +56,6 @@ public class GeneticCodesMenu {
                     Object[] options = {"Create Agent!"};
                     int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the genetic code?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                     if (result == 0){
-                        geneticcodes.removeItem(row);
                         virologist.getGeneticCodes().get(row).CreateAgent(virologist);
                         gameMenu.updateStats();
                     }
