@@ -33,6 +33,12 @@ public class Map {
 	 *
 	 */
 	public void Build() {
+		if(tiles.size() != 0){
+			tiles.clear();
+		}
+		if(virologists.size() != 0){
+			virologists.clear();
+		}
 		/**
 		 * Map1
 		 */
@@ -51,6 +57,9 @@ public class Map {
 
 			virologist.setMap(this);
 			int rannum = (int) ((Math.random() * (tiles.size() - 0)) + 0);
+			while (tiles.get(rannum).virologists.size() > 0){
+				rannum = (int) ((Math.random() * (tiles.size() - 0)) + 0);
+			}
 			Tile ranTile = tiles.get(rannum);
 			virologist.setTile(ranTile);
 			virologist.setId(virologists.size());
