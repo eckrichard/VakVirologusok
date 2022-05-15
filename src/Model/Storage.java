@@ -32,7 +32,9 @@ public class Storage extends Tile {
 	 * @return az anyag, amit a mrzőn fel lehet venni
 	 */
 	public Material Collect() {
-		return materials.get(materials.size() - 1);
+		Material material = materials.get(materials.size() - 1);
+		materials.remove(material);
+		return material;
 	}
 
 	/**

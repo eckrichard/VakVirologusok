@@ -202,7 +202,6 @@ public class Virologist {
 		Material material = (Material) tile.GetCollectable();
 		if(bag.getMaterials().size() + bag.getAgents().size() + bag.getProtectiveGears().size() < bag.getSize()) {
 			bag.Add(material);
-			tile.setCollectable(null);
 		}
 	}
 
