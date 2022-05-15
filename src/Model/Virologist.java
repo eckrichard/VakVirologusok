@@ -144,8 +144,9 @@ public class Virologist {
 	 */
 	public void CollectProtectiveGear() {
 		ProtectiveGear pg = (ProtectiveGear) tile.GetCollectable();
-		if(bag.getMaterials().size() + bag.getAgents().size() + bag.getProtectiveGears().size() < bag.getSize()){
+		if(bag.getMaterials().size() + bag.getAgents().size() + bag.getProtectiveGears().size() < bag.getSize() && pg != null){
 			bag.Add(pg);
+			tile.setCollectable(null);
 		}
 	}
 
