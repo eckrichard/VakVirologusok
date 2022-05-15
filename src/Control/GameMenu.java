@@ -241,6 +241,19 @@ public class GameMenu implements ActionListener {
         {
             game.setActive();
             updateStats();
+            Virologist v=game.getMap().getVirologists().get(game.getActive());
+            if(v.getBearDance())
+            {
+                v.BearDanceActionPerform();
+                game.setActive();
+                updateStats();
+            }
+            else if(v.getVitusDance())
+            {
+                v.VitusDanceActionPerform();
+                game.setActive();
+                updateStats();
+            }
             game.setHasMoved(false);
             leftPanel.draw();
         }

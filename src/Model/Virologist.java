@@ -489,4 +489,25 @@ public class Virologist {
 	public void removeEffect(Effects effect) {
 		this.effects.remove(effect);
 	}
+
+	public boolean getBearDance() {
+		List<Effects> effects = this.getEffects();
+		for (Effects e : effects) {
+			if (e instanceof BearDance) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean getVitusDance() {
+		List<Effects> effects = this.getEffects();
+		for (Effects e : effects) {
+			if (e instanceof VitusDance) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+
 }
