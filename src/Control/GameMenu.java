@@ -42,6 +42,7 @@ public class GameMenu implements ActionListener {
     public void init(){
         fGame = new JFrame("VakVirologusok");
         fGame.setSize(new Dimension(1280,720));
+        fGame.setResizable(false);
 
         final JMenuBar jMenuBar = new JMenuBar();
         JMenu gameMenu = new JMenu("Game");
