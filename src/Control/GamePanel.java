@@ -55,16 +55,20 @@ public class GamePanel extends JPanel {
             public void mousePressed(MouseEvent e) {
                 Point p = e.getPoint();
                 int activeVirologist = game.getActive();
-                Tile virologistOnTile = game.getMap().getVirologists().get(activeVirologist).getTile();
-                ArrayList<Tile> adjacentTiles = virologistOnTile.getAdjacentTiles();
-                for( Tile tile : adjacentTiles) {
-                    int[] xpoints = tile.getPointsX();
-                    int[] ypoints = tile.getPointsY();
-                    int npoints = tile.getN();
-                    Polygon poly = new Polygon(xpoints,ypoints,npoints);
-                    if(poly.contains(p) && game.getMap().getVirologists().get(activeVirologist).Move(tile.getId())) {
-                        virologistViews.get(activeVirologist).setCoordinates(p);
-                        draw();
+                Boolean hasMoved = game.getHasMoved();
+                if(!hasMoved) {
+                    Tile virologistOnTile = game.getMap().getVirologists().get(activeVirologist).getTile();
+                    ArrayList<Tile> adjacentTiles = virologistOnTile.getAdjacentTiles();
+                    for( Tile tile : adjacentTiles) {
+                        int[] xpoints = tile.getPointsX();
+                        int[] ypoints = tile.getPointsY();
+                        int npoints = tile.getN();
+                        Polygon poly = new Polygon(xpoints,ypoints,npoints);
+                        if(poly.contains(p) && game.getMap().getVirologists().get(activeVirologist).Move(tile.getId())) {
+                            virologistViews.get(activeVirologist).setCoordinates(p);
+                            draw();
+                            game.setHasMoved(true);
+                        }
                     }
                 }
             }

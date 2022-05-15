@@ -241,6 +241,7 @@ public class GameMenu implements ActionListener {
         {
             game.setActive();
             updateStats();
+            game.setHasMoved(false);
             leftPanel.draw();
         }
     }

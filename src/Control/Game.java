@@ -12,6 +12,7 @@ public class Game {
 	private Map map;
 	private boolean gamerunning;
 	private int active = 0;
+	private boolean hasMoved = false;
 
 	/**
 	 * A játékot irányító osztály konstruktora
@@ -34,6 +35,12 @@ public class Game {
 			active++;
 		else
 			active = 0;
+	}
+	public void setHasMoved(Boolean move) {
+		this.hasMoved = move;
+	}
+	public Boolean getHasMoved() {
+		return this.hasMoved;
 	}
 
 	public void setActiveDie() {
