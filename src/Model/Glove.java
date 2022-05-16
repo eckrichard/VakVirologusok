@@ -70,6 +70,8 @@ public class Glove extends ProtectiveGear {
 		throwBack(v, a);
 		if(remainingUses == 0){
 			virologist.setThrowBackAvailable(false);
+			virologist.getWear().remove(this);
+			virologist.getBag().Discard(this);
 		}
 	}
 
