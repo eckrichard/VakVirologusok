@@ -63,9 +63,7 @@ public class Game {
 	/**
 	 * Leállítja a játékot
 	 */
-	public void endGame() {
-		gamerunning = false;
-	}
+	public void endGame() {  gamerunning = false; }
 
 	/**
 	 * visszaadja az aktív játékos sorszámát
@@ -82,4 +80,10 @@ public class Game {
 	public Map getMap() {
 		return map;
 	}
+
+	/**
+	 * Visszaadja, hogy fut e a játék
+	 * @return gameRunning
+	 */
+	public boolean isGamerunning() {return gamerunning; }
 }

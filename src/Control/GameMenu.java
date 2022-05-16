@@ -164,6 +164,31 @@ public class GameMenu implements ActionListener {
         if(game.getMap().getVirologists().get(game.getActive()).getTile() instanceof Laboratory){
             game.getMap().getVirologists().get(game.getActive()).PalpateWall();
             updateStats();
+            if(game.getMap().getMapNumber() == 1 && game.getMap().getVirologists().get(game.getActive()).getCodeCount() == 2) {
+                game.endGame();
+                JFrame jFrame = new JFrame();
+                Object[] options = {"New Game!", "Exit!"};
+                int result = jPopup.showOptionDialog(jFrame, " Congratulations! You're the winner! \n What would you like to do?", "Game Ended", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+                if(result == 0){
+                    MainMenu mainMenu = new MainMenu(game, this);
+                }
+                else if(result == 1){
+                    System.exit(0);
+                }
+            }
+            else if(game.getMap().getMapNumber() == 2 && game.getMap().getVirologists().get(game.getActive()).getCodeCount() == 3) {
+                game.endGame();
+                game.endGame();
+                JFrame jFrame = new JFrame();
+                Object[] options = {"New Game!", "Exit!"};
+                int result = jPopup.showOptionDialog(jFrame, " Congratulations! You're the winner! \n What would you like to do?", "Game Ended", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+                if(result == 0){
+                    MainMenu mainMenu = new MainMenu(game, this);
+                }
+                else if(result == 1){
+                    System.exit(0);
+                }
+            }
         }
         if(game.getMap().getVirologists().get(game.getActive()).getTile() instanceof Storage){
             game.getMap().getVirologists().get(game.getActive()).CollectMaterial();
@@ -193,72 +218,63 @@ public class GameMenu implements ActionListener {
         {
             MainMenu mainMenu = new MainMenu(game, this);
         }
-        if(e.getActionCommand().equals("bag"))
-        {
-            BagMenu Bagmenu = new BagMenu(game.getMap().getVirologists().get(game.getActive()), this);
-        }
-        if(e.getActionCommand().equals("codes"))
-        {
-            GeneticCodesMenu GCmenu = new GeneticCodesMenu(game.getMap().getVirologists().get(game.getActive()), this);
-        }
-        if(e.getActionCommand().equals("collect"))
-        {
-            if(game.getMap().getVirologists().get(game.getActive()).getTile().GetOtherVirologist(game.getMap().getVirologists().get(game.getActive())) == null){
-                collect();
+        if(game.isGamerunning()) {
+            if (e.getActionCommand().equals("bag")) {
+                BagMenu Bagmenu = new BagMenu(game.getMap().getVirologists().get(game.getActive()), this);
             }
-            else {
-                Virologist virologist = game.getMap().getVirologists().get(game.getActive());
-                Virologist otherVirologist = game.getMap().getVirologists().get(game.getActive()).getTile().GetOtherVirologist(virologist);
-                boolean paralyzed = false;
-                if(otherVirologist.getEffects().size() > 0){
-                    for(Effects effect : otherVirologist.getEffects()){
-                      if(effect instanceof Paralyzed){
-                          paralyzed = true;
-                         break;
+            if (e.getActionCommand().equals("codes")) {
+                GeneticCodesMenu GCmenu = new GeneticCodesMenu(game.getMap().getVirologists().get(game.getActive()), this);
+            }
+            if (e.getActionCommand().equals("collect")) {
+                if (game.getMap().getVirologists().get(game.getActive()).getTile().GetOtherVirologist(game.getMap().getVirologists().get(game.getActive())) == null) {
+                    collect();
+                } else {
+                    Virologist virologist = game.getMap().getVirologists().get(game.getActive());
+                    Virologist otherVirologist = game.getMap().getVirologists().get(game.getActive()).getTile().GetOtherVirologist(virologist);
+                    boolean paralyzed = false;
+                    if (otherVirologist.getEffects().size() > 0) {
+                        for (Effects effect : otherVirologist.getEffects()) {
+                            if (effect instanceof Paralyzed) {
+                                paralyzed = true;
+                                break;
+                            }
                         }
                     }
-                }
-                if(paralyzed){
-                    JFrame jFrame = new JFrame();
-                    Object[] options = {"Collect!", "Take gear!"};
-                    int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the protective gear?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
-                    if(result == 0){
+                    if (paralyzed) {
+                        JFrame jFrame = new JFrame();
+                        Object[] options = {"Collect!", "Take gear!"};
+                        int result = jPopup.showOptionDialog(jFrame, "What would you like to do with the protective gear?", "Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+                        if (result == 0) {
+                            collect();
+                        } else if (result == 1) {
+                            TakeGearMenu takeGearMenu = new TakeGearMenu(otherVirologist, this);
+                        }
+                    } else {
                         collect();
                     }
-                    else if(result == 1){
-                        TakeGearMenu takeGearMenu = new TakeGearMenu(otherVirologist, this);
-                    }
                 }
-                else {
-                    collect();
-                }
-            }
 
-        }
-        if(e.getActionCommand().equals("wear"))
-        {
-            WearMenu Wearmenu = new WearMenu(game.getMap().getVirologists().get(game.getActive()), this);
-        }
-        if(e.getActionCommand().equals("endturn"))
-        {
-            game.setActive();
-            updateStats();
-            Virologist v=game.getMap().getVirologists().get(game.getActive());
-            if(v.getBearDance())
-            {
-                v.BearDanceActionPerform();
+            }
+            if (e.getActionCommand().equals("wear")) {
+                WearMenu Wearmenu = new WearMenu(game.getMap().getVirologists().get(game.getActive()), this);
+            }
+            if (e.getActionCommand().equals("endturn")) {
                 game.setActive();
                 updateStats();
+                Virologist v = game.getMap().getVirologists().get(game.getActive());
+                if (v.getBearDance()) {
+                    v.BearDanceActionPerform();
+                    game.setActive();
+                    updateStats();
+                } else if (v.getVitusDance()) {
+                    v.VitusDanceActionPerform();
+                    game.setActive();
+                    updateStats();
+                }
+                timeStep(v);
+                game.setHasMoved(false);
+                leftPanel.draw();
             }
-            else if(v.getVitusDance())
-            {
-                v.VitusDanceActionPerform();
-                game.setActive();
-                updateStats();
-            }
-            timeStep(v);
-            game.setHasMoved(false);
-            leftPanel.draw();
         }
     }
     /*

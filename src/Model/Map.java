@@ -590,6 +590,12 @@ public class Map {
 	}
 
 	/**
+	 * visszaadja az aktuális térkép számát
+	 * @return mapNumber, a térkép száma
+	 */
+	public int getMapNumber() { return mapNumber; }
+
+	/**
 	 * Beállítja, hogy mennyi virológus játszik
 	 * @param virologistNumber
 	 */
