@@ -263,9 +263,27 @@ public class GameMenu implements ActionListener {
                 updateStats();
                 Virologist v = game.getMap().getVirologists().get(game.getActive());
                 if (v.getBearDance()) {
-                    v.BearDanceActionPerform();
-                    game.setActive();
-                    updateStats();
+                    int viroCount = 0;
+                    while (v.getBearDance()){
+                        v.BearDanceActionPerform();
+                        game.setActive();
+                        updateStats();
+                        v = game.getMap().getVirologists().get(game.getActive());
+                        viroCount++;
+                        if(viroCount == game.getMap().getVirologists().size()){
+                            game.endGame();
+                            JFrame jFrame = new JFrame();
+                            Object[] options = {"New Game!", "Exit!"};
+                            int result = jPopup.showOptionDialog(jFrame, " Congratulations! You're the winner! \n What would you like to do?", "Game Ended", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+                            if(result == 0){
+                                MainMenu mainMenu = new MainMenu(game, this);
+                            }
+                            else if(result == 1){
+                                System.exit(0);
+                            }
+                        }
+                    }
+
                 } else if (v.getVitusDance()) {
                     v.VitusDanceActionPerform();
                     game.setActive();
@@ -278,8 +296,8 @@ public class GameMenu implements ActionListener {
         }
     }
     /*
-    * Lépteti a virológus idejét
-    * */
+     * Lépteti a virológus idejét
+     * */
     public void timeStep(Virologist v) {
         int iter = 0;
         while (v.getBag().getAgents() != null  && iter < v.getBag().getAgents().size()) {

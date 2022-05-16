@@ -392,12 +392,10 @@ public class Virologist {
 		{
 			if (e instanceof BearDance)
 			{
+				/**
+				 * Ha a lépés elött van mellette valaki
+				 */
 				Tile tile=this.getTile();
-				if (tile instanceof Storage)
-				{
-					Storage storage=(Storage)tile;
-					storage.DestroyMaterial();
-				}
 				Virologist otherVirologist=tile.GetOtherVirologist(this);
 				if(otherVirologist!=null)
 				{
@@ -411,6 +409,21 @@ public class Virologist {
 				Tile selectedTile=adjecentTiles.get(intRandom);
 				int selectedID=selectedTile.getId();
 				this.Move(selectedID);
+				/**
+				 * Ha a lépés után van mellette valaki és ha ez raktár elpusztítja az itt található anyagokat
+				 */
+				tile=this.getTile();
+				if (tile instanceof Storage)
+				{
+					Storage storage=(Storage)tile;
+					storage.DestroyMaterial();
+				}
+				otherVirologist=tile.GetOtherVirologist(this);
+				if(otherVirologist!=null)
+				{
+					BearDanceAgent bearDanceAgent=new BearDanceAgent(null,"bear dance");
+					this.UseAgent(otherVirologist,bearDanceAgent);
+				}
 				return;
 			}
 		}
