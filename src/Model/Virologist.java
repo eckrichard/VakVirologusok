@@ -2,7 +2,9 @@ package Model;
 
 import View.VirologistView;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -55,22 +57,31 @@ public class Virologist {
 		this.tile = tile;
 	}
 
+	/**
+	 * Beállítja a táskáját / raktárát
+	 * @param b
+	 */
 	public void setBag(Bag b) { this.bag = b;	}
+
+	/**
+	 * Beállítja a mezőjét
+	 * @param t
+	 */
 	public void setTile(Tile t) {
 		this.tile = t;
 		tile.Accept(this);
 	}
 
+	/**
+	 * Beállítja a hozzá tartozó map-et
+	 * @param map
+	 */
 	public void setMap(Map map) {
 		this.map = map;
 	}
 
-	public void setGeneticCodes(ArrayList<GeneticCode> geneticCodes) {
-		this.geneticCodes = geneticCodes;
-	}
-
-	public void setGeneticCodes(GeneticCode geneticCodes) {
-		this.geneticCodes.add(geneticCodes);
+	public void setView(VirologistView view) {
+		this.view = view;
 	}
 
 	/**
@@ -83,9 +94,42 @@ public class Virologist {
 			tile.Remove(this);
 			t2.Accept(this);
 			tile = t2;
+			if(this.getBearDance() || this.getVitusDance()){
+				pointInPoly();
+			}
 			return true;
 		}
 		return false;
+	}
+
+	public void pointInPoly(){
+		Polygon polygon = new Polygon(tile.getPointsX(), tile.getPointsY(), tile.getN());
+		int xcenter,ycenter;
+		int pX[]=tile.getPointsX();
+		int pY[]=tile.getPointsY();
+		xcenter=(getMaxValue(pX)+getMinValue(pX))/2;
+		ycenter=(getMaxValue(pY)+getMinValue(pY))/2;
+		Point po =new Point(xcenter,ycenter);
+		view.setCoordinates(po);
+	}
+
+	public static int getMaxValue(int[] numbers){
+		int maxValue = numbers[0];
+		for(int i=1;i < numbers.length;i++){
+			if(numbers[i] > maxValue){
+				maxValue = numbers[i];
+			}
+		}
+		return maxValue;
+	}
+	public static int getMinValue(int[] numbers){
+		int minValue = numbers[0];
+		for(int i=1;i<numbers.length;i++){
+			if(numbers[i] < minValue){
+				minValue = numbers[i];
+			}
+		}
+		return minValue;
 	}
 
 	/**
@@ -108,6 +152,12 @@ public class Virologist {
 		bag.Discard(a);
 	}
 
+	/**
+	 * Használja az ágenst egy olyan virológuson, akinek van kesztyűje, amit tud használni
+	 * @param v
+	 * @param a
+	 * @param throwback
+	 */
 	public void UseAgent(Virologist v, Agent a, boolean throwback) {
 		if(!v.getUntouchable()){
 			if(throwback){
@@ -211,7 +261,7 @@ public class Virologist {
 	 */
 	public void CollectMaterial() {
 		Material material = (Material) tile.GetCollectable();
-		if(bag.getMaterials().size() + bag.getAgents().size() + bag.getProtectiveGears().size() < bag.getSize()) {
+		if(bag.getMaterials().size() + bag.getAgents().size() + bag.getProtectiveGears().size() < bag.getSize() && material != null) {
 			bag.Add(material);
 		}
 	}
@@ -407,6 +457,10 @@ public class Virologist {
 		return agentResistance;
 	}
 
+	/**
+	 * Megmondja, hogy képe-e visszadobni az ágenst
+	 * @return
+	 */
 	public boolean isThrowBackAvailable() {
 		return throwBackAvailable;
 	}
@@ -427,6 +481,10 @@ public class Virologist {
 		return id;
 	}
 
+	/**
+	 * MEgmondja, hogy hány kódja van a virológusnak
+	 * @return
+	 */
 	public long getCodeCount() {
 		return codeCount;
 	}
@@ -486,10 +544,18 @@ public class Virologist {
 		}
 	}
 
+	/**
+	 * Leveszi az effectet a virológusról
+	 * @param effect
+	 */
 	public void removeEffect(Effects effect) {
 		this.effects.remove(effect);
 	}
 
+	/**
+	 * Visszaadja, hogy medvetánc hatása alatt van-e
+	 * @return
+	 */
 	public boolean getBearDance() {
 		List<Effects> effects = this.getEffects();
 		for (Effects e : effects) {
@@ -499,6 +565,11 @@ public class Virologist {
 		}
 		return false;
 	}
+
+	/**
+	 * Visszaadja, hogy vitustánc hatása alatt áll-e
+	 * @return
+	 */
 	public boolean getVitusDance() {
 		List<Effects> effects = this.getEffects();
 		for (Effects e : effects) {

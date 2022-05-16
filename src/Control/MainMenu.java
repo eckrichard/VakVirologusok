@@ -35,6 +35,9 @@ public class MainMenu {
         init();
     }
 
+    /**
+     * Létrehozza az ablakot
+     */
     public void init(){
         JFrame newGame = new JFrame("New Game");
         newGame.setSize(300,500);
@@ -77,6 +80,9 @@ public class MainMenu {
         lMapSelect = new JLabel("Map select");
         lPlayerSelect = new JLabel("Players count");
 
+        /**
+         * A játék indítására szolgáló gomb és annak action listener-je
+         */
         bStartGame = new JButton("Start Game");
         bStartGame.addActionListener(e -> {
             int map = 0;

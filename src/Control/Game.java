@@ -30,15 +30,28 @@ public class Game {
 		gamerunning = true;
 	}
 
+	/**
+	 * Beállítja az aktív játékost
+	 */
 	public void setActive() {
 		if(active != map.getVirologists().size() - 1)
 			active++;
 		else
 			active = 0;
 	}
+
+	/**
+	 * Beállítja, hogy lépet-e
+	 * @param move
+	 */
 	public void setHasMoved(Boolean move) {
 		this.hasMoved = move;
 	}
+
+	/**
+	 * Megmondja, hogy a virológus lépe-e már az adott kőrben
+	 * @return
+	 */
 	public Boolean getHasMoved() {
 		return this.hasMoved;
 	}
@@ -62,6 +75,10 @@ public class Game {
 		return active;
 	}
 
+	/**
+	 * Visszaadja a térképet, amin a játék zajlik
+	 * @return
+	 */
 	public Map getMap() {
 		return map;
 	}

@@ -22,7 +22,9 @@ public class GeneticCodesMenu {
         this.gameMenu = gameMenu;
         init();
     }
-
+    /**
+     * Létrehozza az ablakot és az előugró ablakokat, ha kell
+     */
     public void init(){
         JFrame geneteicCodes = new JFrame("Genteic Codes");
         geneteicCodes.setSize(new Dimension(300, 500));
@@ -33,8 +35,14 @@ public class GeneticCodesMenu {
         pCodes = new JPanel();
         lCodes = new JLabel("Codes");
 
+        /**
+         * a tábla adatai
+         */
         geneticcodes = new GeneticCodeMenuData(new ArrayList<GeneticCode>(virologist.getGeneticCodes()));
         pCodes.setLayout(new BorderLayout());
+        /**
+         * a táblázat beállítása
+         */
         geneticCodeTable = new JTable(geneticcodes);
         geneticCodeTable.setFillsViewportHeight(true);
         geneticCodeTable.setTableHeader(null);

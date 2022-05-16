@@ -17,4 +17,9 @@ public class VirologistView extends Drawable{
         g.setColor(color);
         g.fillOval((int)this.x,(int)this.y,20,20);
     }
+
+    public void setVirologist(Virologist virologist) {
+        this.virologist = virologist;
+        virologist.setView(this);
+    }
 }

@@ -26,7 +26,9 @@ public class TakeGearMenu {
         this.gameMenu = gameMenu;
         init();
     }
-
+    /**
+     * Létrehozza az ablakot és az előugró ablakokat, ha kell
+     */
     public void init(){
         JFrame bag = new JFrame("Take gear");
         bag.setSize(new Dimension(300, 300));
@@ -37,8 +39,14 @@ public class TakeGearMenu {
         pProtectiveGears = new JPanel();
         lProtectiveGears = new JLabel("Protective gears");
 
+        /**
+         * a tábla adatai
+         */
         protectiveGears = new BagMenuData(new ArrayList<Item>(virologistBag.getProtectiveGears()));
         pProtectiveGears.setLayout(new BorderLayout());
+        /**
+         * a táblázat beállítása
+         */
         protectiveGearTable = new JTable(protectiveGears);
         protectiveGearTable.setFillsViewportHeight(true);
         protectiveGearTable.setTableHeader(null);

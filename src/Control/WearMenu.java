@@ -26,6 +26,9 @@ public class WearMenu {
         init();
     }
 
+    /**
+     * Létrehozza az ablakot és az előugró ablakokat, ha kell
+     */
     public void init(){
         JFrame wearmenu = new JFrame("Wear");
         wearmenu.setSize(new Dimension(300, 300));
@@ -36,8 +39,14 @@ public class WearMenu {
         pProtectiveGears = new JPanel();
         lProtectiveGears = new JLabel("Protective gears");
 
+        /**
+         * a tábla adatai
+         */
         protectiveGears = new BagMenuData(new ArrayList<Item>(virologist.getWear()));
         pProtectiveGears.setLayout(new BorderLayout());
+        /**
+         * a táblázat beállítása
+         */
         protectiveGearTable = new JTable(protectiveGears);
         protectiveGearTable.setFillsViewportHeight(true);
         protectiveGearTable.setTableHeader(null);

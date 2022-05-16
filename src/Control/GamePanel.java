@@ -47,6 +47,7 @@ public class GamePanel extends JPanel {
             VirologistView tmp = new VirologistView();
             Point po =new Point(xcenter,ycenter);
             tmp.setCoordinates(po);
+            tmp.setVirologist(virologist);
             virologistViews.add(tmp);
         }
         addMouseListener(new MouseAdapter() {
@@ -77,6 +78,10 @@ public class GamePanel extends JPanel {
         this.requestFocusInWindow();
     }
 
+    /**
+     * A virológus meghal és a jelét el kell távolítani a térképről
+     * @param v
+     */
     public void virologistDie(Virologist v){
         virologistViews.remove(v.getId());
     }

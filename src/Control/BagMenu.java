@@ -33,6 +33,9 @@ public class BagMenu {
         init();
     }
 
+    /**
+     * Létrehozza az ablakot és az előugró ablakokat, ha kell
+     */
     public void init(){
         JFrame bag = new JFrame("Bag");
         bag.setSize(new Dimension(400, 500));

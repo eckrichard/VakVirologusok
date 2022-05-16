@@ -32,13 +32,19 @@ public class GameMenu implements ActionListener {
     public GameMenu(Game game){
         this.game = game;
         init();
-        //initJustMap();
     }
 
+    /**
+     * Visszaadja az ablakot
+     * @return
+     */
     public JFrame getFrame() {
         return fGame;
     }
 
+    /**
+     * Létrehozza az ablakot amiben ott lesz a játék, valamint a gombok és a virológus statjai
+     */
     public void init(){
         fGame = new JFrame("VakVirologusok");
         fGame.setSize(new Dimension(1280,720));
@@ -118,28 +124,10 @@ public class GameMenu implements ActionListener {
         fGame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    public void initJustMap() {
-        fGame = new JFrame("VakVirologusok");
-        fGame.setSize(new Dimension(1000, 700));
-
-        final JMenuBar jMenuBar = new JMenuBar();
-        JMenu gameMenu = new JMenu("Game");
-        JMenuItem newGame = new JMenuItem("New Game", KeyEvent.VK_P);
-        newGame.addActionListener(e -> {
-            MainMenu mainMenu = new MainMenu(game, this);
-        });
-        gameMenu.add(newGame);
-        jMenuBar.add(gameMenu);
-        fGame.setJMenuBar(jMenuBar);
-
-        JPanel table = new JPanel();
-        table.setBackground(Color.BLACK);
-        fGame.add(table, BorderLayout.CENTER);
-
-        fGame.setVisible(true);
-        fGame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
-
+    /**
+     * megjeleníti a virológus statjait, amik a játék szemponjából fontosak lehetnek számára
+     * @return
+     */
     public JPanel initStats(){
         JPanel virologistout = new JPanel(new GridLayout(0,2));
         virologistout.add(new JLabel("Code count: "));
@@ -158,6 +146,9 @@ public class GameMenu implements ActionListener {
         return virologistout;
     }
 
+    /**
+     * Frissíti a virológus statjait
+     */
     public void updateStats(){
         pVirologistStats.remove(virologistout);
         virologistout = initStats();
@@ -166,6 +157,9 @@ public class GameMenu implements ActionListener {
         pVirologistStats.repaint();
     }
 
+    /**
+     * Begyűjt valamit a virológus attól függően, hogy hol áll
+     */
     private void collect(){
         if(game.getMap().getVirologists().get(game.getActive()).getTile() instanceof Laboratory){
             game.getMap().getVirologists().get(game.getActive()).PalpateWall();
@@ -181,10 +175,18 @@ public class GameMenu implements ActionListener {
         }
     }
 
+    /**
+     * Visszaadja a játékot megjelenítő panelt
+     * @return
+     */
     public GamePanel getGamePanel(){
         return leftPanel;
     }
 
+    /**
+     * A gombok lenyomását figyeli és ha valamelyiket lenyomják, akkor végrahajtja az utasításait
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("newgame"))
@@ -269,7 +271,7 @@ public class GameMenu implements ActionListener {
             iter++;
         }
         int iter1 = 0;
-        while(v.getEffects() != null && iter < v.getEffects().size()) {
+        while(v.getEffects() != null && iter1 < v.getEffects().size()) {
             v.getEffects().get(iter1).Step();
             iter1++;
         }

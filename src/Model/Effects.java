@@ -18,6 +18,10 @@ public abstract class Effects implements Steppable{
 	 */
 	public abstract void setTimeEffected(long n);
 
+	/**
+	 * Beállítja a hozzá tartozó virológust
+	 * @param v
+	 */
 	public void setVirologist(Virologist v){
 		virologist = v;
 	}

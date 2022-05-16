@@ -37,6 +37,26 @@ public class Laboratory extends Tile {
 		color = new Color(183, 219, 243);
 	}
 
+	/**
+	 * Beállítja a medvetáncot a mezőre
+	 * @param bearDance
+	 */
+	public void setBearDance(BearDanceAgent bearDance){
+		this.bearDance = bearDance;
+	}
+
+	/**
+	 * FOgadja a virológust és ha van medvetánca, akkor megfertőzi vele (ha tudja)
+	 * @param v Az a virológus, aki odalép
+	 */
+	@Override
+	public void Accept(Virologist v) {
+		super.Accept(v);
+		if(bearDance != null){
+			LaboratoryInfect(v);
+		}
+	}
+
 	public void setCollectable(Object o) { geneticCode = (GeneticCode) o;}
 
 	/**

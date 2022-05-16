@@ -26,8 +26,6 @@ public abstract class Agent extends Item implements Steppable {
 		bag = null;
 	}
 
-	public void setMaterials(ArrayList<Material> m) {materials = m;}
-
 	/**
 	 * Az ágens virológusra kifejtet hatását állítja be. A
 	 * paraméterben kapott értékekre állítja be, ezt az ehhez tartozó osztály SetTimeEffected
@@ -89,6 +87,10 @@ public abstract class Agent extends Item implements Steppable {
 		return materials;
 	}
 
+	/**
+	 * Beállítja az anyagokat, akit a létrehozásához szukségesek
+	 * @param m
+	 */
 	public void setMaterial(Material m) {
 		if(materials == null){
 			materials = new ArrayList<>();

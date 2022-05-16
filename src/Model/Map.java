@@ -57,7 +57,7 @@ public class Map {
 
 			virologist.setMap(this);
 			int rannum = (int) ((Math.random() * (tiles.size() - 0)) + 0);
-			while (tiles.get(rannum).virologists.size() > 0){
+			while (tiles.get(rannum).virologists.size() > 0 || rannum == 27){
 				rannum = (int) ((Math.random() * (tiles.size() - 0)) + 0);
 			}
 			Tile ranTile = tiles.get(rannum);
@@ -232,6 +232,12 @@ public class Map {
 		//R3 - és ennek is
 	}
 
+	/**
+	 * Beállítja a gyűjthető dolgokat a mezőkre
+	 * Raktárba: TDP, Lizin és CDP
+	 * Laborba: Untouchable agent és Forgat agent-et tartalmazó genetikai kódok
+	 * Óvóhelyre: Kesztyű és köpeny
+	 */
 	public void setCollectables1(){
 		Material tdp= new Material("TDP");
 		tiles.get(18).setCollectable(tdp);
@@ -252,10 +258,10 @@ public class Map {
 			tiles.get(20).setCollectable(cdp);
 		}
 		ArrayList<Material> agent1materials = new ArrayList<>();
-		agent1materials.add(tdp);
-		agent1materials.add(lizin);
-		UntouchableAgent untouchableAgent = new UntouchableAgent(agent1materials, "Untouchable agent");
-		GeneticCode geneticCode1 = new GeneticCode(untouchableAgent);
+		agent1materials.add(new Material("TDP"));
+		agent1materials.add(new Material("Lizin"));
+		ForgetAgent forgetAgent = new ForgetAgent(agent1materials, "Forget agent");
+		GeneticCode geneticCode1 = new GeneticCode(forgetAgent);
 		tiles.get(14).setCollectable(geneticCode1);
 
 		ArrayList<Material> agent2materials = new ArrayList<>();
@@ -263,13 +269,13 @@ public class Map {
 		agent2materials.add(new Material("TDP"));
 		agent2materials.add(new Material("Lizin"));
 		agent2materials.add(new Material("CDP"));
-		ForgetAgent forgetAgent = new ForgetAgent(agent2materials, "Forget agent");
-		GeneticCode geneticCode2 = new GeneticCode(forgetAgent);
+		UntouchableAgent untouchableAgent = new UntouchableAgent(agent2materials, "Untouchable agent");
+		GeneticCode geneticCode2 = new GeneticCode(untouchableAgent);
 		tiles.get(15).setCollectable(geneticCode2);
 
-		BonusBag bag = new BonusBag("Bag");
+		Cape cape = new Cape("Cape");
 		Glove glove = new Glove("Glove");
-		tiles.get(16).setCollectable(bag);
+		tiles.get(16).setCollectable(cape);
 		tiles.get(17).setCollectable(glove);
 	}
 
@@ -333,6 +339,7 @@ public class Map {
 		createPolygon(4, 269, 600, 404, 553, 461, 633, 512, 700, 273, 700);
 
 		setNeighbors2();
+		setCollectables2();
 	}
 
 	/**
@@ -448,6 +455,7 @@ public class Map {
 		tiles.get(27).setNeighbor(tiles.get(31));
 		//L2
 		tiles.get(28).setNeighbor(tiles.get(32));
+		tiles.get(28).setNeighbor(tiles.get(14));
 		//L3
 		//ezen a ponton már minden szomszédja megvan
 		//L4
@@ -462,6 +470,109 @@ public class Map {
 		//és nekik is mind
 	}
 
+	/**
+	 * Beállítja a gyűjthető dolgokat a mezőkre
+	 * Raktárba: az összes lehetséges anyag
+	 * Laborba: minden mezőn található egy ágenshez tartozó genetikai kód és az egyik mező fertőz beardance-szel
+	 * Óvóhelyre: minden használható tárgy
+	 */
+	public void setCollectables2(){
+		/**
+		 * Raktárak
+		 */
+		Material valin= new Material("Valin");
+		tiles.get(40).setCollectable(valin);
+		for(int i = 0; i < 20; i++){
+			valin = new Material("Valin");
+			tiles.get(40).setCollectable(valin);
+		}
+		Material lizin= new Material("Lizin");
+		tiles.get(39).setCollectable(lizin);
+		for(int i = 0; i < 20; i++){
+			lizin = new Material("Lizin");
+			tiles.get(39).setCollectable(lizin);
+		}
+		Material szerin= new Material("Szerin");
+		tiles.get(38).setCollectable(szerin);
+		for(int i = 0; i < 20; i++){
+			szerin = new Material("Szerin");
+			tiles.get(38).setCollectable(szerin);
+		}
+		Material tdp= new Material("TDP");
+		tiles.get(37).setCollectable(tdp);
+		for(int i = 0; i < 20; i++){
+			tdp = new Material("TDP");
+			tiles.get(37).setCollectable(tdp);
+		}
+		Material cdp= new Material("CDP");
+		tiles.get(36).setCollectable(cdp);
+		for(int i = 0; i < 20; i++){
+			cdp = new Material("CDP");
+			tiles.get(36).setCollectable(cdp);
+		}
+		Material dutp= new Material("dUTP");
+		tiles.get(35).setCollectable(dutp);
+		for(int i = 0; i < 20; i++){
+			dutp = new Material("dUTP");
+			tiles.get(35).setCollectable(dutp);
+		}
+
+		/**
+		 * Óvóhelyek
+		 */
+		Cape cape = new Cape("Cape");
+		tiles.get(34).setCollectable(cape);
+		Glove glove = new Glove("Glove");
+		tiles.get(33).setCollectable(glove);
+		Axe axe = new Axe("Axe");
+		tiles.get(32).setCollectable(axe);
+		BonusBag bonusBag = new BonusBag("Bag");
+		tiles.get(31).setCollectable(bonusBag);
+
+		/**
+		 * Laboratóriumok
+		 */
+		ArrayList<Material> agent1materials = new ArrayList<>();
+		agent1materials.add(new Material("TDP"));
+		agent1materials.add(new Material("CDP"));
+		agent1materials.add(new Material("dUTP"));
+		agent1materials.add(new Material("Szerin"));
+		ForgetAgent forgetAgent = new ForgetAgent(agent1materials, "Forget agent");
+		GeneticCode geneticCode1 = new GeneticCode(forgetAgent);
+		tiles.get(30).setCollectable(geneticCode1);
+
+		ArrayList<Material> agent2materials = new ArrayList<>();
+		agent2materials.add(new Material("TDP"));
+		agent2materials.add(new Material("Lizin"));
+		agent2materials.add(new Material("Lizin"));
+		agent2materials.add(new Material("Szerin"));
+		UntouchableAgent untouchableAgent = new UntouchableAgent(agent2materials, "Untouchable agent");
+		GeneticCode geneticCode2 = new GeneticCode(untouchableAgent);
+		tiles.get(29).setCollectable(geneticCode2);
+
+		ArrayList<Material> agent3materials = new ArrayList<>();
+		agent3materials.add(new Material("Valin"));
+		agent3materials.add(new Material("Lizin"));
+		agent3materials.add(new Material("dUTP"));
+		agent3materials.add(new Material("Szerin"));
+		VitusDanceAgent vitusDanceAgent = new VitusDanceAgent(agent3materials, "Vitusdance agent");
+		GeneticCode geneticCode3 = new GeneticCode(vitusDanceAgent);
+		tiles.get(28).setCollectable(geneticCode3);
+
+		ArrayList<Material> agent4materials = new ArrayList<>();
+		agent4materials.add(new Material("TDP"));
+		agent4materials.add(new Material("Lizin"));
+		agent4materials.add(new Material("Valin"));
+		ParalyzeAgent paralyzeAgent = new ParalyzeAgent(agent4materials, "Paralyze agent");
+		GeneticCode geneticCode4 = new GeneticCode(paralyzeAgent);
+		tiles.get(27).setCollectable(geneticCode4);
+
+		ArrayList<Material> agent5materials = new ArrayList<>();
+		BearDanceAgent bearDanceAgent = new BearDanceAgent(agent5materials, "Beardance agent");
+		Laboratory laboratory = (Laboratory) (tiles.get(27));
+		laboratory.setBearDance(bearDanceAgent);
+	}
+
 	/**Ezzel a függvénnyel lekérdezhető egy adott indexű mező:	*/
 	public Tile getTile(int i) {return tiles.get(i);}
 
@@ -470,22 +581,34 @@ public class Map {
 		return tiles;
 	}
 
+	/**
+	 * Beállítja, hogy melyik mapen játszunk
+	 * @param mapNumber
+	 */
 	public void setMapNumber(int mapNumber) {
 		this.mapNumber = mapNumber;
 	}
 
+	/**
+	 * Beállítja, hogy mennyi virológus játszik
+	 * @param virologistNumber
+	 */
 	public void setVirologistNumber(int virologistNumber) {
 		this.virologistNumber = virologistNumber;
 	}
 
-	public int getVirologistNumber() {
-		return this.virologistNumber;
-	}
-
+	/**
+	 * Visszaadja a virológusokat, akik életben vannak
+	 * @return
+	 */
 	public List<Virologist> getVirologists() {
 		return virologists;
 	}
 
+	/**
+	 * A virológus halálánál kiveszi a játékban lévők közül
+	 * @param v
+	 */
 	public void virologistDie(Virologist v){
 		int i = 0;
 		for(Virologist virologist : virologists){
