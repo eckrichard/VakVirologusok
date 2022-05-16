@@ -1,7 +1,10 @@
 package View;
 
 import java.awt.*;
+import java.util.List;
 
+import Model.BearDance;
+import Model.Effects;
 import Model.Virologist;
 
 public class VirologistView extends Drawable{
@@ -22,4 +25,5 @@ public class VirologistView extends Drawable{
         this.virologist = virologist;
         virologist.setView(this);
     }
+    public Virologist getVirologist() { return virologist; }
 }

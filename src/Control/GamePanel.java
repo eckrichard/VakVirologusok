@@ -1,5 +1,7 @@
 package Control;
 
+import Model.BearDance;
+import Model.Effects;
 import Model.Tile;
 import Model.Virologist;
 import View.TileView;
@@ -12,6 +14,7 @@ import java.awt.event.MouseEvent;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
 import static javax.swing.text.StyleConstants.getBackground;
@@ -106,8 +109,13 @@ public class GamePanel extends JPanel {
         for (int i = 0; i < virologistViews.size(); i++) {
             if(i == game.getActive())
                 virologistViews.get(i).draw(g, Color.RED);
-            else
-                virologistViews.get(i).draw(g, Color.BLUE);
+            else {
+                boolean bear = false;
+                List<Effects> effects = virologistViews.get(i).getVirologist().getEffects();
+                for (Effects e : effects) { if (e instanceof BearDance) { bear = true; } }
+                if(!bear)  virologistViews.get(i).draw(g, Color.BLUE);
+                if(bear)  virologistViews.get(i).draw(g, Color.BLACK);
+            }
         }
     }
 

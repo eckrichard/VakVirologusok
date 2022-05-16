@@ -274,7 +274,7 @@ public class GameMenu implements ActionListener {
                             game.endGame();
                             JFrame jFrame = new JFrame();
                             Object[] options = {"New Game!", "Exit!"};
-                            int result = jPopup.showOptionDialog(jFrame, " Congratulations! You're the winner! \n What would you like to do?", "Game Ended", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+                            int result = jPopup.showOptionDialog(jFrame, " Every virologist got infected with BearDance virus!", "Game Ended", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
                             if(result == 0){
                                 MainMenu mainMenu = new MainMenu(game, this);
                             }
