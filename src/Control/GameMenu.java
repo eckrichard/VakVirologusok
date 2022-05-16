@@ -281,6 +281,7 @@ public class GameMenu implements ActionListener {
                             else if(result == 1){
                                 System.exit(0);
                             }
+                            break;
                         }
                     }
 
