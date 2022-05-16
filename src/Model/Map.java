@@ -241,30 +241,30 @@ public class Map {
 	public void setCollectables1(){
 		Material tdp= new Material("TDP");
 		tiles.get(18).setCollectable(tdp);
-		for(int i = 0; i < 10; i++){
+		for(int i = 0; i < 20; i++){
 			tdp = new Material("TDP");
 			tiles.get(18).setCollectable(tdp);
 		}
 		Material lizin = new Material("Lizin");
 		tiles.get(19).setCollectable(lizin);
-		for(int i = 0; i < 10; i++){
+		for(int i = 0; i < 20; i++){
 			lizin = new Material("Lizin");
 			tiles.get(19).setCollectable(lizin);
 		}
 		Material cdp = new Material("CDP");
 		tiles.get(20).setCollectable(cdp);
-		for(int i = 0; i < 10; i++){
+		for(int i = 0; i < 20; i++){
 			cdp = new Material("CDP");
 			tiles.get(20).setCollectable(cdp);
 		}
 		ArrayList<Material> agent1materials = new ArrayList<>();
-		agent1materials.add(new Material("Valin"));
-		agent1materials.add(new Material("Valin"));
-		agent1materials.add(new Material("CDP"));
-		agent1materials.add(new Material("CDP"));
-		agent1materials.add(new Material("CDP"));
-		ForgetAgent forgetAgent = new ForgetAgent(agent1materials, "Forget agent");
-		GeneticCode geneticCode1 = new GeneticCode(forgetAgent);
+		agent1materials.add(new Material("Lizin"));
+		agent1materials.add(new Material("Lizin"));
+		agent1materials.add(new Material("Lizin"));
+		agent1materials.add(new Material("Lizin"));
+		agent1materials.add(new Material("TDP"));
+		VitusDanceAgent vitusDanceAgent = new VitusDanceAgent(agent1materials, "Vitusdance agent");
+		GeneticCode geneticCode1 = new GeneticCode(vitusDanceAgent);
 		tiles.get(14).setCollectable(geneticCode1);
 
 		ArrayList<Material> agent2materials = new ArrayList<>();
@@ -487,37 +487,37 @@ public class Map {
 		 */
 		Material valin= new Material("Valin");
 		tiles.get(40).setCollectable(valin);
-		for(int i = 0; i < 20; i++){
+		for(int i = 0; i < 50; i++){
 			valin = new Material("Valin");
 			tiles.get(40).setCollectable(valin);
 		}
 		Material lizin= new Material("Lizin");
 		tiles.get(39).setCollectable(lizin);
-		for(int i = 0; i < 20; i++){
+		for(int i = 0; i < 50; i++){
 			lizin = new Material("Lizin");
 			tiles.get(39).setCollectable(lizin);
 		}
 		Material szerin= new Material("Szerin");
 		tiles.get(38).setCollectable(szerin);
-		for(int i = 0; i < 20; i++){
+		for(int i = 0; i < 50; i++){
 			szerin = new Material("Szerin");
 			tiles.get(38).setCollectable(szerin);
 		}
 		Material tdp= new Material("TDP");
 		tiles.get(37).setCollectable(tdp);
-		for(int i = 0; i < 20; i++){
+		for(int i = 0; i < 50; i++){
 			tdp = new Material("TDP");
 			tiles.get(37).setCollectable(tdp);
 		}
 		Material cdp= new Material("CDP");
 		tiles.get(36).setCollectable(cdp);
-		for(int i = 0; i < 20; i++){
+		for(int i = 0; i < 50; i++){
 			cdp = new Material("CDP");
 			tiles.get(36).setCollectable(cdp);
 		}
 		Material dutp= new Material("dUTP");
 		tiles.get(35).setCollectable(dutp);
-		for(int i = 0; i < 20; i++){
+		for(int i = 0; i < 50; i++){
 			dutp = new Material("dUTP");
 			tiles.get(35).setCollectable(dutp);
 		}
