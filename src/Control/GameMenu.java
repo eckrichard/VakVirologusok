@@ -286,9 +286,17 @@ public class GameMenu implements ActionListener {
                     }
 
                 } else if (v.getVitusDance()) {
-                    v.VitusDanceActionPerform();
-                    game.setActive();
-                    updateStats();
+                    int viroCount = 0;
+                    while(v.getVitusDance()){
+                        v.VitusDanceActionPerform();
+                        game.setActive();
+                        updateStats();
+                        viroCount++;
+                        if(viroCount == game.getMap().getVirologists().size()){
+                            break;
+                        }
+                    }
+
                 }
                 timeStep(v);
                 game.setHasMoved(false);
