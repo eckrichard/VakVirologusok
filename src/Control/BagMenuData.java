@@ -66,8 +66,7 @@ public class BagMenuData extends AbstractTableModel {
             else if(item instanceof Material){
                 if(item.getName().equalsIgnoreCase("Valin") ||
                         item.getName().equalsIgnoreCase("Szerin") ||
-                        item.getName().equalsIgnoreCase("tdp") ||
-                        item.getName().equalsIgnoreCase("Timidin-difoszfát")) {
+                        item.getName().equalsIgnoreCase("Lizin")) {
                     try {
                         ImageIcon icon = new ImageIcon(ImageIO.read(new File("images/amino-acids.png")));
                         icons.add(icon);

@@ -235,7 +235,7 @@ public class Map {
 	/**
 	 * Beállítja a gyűjthető dolgokat a mezőkre
 	 * Raktárba: TDP, Lizin és CDP
-	 * Laborba: Untouchable agent és Forgat agent-et tartalmazó genetikai kódok
+	 * Laborba: Paralyzed agent és Forgat agent-et tartalmazó genetikai kódok
 	 * Óvóhelyre: Kesztyű és köpeny
 	 */
 	public void setCollectables1(){
@@ -258,8 +258,11 @@ public class Map {
 			tiles.get(20).setCollectable(cdp);
 		}
 		ArrayList<Material> agent1materials = new ArrayList<>();
-		agent1materials.add(new Material("TDP"));
-		agent1materials.add(new Material("Lizin"));
+		agent1materials.add(new Material("Valin"));
+		agent1materials.add(new Material("Valin"));
+		agent1materials.add(new Material("CDP"));
+		agent1materials.add(new Material("CDP"));
+		agent1materials.add(new Material("CDP"));
 		ForgetAgent forgetAgent = new ForgetAgent(agent1materials, "Forget agent");
 		GeneticCode geneticCode1 = new GeneticCode(forgetAgent);
 		tiles.get(14).setCollectable(geneticCode1);
@@ -267,10 +270,12 @@ public class Map {
 		ArrayList<Material> agent2materials = new ArrayList<>();
 		agent2materials.add(new Material("TDP"));
 		agent2materials.add(new Material("TDP"));
+		agent2materials.add(new Material("TDP"));
+		agent2materials.add(new Material("Lizin"));
 		agent2materials.add(new Material("Lizin"));
 		agent2materials.add(new Material("CDP"));
-		UntouchableAgent untouchableAgent = new UntouchableAgent(agent2materials, "Untouchable agent");
-		GeneticCode geneticCode2 = new GeneticCode(untouchableAgent);
+		ParalyzeAgent paralyzeAgent = new ParalyzeAgent(agent2materials, "Paralyzed agent");
+		GeneticCode geneticCode2 = new GeneticCode(paralyzeAgent);
 		tiles.get(15).setCollectable(geneticCode2);
 
 		Cape cape = new Cape("Cape");
@@ -533,36 +538,44 @@ public class Map {
 		 * Laboratóriumok
 		 */
 		ArrayList<Material> agent1materials = new ArrayList<>();
-		agent1materials.add(new Material("TDP"));
+		agent1materials.add(new Material("Valin"));
+		agent1materials.add(new Material("Valin"));
 		agent1materials.add(new Material("CDP"));
-		agent1materials.add(new Material("dUTP"));
-		agent1materials.add(new Material("Szerin"));
+		agent1materials.add(new Material("CDP"));
+		agent1materials.add(new Material("CDP"));
 		ForgetAgent forgetAgent = new ForgetAgent(agent1materials, "Forget agent");
 		GeneticCode geneticCode1 = new GeneticCode(forgetAgent);
 		tiles.get(30).setCollectable(geneticCode1);
 
 		ArrayList<Material> agent2materials = new ArrayList<>();
-		agent2materials.add(new Material("TDP"));
-		agent2materials.add(new Material("Lizin"));
-		agent2materials.add(new Material("Lizin"));
+		agent2materials.add(new Material("dUTP"));
+		agent2materials.add(new Material("dUTP"));
+		agent2materials.add(new Material("CDP"));
+		agent2materials.add(new Material("CDP"));
+		agent2materials.add(new Material("Szerin"));
+		agent2materials.add(new Material("Szerin"));
 		agent2materials.add(new Material("Szerin"));
 		UntouchableAgent untouchableAgent = new UntouchableAgent(agent2materials, "Untouchable agent");
 		GeneticCode geneticCode2 = new GeneticCode(untouchableAgent);
 		tiles.get(29).setCollectable(geneticCode2);
 
 		ArrayList<Material> agent3materials = new ArrayList<>();
-		agent3materials.add(new Material("Valin"));
+		agent3materials.add(new Material("TDP"));
 		agent3materials.add(new Material("Lizin"));
-		agent3materials.add(new Material("dUTP"));
-		agent3materials.add(new Material("Szerin"));
+		agent3materials.add(new Material("Lizin"));
+		agent3materials.add(new Material("Lizin"));
+		agent3materials.add(new Material("Lizin"));
 		VitusDanceAgent vitusDanceAgent = new VitusDanceAgent(agent3materials, "Vitusdance agent");
 		GeneticCode geneticCode3 = new GeneticCode(vitusDanceAgent);
 		tiles.get(28).setCollectable(geneticCode3);
 
 		ArrayList<Material> agent4materials = new ArrayList<>();
 		agent4materials.add(new Material("TDP"));
+		agent4materials.add(new Material("TDP"));
+		agent4materials.add(new Material("TDP"));
 		agent4materials.add(new Material("Lizin"));
-		agent4materials.add(new Material("Valin"));
+		agent4materials.add(new Material("Lizin"));
+		agent4materials.add(new Material("CDP"));
 		ParalyzeAgent paralyzeAgent = new ParalyzeAgent(agent4materials, "Paralyze agent");
 		GeneticCode geneticCode4 = new GeneticCode(paralyzeAgent);
 		tiles.get(27).setCollectable(geneticCode4);
